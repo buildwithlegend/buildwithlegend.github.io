@@ -7,7 +7,8 @@ const SITE = {
   name: "Aurora Orbit",
   tagline: "把踩坑寫成文章，讓 Google 幫你帶人進站。",
   description: "獨一無二的技術雜誌站：錯誤訊息解法、新手流程、工具比較與變現策略。",
-  url: "https://YOURNAME.github.io",
+  // ✅ 修正：改成你的真實網址（不要用 YOURNAME）
+  url: "https://buildwithlegend.github.io",
   base: "/"
 };
 
@@ -58,7 +59,7 @@ function articleJsonLd(post, url){
     "headline": post.title,
     "datePublished": post.date,
     "dateModified": post.date,
-    "author": { "@type":"Person", "name": post.author || "YourName" },
+    "author": { "@type":"Person", "name": post.author || "Legend" }, // ✅ 可選：把預設作者改成你（可自行改名）
     "publisher": { "@type":"Organization", "name": SITE.name },
     "mainEntityOfPage": url,
     "description": post.excerpt || SITE.description

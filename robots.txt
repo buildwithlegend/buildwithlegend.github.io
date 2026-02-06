@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://YOURNAME.github.io/sitemap.xml
+Sitemap: https://buildwithlegend.github.io/sitemap.xml
