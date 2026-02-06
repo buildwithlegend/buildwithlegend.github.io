@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Aurora Orbit｜獨一無二的技術雜誌</title>
+  <meta name="description" content="獨一無二的技術雜誌站：錯誤訊息解法、新手流程、工具比較與變現策略。" />
+  <link rel="canonical" href="https://YOURNAME.github.io/" />
+  <link rel="stylesheet" href="./assets/css/style.css" />
+</head>
+<body>
+<header class="topbar">
+  <div class="container topbar-inner">
+    <a class="brand" href="./"><span class="logo" aria-hidden="true"></span><span>Aurora Orbit</span></a>
+    <nav class="nav" aria-label="Site">
+      <a href="./">首頁</a>
+      <a href="./about/">關於</a>
+      <a href="./tags/">標籤</a>
+      <a href="./categories/">分類</a>
+      <a href="./rss.xml">RSS</a>
+    </nav>
+    <div class="actions">
+      <span class="kbd">/ 搜尋</span>
+      <button class="iconbtn" type="button" onclick="toggleTheme()" aria-label="Toggle theme"><span id="themeIcon">🌙</span></button>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <section class="hero">
+    <div class="panel hero-main">
+      <div class="hero-content">
+        <h1>把踩坑寫成文章，讓 Google 幫你帶人進站。</h1>
+        <p class="sub">獨一無二的技術雜誌站：錯誤訊息解法、新手流程、工具比較與變現策略。</p>
+        <div class="hero-cta">
+          <a class="btn primary" href="./post/spring-boot-新手第一次跑不起來？我用-15-分鐘帶你從紅字到成功啟動/">🚀 先看最新文章</a>
+          <a class="btn" href="./about/">✨ 如何寫才會紅</a>
+        </div>
+        <div class="pills">
+          <span class="pill">站內搜尋</span>
+          <span class="pill">標籤/分類</span>
+          <span class="pill">自動 RSS / Sitemap</span>
+          <span class="pill">GitHub Actions 自動部署</span>
+          <span class="pill">深淺色</span>
+        </div>
+      </div>
+    </div>
+    <div class="panel hero-side">
+      <div class="metric"><span class="mini">寫作方法</span><b>解題卡</b></div>
+      <div class="metric"><span class="mini">結構</span><b>問題→原因→解法</b></div>
+      <div class="metric"><span class="mini">目標</span><b>長期搜尋流量</b></div>
+      <div class="mini" style="margin-top:10px">提示：按 <span class="kbd">/</span> 直接搜尋</div>
+    </div>
+  </section>
+
+  <section class="toolbar">
+    <div class="input" role="search">
+      <span style="opacity:.75">🔎</span>
+      <input id="searchInput" placeholder="搜尋：whitelabel、maven、module、npm..." />
+    </div>
+    <select class="select" id="categorySelect" aria-label="Category"></select>
+    <div id="tagChips" style="display:flex; gap:8px; flex-wrap:wrap"></div>
+    <span class="mini">結果：<b id="resultCount">0</b></span>
+  </section>
+
+  <section class="grid" id="postGrid" aria-label="Posts"></section>
+
+  <script id="DATA_POSTS" type="application/json">[{"file":"001-spring-boot-first-run.md","title":"Spring Boot 新手第一次跑不起來？我用 15 分鐘帶你從紅字到成功啟動","slug":"spring-boot-新手第一次跑不起來？我用-15-分鐘帶你從紅字到成功啟動","date":"2026-02-03","category":"Spring Boot","tags":["Maven","IntelliJ","新手救援"],"excerpt":"把 org.springframework.boot does not exist、404 Whitelabel 等新手最常見的坑，整理成可複製的解法。"},{"file":"002-intellij-import-maven.md","title":"IntelliJ 匯入 Maven 專案：最少步驟，避免 module not specified","slug":"intellij-匯入-maven-專案：最少步驟，避免-module-not-specified","date":"2026-02-02","category":"IntelliJ","tags":["Maven","設定","排雷"],"excerpt":"新手最容易卡的不是程式，是 IDE 的匯入方式。這篇用最短路線讓你成功。"},{"file":"003-monetize-roadmap.md","title":"用部落格賺錢：從 0 到第一筆收入，最務實的路線圖","slug":"用部落格賺錢：從-0-到第一筆收入，最務實的路線圖","date":"2026-02-01","category":"變現","tags":["SEO","內容策略","變現"],"excerpt":"不是先做很大，而是先做對：選題、結構、收錄、轉換，照順序做才會真的賺到。"}]</script>
+  <script id="DATA_TAGS" type="application/json">["內容策略","排雷","設定","新手救援","變現","IntelliJ","Maven","SEO"]</script>
+  <script id="DATA_CATS" type="application/json">["變現","IntelliJ","Spring Boot"]</script>
+</main>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <span class="mini">© 2026 Aurora Orbit · 自動化專業版</span>
+    <span class="mini">RSS: /rss.xml · Sitemap: /sitemap.xml</span>
+  </div>
+</footer>
+
+<script src="./assets/js/app.js"></script>
+<script>
+  (function initTheme(){
+    const saved=localStorage.getItem("theme");
+    if(saved) document.documentElement.setAttribute("data-theme", saved);
+    else {
+      const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+      document.documentElement.setAttribute("data-theme", prefersLight ? "light" : "dark");
+    }
+    const el=document.getElementById("themeIcon");
+    if(el) el.textContent = (document.documentElement.getAttribute("data-theme")==="dark") ? "🌙" : "☀️";
+  })();
+  function toggleTheme(){
+    const cur=document.documentElement.getAttribute("data-theme")||"dark";
+    const next=cur==="dark"?"light":"dark";
+    document.documentElement.setAttribute("data-theme", next);
+    localStorage.setItem("theme", next);
+    const el=document.getElementById("themeIcon");
+    if(el) el.textContent = next==="dark"?"🌙":"☀️";
+  }
+</script>
+
+</body>
+</html>
