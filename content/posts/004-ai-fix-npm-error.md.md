@@ -1,5 +1,6 @@
 ---
 title: "工程師如何用技術部落格賺到第一筆收入？完整路線公開（0→1真實策略）"
+slug: tech-blog-first-income
 date: "2026-02-06"
 category: "變現"
 tags: ["工程師", "技術部落格", "SEO", "自媒體", "AI"]
