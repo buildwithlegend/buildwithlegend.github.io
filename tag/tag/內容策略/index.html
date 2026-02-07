@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="google-site-verification" content="UmWwsQLUuTnrgZi4Qb6DT83sX5pPM_8KymX5GKQhLWU" />
+
+  <title>#內容策略｜Aurora Orbit</title>
+  <meta name="description" content="#內容策略文章列表" />
+  <link rel="canonical" href="https://buildwithlegend.github.io/tag/內容策略/" />
+  <link rel="stylesheet" href="../../assets/css/style.css" />
+</head>
+<body>
+<header class="topbar">
+  <div class="container topbar-inner">
+    <a class="brand" href="../../"><span class="logo" aria-hidden="true"></span><span>Aurora Orbit</span></a>
+    <nav class="nav">
+      <a href="../../">首頁</a>
+      <a href="../../tags/">標籤</a>
+      <a href="../../categories/">分類</a>
+    </nav>
+    <div class="actions">
+      <button class="iconbtn" type="button" onclick="toggleTheme()"><span id="themeIcon">🌙</span></button>
+    </div>
+  </div>
+</header>
+
+<main class="container page">
+  <div class="panel prose">
+    <h1>#內容策略</h1>
+    <div class="grid" id="grid"></div>
+    <p><a class="btn" href="../../">← 回首頁</a></p>
+  </div>
+</main>
+
+<footer class="footer"><div class="container footer-inner">
+  <span class="mini">© 2026 Aurora Orbit</span><span class="mini">Auto generated</span>
+</div></footer>
+
+<script>
+  const posts = [{"file":"003-monetize-roadmap.md","title":"用部落格賺錢：從 0 到第一筆收入，最務實的路線圖","slug":"用部落格賺錢：從-0-到第一筆收入，最務實的路線圖","date":"2026-02-01","category":"變現","tags":["SEO","內容策略","變現"],"excerpt":"不是先做很大，而是先做對：選題、結構、收錄、轉換，照順序做才會真的賺到。"}];
+  const grid = document.getElementById("grid");
+  grid.innerHTML = posts.map(p => `
+    <article class="card">
+      <div class="card-body">
+        <div class="meta">${p.date} · ${p.category}</div>
+        <h2><a href="../../post/${p.slug}/">${p.title}</a></h2>
+        <p class="excerpt">${p.excerpt}</p>
+      </div>
+      <div class="card-footer">
+        <div class="tagrow">${p.tags.map(t=>`<span class="tag">#${t}</span>`).join("")}</div>
+        <a class="read" href="../../post/${p.slug}/">閱讀 →</a>
+      </div>
+    </article>
+  `).join("");
+</script>
+<script>
+  (function initTheme(){
+    const saved=localStorage.getItem("theme");
+    if(saved) document.documentElement.setAttribute("data-theme", saved);
+    else {
+      const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+      document.documentElement.setAttribute("data-theme", prefersLight ? "light" : "dark");
+    }
+    const el=document.getElementById("themeIcon");
+    if(el) el.textContent = (document.documentElement.getAttribute("data-theme")==="dark") ? "🌙" : "☀️";
+  })();
+  function toggleTheme(){
+    const cur=document.documentElement.getAttribute("data-theme")||"dark";
+    const next=cur==="dark"?"light":"dark";
+    document.documentElement.setAttribute("data-theme", next);
+    localStorage.setItem("theme", next);
+    const el=document.getElementById("themeIcon");
+    if(el) el.textContent = next==="dark"?"🌙":"☀️";
+  }
+</script>
+
+</body>
+</html>
