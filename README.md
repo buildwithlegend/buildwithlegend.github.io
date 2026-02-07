@@ -26,3 +26,33 @@ npm run preview
 1) 新增 Markdown：content/posts/004-xxx.md（照範例 front matter）
 2) git add/commit/push
 3) 等 1 分鐘，網站自動更新
+
+
+## 內容專區（已內建）
+導覽列包含：
+
+- 首頁：顯示「熱門文章」（依文章 frontmatter 的 `views` 排序）
+- 錯誤解決：`/fix/`
+- 新手必看：`/start/`
+- 工具推薦：`/tools/`
+- 標籤分類：`/tags/`（可搜尋標籤/分類）
+
+### 讓文章出現在指定專區
+在 `content/posts/*.md` 的 frontmatter 加上其中一種即可：
+
+**方式 A：使用 section（最推薦）**
+```yaml
+section: fix        # fix / start / tools
+views: 120          # 可選：用來排序首頁熱門文章
+```
+
+**方式 B：用 category/tags 自動歸類**
+- category = `錯誤解決` / `新手必看` / `工具推薦`
+- 或 tags 內含：錯誤/bug/error、教學/新手、工具/推薦 等關鍵字
+
+### 部署（你目前是 GitHub Pages 根目錄部署）
+執行：
+```powershell
+./deploy.ps1
+```
+然後再 `git add/commit/push` 即可。

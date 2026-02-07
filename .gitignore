@@ -1,0 +1,7 @@
+﻿node_modules
+.idea
+.DS_Store
+*.rar
+dist
+content
+templates

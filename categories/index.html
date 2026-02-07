@@ -2,8 +2,7 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="utf-8" />
-  <meta name="google-site-verification" content="UmWwsQLUuTnrgZi4Qb6DT83sX5pPM_8KymX5GKQhLWU" />
-
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>分類｜Aurora Orbit</title>
   <meta name="description" content="分類列表" />
   <link rel="canonical" href="https://buildwithlegend.github.io/categories/" />
@@ -14,9 +13,11 @@
   <div class="container topbar-inner">
     <a class="brand" href="../"><span class="logo" aria-hidden="true"></span><span>Aurora Orbit</span></a>
     <nav class="nav">
-      <a href="../">首頁</a>
-      <a href="../about/">關於</a>
-      <a class="active" href="./">分類</a>
+      <a href="/">首頁</a>
+      <a href="/fix/">錯誤解決</a>
+      <a href="/start/">新手必看</a>
+      <a href="/tools/">工具推薦</a>
+      <a href="/tags/">標籤分類</a>
     </nav>
     <div class="actions">
       <button class="iconbtn" type="button" onclick="toggleTheme()"><span id="themeIcon">🌙</span></button>
@@ -36,7 +37,7 @@
 </div></footer>
 
 <script>
-  const items = [{"tag":"變現","count":2},{"tag":"IntelliJ","count":1},{"tag":"Spring Boot","count":1}];
+  const items = [{"tag":"工具推薦","count":2},{"tag":"新手必看","count":2},{"tag":"錯誤解決","count":2},{"tag":"變現","count":1},{"tag":"IntelliJ","count":1},{"tag":"Spring Boot","count":1}];
   const kind = "category"; // tag | category
   const wrap = document.getElementById("list");
   const toSlug = (s) => (s||"").toLowerCase().trim().replace(/[^\w\u4e00-\u9fff]+/g,"-").replace(/^-+|-+$/g,"");

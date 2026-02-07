@@ -1,25 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://buildwithlegend.github.io/</loc><lastmod>2026-02-07</lastmod></url>
+  <url><loc>https://buildwithlegend.github.io/start/</loc><lastmod>2026-02-07</lastmod></url>
+  <url><loc>https://buildwithlegend.github.io/fix/</loc><lastmod>2026-02-07</lastmod></url>
+  <url><loc>https://buildwithlegend.github.io/tools/</loc><lastmod>2026-02-07</lastmod></url>
   <url><loc>https://buildwithlegend.github.io/about/</loc><lastmod>2026-02-07</lastmod></url>
   <url><loc>https://buildwithlegend.github.io/tags/</loc><lastmod>2026-02-07</lastmod></url>
   <url><loc>https://buildwithlegend.github.io/categories/</loc><lastmod>2026-02-07</lastmod></url>
-  <url><loc>https://buildwithlegend.github.io/post/tech-blog-first-income/</loc><lastmod>2026-02-06</lastmod></url>
+  <url><loc>https://buildwithlegend.github.io/post/為什麼我推薦-vs-code？工程師必裝神器/</loc><lastmod>Sat Feb 07</lastmod></url>
+  <url><loc>https://buildwithlegend.github.io/post/git-是什麼？為什麼工程師一定要會/</loc><lastmod>Sat Feb 07</lastmod></url>
+  <url><loc>https://buildwithlegend.github.io/post/spring-boot-跑不起來？3-分鐘快速排查/</loc><lastmod>Sat Feb 07</lastmod></url>
+  <url><loc>https://buildwithlegend.github.io/post/api-測試神器：postman-新手指南/</loc><lastmod>Sat Feb 07</lastmod></url>
+  <url><loc>https://buildwithlegend.github.io/post/markdown-教學：5-分鐘學會寫技術文章/</loc><lastmod>Sat Feb 07</lastmod></url>
+  <url><loc>https://buildwithlegend.github.io/post/module-not-specified？intellij-常見錯誤一次解決/</loc><lastmod>Sat Feb 07</lastmod></url>
   <url><loc>https://buildwithlegend.github.io/post/spring-boot-新手第一次跑不起來？我用-15-分鐘帶你從紅字到成功啟動/</loc><lastmod>2026-02-03</lastmod></url>
   <url><loc>https://buildwithlegend.github.io/post/intellij-匯入-maven-專案：最少步驟，避免-module-not-specified/</loc><lastmod>2026-02-02</lastmod></url>
   <url><loc>https://buildwithlegend.github.io/post/用部落格賺錢：從-0-到第一筆收入，最務實的路線圖/</loc><lastmod>2026-02-01</lastmod></url>
-  <url><loc>https://buildwithlegend.github.io/tag/工程師/</loc><lastmod>2026-02-07</lastmod></url>
   <url><loc>https://buildwithlegend.github.io/tag/內容策略/</loc><lastmod>2026-02-07</lastmod></url>
-  <url><loc>https://buildwithlegend.github.io/tag/自媒體/</loc><lastmod>2026-02-07</lastmod></url>
-  <url><loc>https://buildwithlegend.github.io/tag/技術部落格/</loc><lastmod>2026-02-07</lastmod></url>
   <url><loc>https://buildwithlegend.github.io/tag/排雷/</loc><lastmod>2026-02-07</lastmod></url>
   <url><loc>https://buildwithlegend.github.io/tag/設定/</loc><lastmod>2026-02-07</lastmod></url>
+  <url><loc>https://buildwithlegend.github.io/tag/新手/</loc><lastmod>2026-02-07</lastmod></url>
   <url><loc>https://buildwithlegend.github.io/tag/新手救援/</loc><lastmod>2026-02-07</lastmod></url>
+  <url><loc>https://buildwithlegend.github.io/tag/錯誤排查/</loc><lastmod>2026-02-07</lastmod></url>
   <url><loc>https://buildwithlegend.github.io/tag/變現/</loc><lastmod>2026-02-07</lastmod></url>
-  <url><loc>https://buildwithlegend.github.io/tag/ai/</loc><lastmod>2026-02-07</lastmod></url>
+  <url><loc>https://buildwithlegend.github.io/tag/api/</loc><lastmod>2026-02-07</lastmod></url>
+  <url><loc>https://buildwithlegend.github.io/tag/git/</loc><lastmod>2026-02-07</lastmod></url>
   <url><loc>https://buildwithlegend.github.io/tag/intellij/</loc><lastmod>2026-02-07</lastmod></url>
+  <url><loc>https://buildwithlegend.github.io/tag/java/</loc><lastmod>2026-02-07</lastmod></url>
+  <url><loc>https://buildwithlegend.github.io/tag/markdown/</loc><lastmod>2026-02-07</lastmod></url>
   <url><loc>https://buildwithlegend.github.io/tag/maven/</loc><lastmod>2026-02-07</lastmod></url>
+  <url><loc>https://buildwithlegend.github.io/tag/postman/</loc><lastmod>2026-02-07</lastmod></url>
   <url><loc>https://buildwithlegend.github.io/tag/seo/</loc><lastmod>2026-02-07</lastmod></url>
+  <url><loc>https://buildwithlegend.github.io/tag/spring-boot/</loc><lastmod>2026-02-07</lastmod></url>
+  <url><loc>https://buildwithlegend.github.io/tag/vs-code/</loc><lastmod>2026-02-07</lastmod></url>
+  <url><loc>https://buildwithlegend.github.io/category/工具推薦/</loc><lastmod>2026-02-07</lastmod></url>
+  <url><loc>https://buildwithlegend.github.io/category/新手必看/</loc><lastmod>2026-02-07</lastmod></url>
+  <url><loc>https://buildwithlegend.github.io/category/錯誤解決/</loc><lastmod>2026-02-07</lastmod></url>
   <url><loc>https://buildwithlegend.github.io/category/變現/</loc><lastmod>2026-02-07</lastmod></url>
   <url><loc>https://buildwithlegend.github.io/category/intellij/</loc><lastmod>2026-02-07</lastmod></url>
   <url><loc>https://buildwithlegend.github.io/category/spring-boot/</loc><lastmod>2026-02-07</lastmod></url>

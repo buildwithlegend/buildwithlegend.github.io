@@ -1,4 +1,4 @@
-import fs from "node:fs";
+﻿import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
 import { marked } from "marked";
@@ -18,12 +18,9 @@ const templatesDir = path.join(root, "templates");
 const assetsDir = path.join(root, "assets");
 
 const read = (p) => fs.readFileSync(p, "utf-8");
-const write = (p, s) => {
-  fs.mkdirSync(path.dirname(p), { recursive: true });
-  fs.writeFileSync(p, s, "utf-8");
-};
+const write = (p, s) => { fs.mkdirSync(path.dirname(p), { recursive: true }); fs.writeFileSync(p, s, "utf-8"); };
 const copyDir = (src, dst) => {
-  if (!fs.existsSync(src)) return;
+  if(!fs.existsSync(src)) return;
   fs.mkdirSync(dst, { recursive: true });
   for (const ent of fs.readdirSync(src, { withFileTypes: true })) {
     const s = path.join(src, ent.name);
@@ -32,107 +29,110 @@ const copyDir = (src, dst) => {
     else fs.copyFileSync(s, d);
   }
 };
-const isoToday = () => new Date().toISOString().slice(0, 10);
-const escapeHtml = (s) =>
-  (s ?? "")
-    .toString()
-    .replace(/[&<>"']/g, (m) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;", "'": "&#39;" }[m]));
+const isoToday = () => new Date().toISOString().slice(0,10);
+const escapeHtml = (s) => (s??"").toString().replace(/[&<>"']/g, m => ({ "&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;" }[m]));
 
-const slugify = (s) => (s ?? "")
+const slugify = (s) => (s??"")
   .toString().toLowerCase().trim()
   .replace(/[\u2000-\u206F\u2E00-\u2E7F'!"#$%&()*+,./:;<=>?@[\\\]^`{|}~]/g, "")
   .replace(/\s+/g, "-")
   .replace(/-+/g, "-")
   .replace(/^-|-$/g, "");
 
-function render(templateName, vars) {
+function render(templateName, vars){
   let tpl = read(path.join(templatesDir, templateName));
   return tpl.replace(/\{\{(\w+)\}\}/g, (_, k) => (vars[k] ?? ""));
 }
 
-function canonical(urlPath) {
+function canonical(urlPath){
   const base = SITE.base.endsWith("/") ? SITE.base : SITE.base + "/";
-  const u = SITE.url.replace(/\/$/, "");
-  const p = (urlPath.startsWith("/") ? urlPath : "/" + urlPath).replace(/\/{2,}/g, "/");
-  return u + base.replace(/\/$/, "") + p;
+  const u = SITE.url.replace(/\/$/,"");
+  const p = (urlPath.startsWith("/") ? urlPath : "/" + urlPath).replace(/\/{2,}/g,"/");
+  return u + base.replace(/\/$/,"") + p;
 }
 
-function articleJsonLd(post, url) {
+function articleJsonLd(post, url){
   const data = {
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
+    "@context":"https://schema.org",
+    "@type":"BlogPosting",
     "headline": post.title,
     "datePublished": post.date,
     "dateModified": post.date,
-    "author": { "@type": "Person", "name": post.author || "Legend" },
-    "publisher": { "@type": "Organization", "name": SITE.name },
+    "author": { "@type":"Person", "name": post.author || "Legend" },
+    "publisher": { "@type":"Organization", "name": SITE.name },
     "mainEntityOfPage": url,
     "description": post.excerpt || SITE.description
   };
   return `<script type="application/ld+json">${JSON.stringify(data)}</script>`;
 }
 
-function buildTOC(html) {
+function buildTOC(html){
   const re = /<(h2|h3) id="([^"]+)">([^<]+)<\/\1>/g;
   const items = [];
   let m;
-  while ((m = re.exec(html))) {
+  while((m = re.exec(html))){
     items.push({ level: m[1], id: m[2], text: m[3] });
   }
-  if (!items.length) return "";
+  if(!items.length) return "";
   const links = items.map(it => `<a class="toc-link ${it.level}" href="#${it.id}">${escapeHtml(it.text)}</a>`).join("");
   return `<div class="toc"><b>目錄</b>${links}</div>`;
 }
 
-function ensureCleanDist() {
-  fs.rmSync(dist, { recursive: true, force: true });
-  fs.mkdirSync(dist, { recursive: true });
+function ensureCleanDist(){
+  fs.rmSync(dist, { recursive:true, force:true });
+  fs.mkdirSync(dist, { recursive:true });
 }
 
-function readPosts() {
+function readPosts(){
   const files = fs.readdirSync(contentDir).filter(f => f.endsWith(".md"));
   const posts = files.map(file => {
     const raw = read(path.join(contentDir, file));
     const fm = matter(raw);
     const data = fm.data || {};
     const body = fm.content || "";
-    const title = data.title || file.replace(/\.md$/, "");
+    const title = data.title || file.replace(/\.md$/,"");
     const slug = data.slug || slugify(title);
-    const date = (data.date || isoToday()).toString().slice(0, 10);
+    const date = (data.date || isoToday()).toString().slice(0,10);
     const category = data.category || "未分類";
     const tags = Array.isArray(data.tags) ? data.tags : (data.tags ? [String(data.tags)] : []);
     const excerpt = data.excerpt || body.split("\n").find(l => l.trim())?.slice(0, 120) || "";
-    return { file, title, slug, date, category, tags, excerpt, author: data.author };
-  }).sort((a, b) => a.date < b.date ? 1 : -1);
+    const views = Number(data.views ?? 0) || 0;
+    const section = (data.section || "").toString().trim();
+    return { file, title, slug, date, category, tags, excerpt, author: data.author, views, section };
+  }).sort((a,b)=> a.date < b.date ? 1 : -1);
   return posts;
 }
 
-function markedWithIds(md) {
+function markedWithIds(md){
   const renderer = new marked.Renderer();
-  renderer.heading = function (text, level, raw) {
+  renderer.heading = function(text, level, raw){
     const id = slugify(raw);
     return `<h${level} id="${id}">${text}</h${level}>`;
   };
-  marked.setOptions({ renderer, mangle: false, headerIds: false });
+  marked.setOptions({ renderer, mangle:false, headerIds:false });
   return marked.parse(md);
 }
 
-function build() {
+function build(){
   ensureCleanDist();
   copyDir(assetsDir, path.join(dist, "assets"));
 
   const theme = read(path.join(templatesDir, "theme.html"));
   const posts = readPosts();
-  const tags = Array.from(new Set(posts.flatMap(p => p.tags))).sort((a, b) => a.localeCompare(b, "zh-Hant"));
-  const categories = Array.from(new Set(posts.map(p => p.category))).sort((a, b) => a.localeCompare(b, "zh-Hant"));
+
+  const tags = Array.from(new Set(posts.flatMap(p=>p.tags))).sort((a,b)=>a.localeCompare(b,"zh-Hant"));
+  const categories = Array.from(new Set(posts.map(p=>p.category))).sort((a,b)=>a.localeCompare(b,"zh-Hant"));
   const firstSlug = posts[0]?.slug || "";
 
-  // ✅ 首頁
+  // 🔥 熱門文章：依 views 由高到低（沒有 views 就用最新文章）
+  const popular = [...posts].sort((a,b)=> (b.views||0) - (a.views||0));
+  const homePosts = popular.some(p=>p.views>0) ? popular.slice(0, 12) : posts.slice(0, 12);
+
   write(path.join(dist, "index.html"), render("home.html", {
     SITE_NAME: SITE.name,
     TAGLINE: SITE.tagline,
     DESC: SITE.description,
-    POSTS_JSON: JSON.stringify(posts),
+    POSTS_JSON: JSON.stringify(homePosts),
     TAGS_JSON: JSON.stringify(tags),
     CATS_JSON: JSON.stringify(categories),
     FIRST_SLUG: firstSlug,
@@ -140,12 +140,11 @@ function build() {
     THEME: theme
   }));
 
-  // ✅ 新增內容型落地頁（讓 navbar 每個都指向真正頁面）
-  // 需要 templates/landing.html
+  // ✅ 落地頁（需要 templates/landing.html）
   write(path.join(dist, "start", "index.html"), render("landing.html", {
     SITE_NAME: SITE.name,
     TITLE: "新手必看",
-    DESC: "從 0 到 1 的上手路線：環境、常見坑、必學觀念與精選文章。",
+    DESC: "從 0 到 1 的上手路線：工具使用教學、程式語言應用教學、必學觀念與精選文章。",
     CANONICAL: canonical("/start/"),
     THEME: theme
   }));
@@ -153,7 +152,7 @@ function build() {
   write(path.join(dist, "fix", "index.html"), render("landing.html", {
     SITE_NAME: SITE.name,
     TITLE: "錯誤解決",
-    DESC: "整理最常見的錯誤訊息與解法，快速定位原因、立刻排除。",
+    DESC: "專門放置程式錯誤的指導修正文章：常見錯誤訊息 → 原因 → 解法。",
     CANONICAL: canonical("/fix/"),
     THEME: theme
   }));
@@ -161,20 +160,18 @@ function build() {
   write(path.join(dist, "tools", "index.html"), render("landing.html", {
     SITE_NAME: SITE.name,
     TITLE: "工具推薦",
-    DESC: "我實際用過並推薦的工具清單：IDE、CLI、主機、AI 工具。",
+    DESC: "放置軟體/程式工具推薦：推薦原因、使用情境，並附上下載連結。",
     CANONICAL: canonical("/tools/"),
     THEME: theme
   }));
 
-  // ✅ About
   write(path.join(dist, "about", "index.html"), render("about.html", {
     SITE_NAME: SITE.name,
     CANONICAL: canonical("/about/"),
     THEME: theme
   }));
 
-  // ✅ 文章頁
-  for (const p of posts) {
+  for (const p of posts){
     const mdRaw = read(path.join(contentDir, p.file));
     const fm = matter(mdRaw);
     const htmlBody = markedWithIds(fm.content || "");
@@ -185,7 +182,7 @@ function build() {
     write(path.join(dist, "post", p.slug, "index.html"), render("post.html", {
       SITE_NAME: SITE.name,
       TITLE: escapeHtml(p.title),
-      META: escapeHtml(`${p.date} · ${p.category} · ${p.tags.map(t => "#" + t).join(" ")}`),
+      META: escapeHtml(`${p.date} · ${p.category} · ${p.tags.map(t=>"#"+t).join(" ")}`),
       BODY: htmlBody,
       TOC: toc,
       JSON_LD: articleJsonLd(p, url),
@@ -194,9 +191,8 @@ function build() {
     }));
   }
 
-  // ✅ 標籤
-  const tagIndex = tags.map(t => ({ tag: t, count: posts.filter(p => p.tags.includes(t)).length }))
-    .sort((a, b) => b.count - a.count);
+  const tagIndex = tags.map(t => ({ tag:t, count: posts.filter(p=>p.tags.includes(t)).length }))
+                       .sort((a,b)=>b.count-a.count);
   write(path.join(dist, "tags", "index.html"), render("tax-index.html", {
     SITE_NAME: SITE.name,
     TITLE: "標籤",
@@ -205,8 +201,8 @@ function build() {
     CANONICAL: canonical("/tags/"),
     THEME: theme
   }));
-  for (const t of tags) {
-    const list = posts.filter(p => p.tags.includes(t));
+  for(const t of tags){
+    const list = posts.filter(p=>p.tags.includes(t));
     write(path.join(dist, "tag", slugify(t), "index.html"), render("tax-list.html", {
       SITE_NAME: SITE.name,
       TITLE: `#${escapeHtml(t)}`,
@@ -216,9 +212,8 @@ function build() {
     }));
   }
 
-  // ✅ 分類
-  const catIndex = categories.map(c => ({ tag: c, count: posts.filter(p => p.category === c).length }))
-    .sort((a, b) => b.count - a.count);
+  const catIndex = categories.map(c => ({ tag:c, count: posts.filter(p=>p.category===c).length }))
+                             .sort((a,b)=>b.count-a.count);
   write(path.join(dist, "categories", "index.html"), render("tax-index.html", {
     SITE_NAME: SITE.name,
     TITLE: "分類",
@@ -227,8 +222,8 @@ function build() {
     CANONICAL: canonical("/categories/"),
     THEME: theme
   }));
-  for (const c of categories) {
-    const list = posts.filter(p => p.category === c);
+  for(const c of categories){
+    const list = posts.filter(p=>p.category===c);
     write(path.join(dist, "category", slugify(c), "index.html"), render("tax-list.html", {
       SITE_NAME: SITE.name,
       TITLE: escapeHtml(c),
@@ -238,7 +233,6 @@ function build() {
     }));
   }
 
-  // ✅ RSS
   const rssItems = posts.slice(0, 20).map(p => {
     const link = canonical(`/post/${p.slug}/`);
     return `
@@ -250,7 +244,6 @@ function build() {
         <description><![CDATA[${p.excerpt || ""}]]></description>
       </item>`;
   }).join("\n");
-
   const rss = `<?xml version="1.0" encoding="UTF-8" ?>
 <rss version="2.0">
   <channel>
@@ -264,7 +257,6 @@ function build() {
 </rss>`;
   write(path.join(dist, "rss.xml"), rss);
 
-  // ✅ Sitemap（加入 start/fix/tools）
   const urls = [
     { loc: canonical("/"), lastmod: isoToday() },
     { loc: canonical("/start/"), lastmod: isoToday() },
@@ -277,15 +269,12 @@ function build() {
     ...tags.map(t => ({ loc: canonical(`/tag/${slugify(t)}/`), lastmod: isoToday() })),
     ...categories.map(c => ({ loc: canonical(`/category/${slugify(c)}/`), lastmod: isoToday() }))
   ];
-
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${urls.map(u => `  <url><loc>${u.loc}</loc><lastmod>${u.lastmod}</lastmod></url>`).join("\n")}
+${urls.map(u=>`  <url><loc>${u.loc}</loc><lastmod>${u.lastmod}</lastmod></url>`).join("\n")}
 </urlset>`;
-
   write(path.join(dist, "sitemap.xml"), sitemap);
 
-  // ✅ Robots
   write(path.join(dist, "robots.txt"), `User-agent: *\nAllow: /\n\nSitemap: ${canonical("/sitemap.xml")}\n`);
 
   console.log(`Built ${posts.length} posts → dist/`);

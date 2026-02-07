@@ -2,8 +2,8 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="utf-8" />
-  <meta name="google-site-verification" content="UmWwsQLUuTnrgZi4Qb6DT83sX5pPM_8KymX5GKQhLWU" />
-
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{SITE_NAME}}｜獨一無二的技術雜誌</title>
   <meta name="description" content="{{DESC}}" />
   <link rel="canonical" href="{{CANONICAL}}" />
   <link rel="stylesheet" href="./assets/css/style.css" />
@@ -12,17 +12,13 @@
 <header class="topbar">
   <div class="container topbar-inner">
     <a class="brand" href="./"><span class="logo" aria-hidden="true"></span><span>{{SITE_NAME}}</span></a>
-
-    <!-- ✅ 內容型導覽：每個都是不同連結 -->
     <nav class="nav" aria-label="Site">
-      <a href="./">首頁</a>
-      <a href="./categories/">錯誤解決</a>
-      <a href="./tags/">新手必看</a>
-      <a href="./rss.xml">工具推薦</a>
-      <a href="./sitemap.xml">網站地圖</a>
-      <a href="./about/">關於</a>
+      <a href="/">首頁</a>
+      <a href="/fix/">錯誤解決</a>
+      <a href="/start/">新手必看</a>
+      <a href="/tools/">工具推薦</a>
+      <a href="/tags/">標籤分類</a>
     </nav>
-
     <div class="actions">
       <span class="kbd">/ 搜尋</span>
       <button class="iconbtn" type="button" onclick="toggleTheme()" aria-label="Toggle theme"><span id="themeIcon">🌙</span></button>
@@ -57,6 +53,15 @@
     </div>
   </section>
 
+
+  <section class="panel" style="padding:16px; margin-top:16px">
+    <div style="display:flex; align-items:baseline; justify-content:space-between; gap:12px; flex-wrap:wrap">
+      <h2 style="margin:0">🔥 首頁熱門文章</h2>
+      <span class="mini">依 frontmatter 的 <b>views</b> 排序（沒填就會以最新文章為主）</span>
+    </div>
+    <div class="grid" id="hotGrid" aria-label="Hot Posts" style="margin-top:12px"></div>
+  </section>
+
   <section class="toolbar">
     <div class="input" role="search">
       <span style="opacity:.75">🔎</span>
@@ -72,6 +77,35 @@
   <script id="DATA_POSTS" type="application/json">{{POSTS_JSON}}</script>
   <script id="DATA_TAGS" type="application/json">{{TAGS_JSON}}</script>
   <script id="DATA_CATS" type="application/json">{{CATS_JSON}}</script>
+
+  <script id="DATA_HOT" type="application/json">{{HOT_JSON}}</script>
+  <script>
+    (function renderHot(){
+      const el = document.getElementById("hotGrid");
+      const dataEl = document.getElementById("DATA_HOT");
+      if(!el || !dataEl) return;
+      let hot = [];
+      try{ hot = JSON.parse(dataEl.textContent || "[]"); }catch(e){ hot = []; }
+      if(!hot.length){
+        el.innerHTML = '<div class="mini">目前還沒有設定熱門文章（在文章 md 的 frontmatter 加上 views: 123 即可）。</div>';
+        return;
+      }
+      el.innerHTML = hot.map(p => `
+        <article class="card">
+          <div class="card-head">
+            <span class="mini">${p.date || ""} · ${p.category || ""}</span>
+          </div>
+          <h3 class="card-title">${p.title}</h3>
+          <p class="card-excerpt">${p.excerpt || ""}</p>
+          <div class="card-foot">
+            <span class="mini">${(p.tags||[]).slice(0,3).map(t=>"#"+t).join(" ")}</span>
+            <a class="mini link" href="./post/${p.slug}/">閱讀 →</a>
+          </div>
+        </article>
+      `).join("");
+    })();
+  </script>
+
 </main>
 
 <footer class="footer">
