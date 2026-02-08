@@ -1,5 +1,5 @@
 ﻿node_modules/
+dist/
+templates.bak/
 .idea/
 .DS_Store
-.env
-.env.*
