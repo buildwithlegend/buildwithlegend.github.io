@@ -1,9 +1,10 @@
----
+﻿---
 title: "Spring Boot 新手第一次跑不起來？我用 15 分鐘帶你從紅字到成功啟動"
 date: "2026-02-03"
 category: "Spring Boot"
 tags: ["Maven","IntelliJ","新手救援"]
 excerpt: "把 org.springframework.boot does not exist、404 Whitelabel 等新手最常見的坑，整理成可複製的解法。"
+slug: 001-spring-boot-first-run
 ---
 
 # 先別急著改程式：你要先確定「專案真的被 Maven 管」
@@ -26,3 +27,4 @@ java: package org.springframework.boot does not exist
 2. 右鍵 `pom.xml` → Add as Maven Project  
 3. Maven 視窗 → Reload All Maven Projects  
 4. 重新 Run `xxxApplication`
+

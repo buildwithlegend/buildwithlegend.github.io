@@ -1,8 +1,5 @@
 ﻿node_modules/
 .idea/
-dist/
-.next/
-out/
 .DS_Store
 .env
 .env.*

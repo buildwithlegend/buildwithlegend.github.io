@@ -1,10 +1,11 @@
----
+﻿---
 title: Markdown 教學：5 分鐘學會寫技術文章
 date: 2026-02-07
 category: 新手必看
 tags: [Markdown]
 views: 80
 section: start
+slug: markdown-5min-guide
 ---
 
 ## 中文版
@@ -39,3 +40,4 @@ Example:
 ```
 
 Fast, clean, and readable.
+

@@ -1,10 +1,11 @@
----
+﻿---
 title: Spring Boot 跑不起來？3 分鐘快速排查
 date: 2026-02-07
 category: 錯誤解決
 tags: [Spring Boot, Java, 錯誤排查]
 views: 120
 section: fix
+slug: spring-boot-not-start
 ---
 
 ## 中文版
@@ -57,3 +58,4 @@ Wait for Maven/Gradle.
 
 **3️⃣ Port already in use**  
 Kill the process using port 8080.
+

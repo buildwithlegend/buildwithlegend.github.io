@@ -1,10 +1,11 @@
----
+﻿---
 title: 為什麼我推薦 VS Code？工程師必裝神器
 date: 2026-02-07
 category: 工具推薦
 tags: [VS Code]
 views: 200
 section: tools
+slug: why-vscode
 ---
 
 ## 中文版
@@ -37,3 +38,4 @@ Why?
 
 Download:  
 https://code.visualstudio.com/
+
