@@ -1,18 +1,30 @@
+<<<<<<< HEAD
 <!doctype html>
+=======
+﻿<!doctype html>
+>>>>>>> f84962f (Fix CSS path to absolute (/assets/...))
 <html lang="zh-Hant">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+<<<<<<< HEAD
   <title>{{TITLE}}｜{{SITE_NAME}}</title>
   <meta name="description" content="{{TITLE}}列表" />
   <link rel="canonical" href="{{CANONICAL}}" />
   <link rel="stylesheet" href="../assets/css/style.css" />
+=======
+  <title>{{TITLE}}嚚{SITE_NAME}}</title>
+  <meta name="description" content="{{TITLE}}?”" />
+  <link rel="canonical" href="{{CANONICAL}}" />
+  <link rel="stylesheet" href="/assets/css/style.css" />
+>>>>>>> f84962f (Fix CSS path to absolute (/assets/...))
 </head>
 <body>
 <header class="topbar">
   <div class="container topbar-inner">
     <a class="brand" href="../"><span class="logo" aria-hidden="true"></span><span>{{SITE_NAME}}</span></a>
     <nav class="nav">
+<<<<<<< HEAD
       <a href="/">首頁</a>
       <a href="/fix/">錯誤解決</a>
       <a href="/start/">新手必看</a>
@@ -21,6 +33,16 @@
     </nav>
     <div class="actions">
       <button class="iconbtn" type="button" onclick="toggleTheme()"><span id="themeIcon">🌙</span></button>
+=======
+      <a href="/">擐?</a>
+      <a href="/fix/">?航炊閫?捱</a>
+      <a href="/start/">?唳?敹?</a>
+      <a href="/tools/">撌亙?刻</a>
+      <a href="/tags/">璅惜??</a>
+    </nav>
+    <div class="actions">
+      <button class="iconbtn" type="button" onclick="toggleTheme()"><span id="themeIcon">??</span></button>
+>>>>>>> f84962f (Fix CSS path to absolute (/assets/...))
     </div>
   </div>
 </header>
@@ -33,7 +55,11 @@
 </main>
 
 <footer class="footer"><div class="container footer-inner">
+<<<<<<< HEAD
   <span class="mini">© 2026 {{SITE_NAME}}</span><span class="mini">Auto generated</span>
+=======
+  <span class="mini">穢 2026 {{SITE_NAME}}</span><span class="mini">Auto generated</span>
+>>>>>>> f84962f (Fix CSS path to absolute (/assets/...))
 </div></footer>
 
 <script>
@@ -44,6 +70,7 @@
   wrap.innerHTML = '<div class="grid">' + items.map(it => `
     <article class="card">
       <div class="card-body">
+<<<<<<< HEAD
         <div class="meta">${it.count} 篇</div>
         <h2><a href="../${kind}/${toSlug(it.tag)}/">${kind==='tag'?'#':''}${it.tag}</a></h2>
         <p class="excerpt">點進去看文章列表</p>
@@ -51,6 +78,15 @@
       <div class="card-footer">
         <span class="tag">${kind==='tag'?'#':''}${it.tag}</span>
         <a class="read" href="../${kind}/${toSlug(it.tag)}/">進入 →</a>
+=======
+        <div class="meta">${it.count} 蝭?/div>
+        <h2><a href="../${kind}/${toSlug(it.tag)}/">${kind==='tag'?'#':''}${it.tag}</a></h2>
+        <p class="excerpt">暺脣??蝡?銵?/p>
+      </div>
+      <div class="card-footer">
+        <span class="tag">${kind==='tag'?'#':''}${it.tag}</span>
+        <a class="read" href="../${kind}/${toSlug(it.tag)}/">?脣 ??/a>
+>>>>>>> f84962f (Fix CSS path to absolute (/assets/...))
       </div>
     </article>
   `).join("") + "</div>";
@@ -58,3 +94,7 @@
 {{THEME}}
 </body>
 </html>
+<<<<<<< HEAD
+=======
+
+>>>>>>> f84962f (Fix CSS path to absolute (/assets/...))

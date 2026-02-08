@@ -1,11 +1,18 @@
+<<<<<<< HEAD
 ﻿---
+=======
+---
+>>>>>>> f84962f (Fix CSS path to absolute (/assets/...))
 title: Git 是什麼？為什麼工程師一定要會
 date: 2026-02-07
 category: 新手必看
 tags: [Git, 新手]
 views: 150
 section: start
+<<<<<<< HEAD
 slug: what-is-git
+=======
+>>>>>>> f84962f (Fix CSS path to absolute (/assets/...))
 ---
 
 ## 中文版
@@ -42,4 +49,7 @@ You can:
 - Go back in time  
 - Track changes  
 - Prevent disasters  
+<<<<<<< HEAD
 
+=======
+>>>>>>> f84962f (Fix CSS path to absolute (/assets/...))
