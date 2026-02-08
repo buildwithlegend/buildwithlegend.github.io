@@ -1,84 +1,39 @@
-<<<<<<< HEAD
-<!doctype html>
-=======
-﻿<!doctype html>
->>>>>>> f84962f (Fix CSS path to absolute (/assets/...))
-<html lang="zh-Hant">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-<<<<<<< HEAD
-  <title>{{TITLE}}｜{{SITE_NAME}}</title>
-  <meta name="description" content="{{TITLE}}" />
-  <link rel="canonical" href="{{CANONICAL}}" />
-  <link rel="stylesheet" href="../../assets/css/style.css" />
-=======
-  <title>{{TITLE}}嚚{SITE_NAME}}</title>
-  <meta name="description" content="{{TITLE}}" />
-  <link rel="canonical" href="{{CANONICAL}}" />
-  <link rel="stylesheet" href="/assets/css/style.css" />
->>>>>>> f84962f (Fix CSS path to absolute (/assets/...))
-  {{JSON_LD}}
-</head>
-<body>
-<header class="topbar">
-  <div class="container topbar-inner">
-    <a class="brand" href="../../"><span class="logo" aria-hidden="true"></span><span>{{SITE_NAME}}</span></a>
-    <nav class="nav" aria-label="Site">
-<<<<<<< HEAD
-      <a href="/">首頁</a>
-      <a href="/fix/">錯誤解決</a>
-      <a href="/start/">新手必看</a>
-      <a href="/tools/">工具推薦</a>
-      <a href="/tags/">標籤分類</a>
-    </nav>
-    <div class="actions">
-      <span class="kbd">/ 搜尋</span>
-      <button class="iconbtn" type="button" onclick="toggleTheme()" aria-label="Toggle theme"><span id="themeIcon">🌙</span></button>
-=======
-      <a href="/">擐?</a>
-      <a href="/fix/">?航炊閫?捱</a>
-      <a href="/start/">?唳?敹?</a>
-      <a href="/tools/">撌亙?刻</a>
-      <a href="/tags/">璅惜??</a>
-    </nav>
-    <div class="actions">
-      <span class="kbd">/ ??</span>
-      <button class="iconbtn" type="button" onclick="toggleTheme()" aria-label="Toggle theme"><span id="themeIcon">??</span></button>
->>>>>>> f84962f (Fix CSS path to absolute (/assets/...))
+
+<article class="post">
+  <header class="post-head">
+    <h1 class="post-title">{{TITLE}}</h1>
+    <div class="post-meta">
+      <span class="meta-item">📅 {{DATE}}</span>
+      <span class="meta-item">
+        🧭 路線：<a href="{{SECTION_PATH}}">{{SECTION_TITLE}}</a>
+      </span>
+      <span class="meta-item">
+        🗂️ 分類：<a href="/category/{{CATEGORY_SLUG}}/">{{CATEGORY}}</a>
+      </span>
+      <span class="meta-item tags">{{TAGS_HTML}}</span>
+    </div>
+  </header>
+
+  <div class="post-body">
+    <aside class="post-aside">
+      {{TOC}}
+      <div class="aside-card">
+        <div class="aside-title">下一步怎麼走？</div>
+        <div class="aside-sub">建議你從分類繼續讀，主題會更集中。</div>
+        <a class="btn ghost wide" href="/category/{{CATEGORY_SLUG}}/">繼續讀同分類</a>
+        <a class="btn ghost wide" href="{{SECTION_PATH}}">回到路線列表</a>
+      </div>
+    </aside>
+
+    <div class="post-content prose">
+      {{BODY}}
+      <div class="callout">
+        <div class="callout-title">重點提醒</div>
+        <div class="callout-body">
+          如果你照著做還是卡住，通常是「環境差異」或「依賴版本」造成。
+          先把錯誤訊息（前後 20 行）貼到搜尋或對照本網站的錯誤排除文章，會快很多。
+        </div>
+      </div>
     </div>
   </div>
-</header>
-
-<main class="container page">
-  <div class="panel prose">
-    <div class="meta">{{META}}</div>
-    <h1>{{TITLE}}</h1>
-    {{TOC}}
-    <div>{{BODY}}</div>
-    <hr/>
-<<<<<<< HEAD
-    <p><a class="btn" href="../../">← 回首頁</a></p>
-=======
-    <p><a class="btn" href="../../">??????/a></p>
->>>>>>> f84962f (Fix CSS path to absolute (/assets/...))
-  </div>
-</main>
-<footer class="footer">
-  <div class="container footer-inner">
-<<<<<<< HEAD
-    <span class="mini">© 2026 {{SITE_NAME}}</span>
-    <span class="mini">分享到社群：直接複製網址即可</span>
-=======
-    <span class="mini">穢 2026 {{SITE_NAME}}</span>
-    <span class="mini">?澈?啁冗蝢歹??湔銴ˊ蝬脣??喳</span>
->>>>>>> f84962f (Fix CSS path to absolute (/assets/...))
-  </div>
-</footer>
-{{THEME}}
-</body>
-</html>
-<<<<<<< HEAD
-=======
-
->>>>>>> f84962f (Fix CSS path to absolute (/assets/...))
+</article>

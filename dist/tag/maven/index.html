@@ -4,76 +4,95 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>#Maven｜Aurora Orbit</title>
-  <meta name="description" content="#Maven文章列表" />
+  <meta name="description" content="標籤：Maven" />
   <link rel="canonical" href="https://buildwithlegend.github.io/tag/maven/" />
-  <link rel="stylesheet" href="../../assets/css/style.css" />
+  <meta name="theme-color" content="#F6B48B" />
+
+  <meta property="og:title" content="#Maven｜Aurora Orbit" />
+  <meta property="og:description" content="標籤：Maven" />
+  <meta property="og:type" content="website" />
+
+  <link rel="stylesheet" href="/assets/css/style.css" />
 </head>
-<body>
-<header class="topbar">
-  <div class="container topbar-inner">
-    <a class="brand" href="../../"><span class="logo" aria-hidden="true"></span><span>Aurora Orbit</span></a>
-    <nav class="nav">
-      <a href="/">首頁</a>
-      <a href="/fix/">錯誤解決</a>
-      <a href="/start/">新手必看</a>
-      <a href="/tools/">工具推薦</a>
-      <a href="/tags/">標籤分類</a>
-    </nav>
-    <div class="actions">
-      <button class="iconbtn" type="button" onclick="toggleTheme()"><span id="themeIcon">🌙</span></button>
+
+<body class="page-tax page-tag">
+  <a class="skip" href="#main">跳到主要內容</a>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="/">
+        <span class="brand-mark" aria-hidden="true">☀️</span>
+        <span class="brand-text">
+          <span class="brand-name">Aurora Orbit</span>
+          <span class="brand-tagline">把踩坑寫成文章，讓 Google 幫你帶人進站。</span>
+        </span>
+      </a>
+
+      <nav class="nav desktop" aria-label="主選單">
+        <a class="nav-link" href="/start/"><span class="nav-emoji">🌱</span>新手入門</a><a class="nav-link" href="/fix/"><span class="nav-emoji">🧯</span>錯誤排除</a><a class="nav-link" href="/tools/"><span class="nav-emoji">🧰</span>開發工具</a><a class="nav-link" href="/backend/"><span class="nav-emoji">🛠️</span>後端實作</a><a class="nav-link" href="/growth/"><span class="nav-emoji">📈</span>成長變現</a>
+        <a class="nav-link subtle" href="/categories/">分類</a>
+        <a class="nav-link subtle" href="/tags/">標籤</a>
+        <a class="nav-link subtle" href="/about/">關於</a>
+      </nav>
+
+      <button class="nav-toggle" aria-label="開啟選單" aria-expanded="false" data-nav-toggle>
+        <span></span><span></span><span></span>
+      </button>
     </div>
-  </div>
-</header>
 
-<main class="container page">
-  <div class="panel prose">
+    <nav class="nav mobile" aria-label="主選單（手機）" data-nav-panel>
+      <div class="mobile-inner">
+        <a class="nav-link" href="/start/"><span class="nav-emoji">🌱</span>新手入門</a><a class="nav-link" href="/fix/"><span class="nav-emoji">🧯</span>錯誤排除</a><a class="nav-link" href="/tools/"><span class="nav-emoji">🧰</span>開發工具</a><a class="nav-link" href="/backend/"><span class="nav-emoji">🛠️</span>後端實作</a><a class="nav-link" href="/growth/"><span class="nav-emoji">📈</span>成長變現</a>
+        <a class="nav-link subtle" href="/categories/">分類</a>
+        <a class="nav-link subtle" href="/tags/">標籤</a>
+        <a class="nav-link subtle" href="/about/">關於</a>
+      </div>
+    </nav>
+  </header>
+
+  <div class="bg-decor" aria-hidden="true">
+    <div class="blob b1"></div>
+    <div class="blob b2"></div>
+    <div class="blob b3"></div>
+  </div>
+
+  <main id="main" class="main">
+    
+<section class="hero hero-taxlist">
+  <div class="hero-content">
+    <div class="eyebrow">📚 清單</div>
     <h1>#Maven</h1>
-    <div class="grid" id="grid"></div>
-    <p><a class="btn" href="../../">← 回首頁</a></p>
+    <p class="lead">下面是這個主題底下的文章。每篇都會連回對應分類與路線。</p>
   </div>
-</main>
+  <div class="hero-side">
+    <a class="btn ghost wide" href="/categories/">去看分類</a>
+    <a class="btn ghost wide" href="/tags/">去看標籤</a>
+  </div>
+</section>
 
-<footer class="footer"><div class="container footer-inner">
-  <span class="mini">© 2026 Aurora Orbit</span><span class="mini">Auto generated</span>
-</div></footer>
+<section class="section">
+  <div class="post-list" id="postList"></div>
+</section>
 
-<script>
-  const posts = [{"file":"intellij-module-not-specified.md","title":"module not specified？IntelliJ 常見錯誤一次解決","slug":"intellij-module-not-specified","date":"Sat Feb 07","category":"錯誤解決","tags":["IntelliJ","Maven"],"excerpt":"## 中文版","views":95,"section":"fix"},{"file":"001-spring-boot-first-run.md","title":"Spring Boot 新手第一次跑不起來？我用 15 分鐘帶你從紅字到成功啟動","slug":"001-spring-boot-first-run","date":"2026-02-03","category":"Spring Boot","tags":["Maven","IntelliJ","新手救援"],"excerpt":"把 org.springframework.boot does not exist、404 Whitelabel 等新手最常見的坑，整理成可複製的解法。","views":0,"section":""},{"file":"002-intellij-import-maven.md","title":"IntelliJ 匯入 Maven 專案：最少步驟，避免 module not specified","slug":"002-intellij-import-maven","date":"2026-02-02","category":"IntelliJ","tags":["Maven","設定","排雷"],"excerpt":"新手最容易卡的不是程式，是 IDE 的匯入方式。這篇用最短路線讓你成功。","views":0,"section":""}];
-  const grid = document.getElementById("grid");
-  grid.innerHTML = posts.map(p => `
-    <article class="card">
-      <div class="card-body">
-        <div class="meta">${p.date} · ${p.category}</div>
-        <h2><a href="../../post/${p.slug}/">${p.title}</a></h2>
-        <p class="excerpt">${p.excerpt}</p>
+<script type="application/json" id="postsJson">[{"file":"002-intellij-import-maven.md","title":"IntelliJ 匯入 Maven 專案：新手最容易漏掉的 4 個設定","slug":"intellij-import-maven","date":"2026-01-31","category":"Spring / Java","category_slug":"spring-java","section":"backend","tags":["IntelliJ","Maven","Java"],"excerpt":"Maven 專案匯入失敗通常是：JDK 沒選、Maven 沒設定、未啟用 Auto-import、或 proxy/公司網路問題。照這 4 步做，成功率最高。","views":60}]</script>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <div class="footer-title">把踩坑寫成文章，把經驗變成資產。</div>
+        <div class="footer-sub">文章採「白話 + 可複製步驟」風格，方便你快速解決問題。</div>
       </div>
-      <div class="card-footer">
-        <div class="tagrow">${p.tags.map(t=>`<span class="tag">#${t}</span>`).join("")}</div>
-        <a class="read" href="../../post/${p.slug}/">閱讀 →</a>
+      <div class="footer-right">
+        <a class="footer-link" href="/rss.xml">RSS</a>
+        <a class="footer-link" href="/sitemap.xml">Sitemap</a>
+        <a class="footer-link" href="/about/">關於</a>
       </div>
-    </article>
-  `).join("");
-</script>
-<script>
-  (function initTheme(){
-    const saved=localStorage.getItem("theme");
-    if(saved) document.documentElement.setAttribute("data-theme", saved);
-    else {
-      const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
-      document.documentElement.setAttribute("data-theme", prefersLight ? "light" : "dark");
-    }
-    const el=document.getElementById("themeIcon");
-    if(el) el.textContent = (document.documentElement.getAttribute("data-theme")==="dark") ? "🌙" : "☀️";
-  })();
-  function toggleTheme(){
-    const cur=document.documentElement.getAttribute("data-theme")||"dark";
-    const next=cur==="dark"?"light":"dark";
-    document.documentElement.setAttribute("data-theme", next);
-    localStorage.setItem("theme", next);
-    const el=document.getElementById("themeIcon");
-    if(el) el.textContent = next==="dark"?"🌙":"☀️";
-  }
-</script>
+    </div>
+    <div class="footer-bottom">© Aurora Orbit · Built with a tiny SSG</div>
+  </footer>
 
+  <script src="/assets/js/app.js" defer></script>
 </body>
 </html>

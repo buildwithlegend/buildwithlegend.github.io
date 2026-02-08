@@ -1,71 +1,105 @@
-<<<<<<< HEAD
-﻿---
-=======
 ---
->>>>>>> f84962f (Fix CSS path to absolute (/assets/...))
-title: Spring Boot 跑不起來？3 分鐘快速排查
-date: 2026-02-07
-category: 錯誤解決
-tags: [Spring Boot, Java, 錯誤排查]
-views: 120
-section: fix
-<<<<<<< HEAD
+title: Spring Boot 啟動失敗怎麼辦？先用這 5 個檢查點定位問題
+date: '2026-02-02'
 slug: spring-boot-not-start
-=======
->>>>>>> f84962f (Fix CSS path to absolute (/assets/...))
+section: fix
+category: 錯誤排除
+category_slug: troubleshooting
+tags:
+- Spring Boot
+- 錯誤排除
+- Java
+views: 95
+excerpt: Spring Boot 起不來通常不是單一原因：最常見的是 port 被占用、依賴版本衝突、設定檔寫錯、或環境變數缺失。用 5 個檢查點能快速縮小範圍。
 ---
 
-## 中文版
+## 1) 先別慌：Spring Boot 起不來通常有「套路」
 
-剛開始學 Spring Boot 時，最讓人崩潰的就是「為什麼跑不起來？」  
-其實大多數問題都非常好解決。
+新手遇到 Spring Boot 啟動失敗，常常會盯著一大堆 log 發呆。
 
-### Step1：確認 Java 版本
-Spring Boot 3 需要 **Java 17 以上**
-
-```
-java -version
-```
-
-如果低於 17，升級即可。
-
-### Step2：依賴還在下載
-很多新手會以為壞掉，其實只是 Maven / Gradle 還沒下載完。
-
-👉 等 IDE 跑完再試一次。
-
-### Step3：Port 被佔用
-常見錯誤：
-
-```
-Port 8080 already in use
-```
-
-解法：
-
-```
-netstat -ano | findstr 8080
-```
-
-關閉該程序即可。
+先記住一個原則：  
+✅ **真正的錯誤，多半在最後 20~40 行**  
+✅ 前面一堆都是「連鎖反應」
 
 ---
 
-## English Version
+## 2) 5 個檢查點（依常見程度排序）
 
-### Spring Boot Won’t Start? Fix It in 3 Minutes
+### (1) Port 被占用（超常見）
+你可能會看到像：
+- `Address already in use`
+- `Port 8080 was already in use`
 
-Most startup issues are simple.
+解法（擇一）：
+- 把占用的程式關掉
+- 或在 `application.yml` 改成：
+  ```yml
+  server:
+    port: 8081
+  ```
 
-**1️⃣ Check Java Version**  
-Spring Boot 3 requires Java 17+.
+---
 
-**2️⃣ Dependencies may still be downloading**  
-Wait for Maven/Gradle.
+### (2) 設定檔寫錯（縮排、key 拼錯）
+`application.yml` 最容易踩坑是「縮排」。
 
-**3️⃣ Port already in use**  
-Kill the process using port 8080.
-<<<<<<< HEAD
+建議做法：  
+- 先把最近改的設定註解掉
+- 一段一段加回去
 
-=======
->>>>>>> f84962f (Fix CSS path to absolute (/assets/...))
+---
+
+### (3) 依賴版本衝突（NoSuchMethodError / ClassNotFound）
+如果看到：
+- `NoSuchMethodError`
+- `ClassNotFoundException`
+
+通常是：
+- 你引入了不相容的版本
+- 或同一個 library 被拉了兩份版本
+
+做法：
+- Maven：看 `mvn dependency:tree`
+- Gradle：看 `./gradlew dependencies`
+
+---
+
+### (4) JDK 版本不對
+如果你專案要求 Java 17，但你用 Java 8 跑，會出現奇怪錯。
+
+確認：
+- IntelliJ 的 Project SDK
+- 以及你用 terminal 跑的 `java -version`
+
+---
+
+### (5) Profile / 環境變數缺失
+例如你用了：
+- `SPRING_PROFILES_ACTIVE=prod`
+- 但 prod 的設定檔不存在或缺少 DB 連線資訊
+
+做法：
+- 先用 `dev` 或 `local` 起來
+- 確認最小可跑後再切回 prod
+
+---
+
+## 3) 最推薦的 debug 方式：先做「最小可跑」
+
+你可以先把專案縮到：
+
+- 只保留一個 Controller
+- 不連 DB、不連外部服務
+- 先確認能起來
+
+這樣你才知道問題是：
+- 「程式碼」
+- 還是「外部依賴/環境」
+
+---
+
+## 重點整理
+
+- 真正的錯誤通常在最後 20~40 行
+- 最常見：port、設定檔、依賴衝突、JDK、profile
+- 先做最小可跑，再加功能回去

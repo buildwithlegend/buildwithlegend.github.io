@@ -3,74 +3,185 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>API 測試神器：Postman 新手指南｜Aurora Orbit</title>
-  <meta name="description" content="API 測試神器：Postman 新手指南" />
+  <title>Postman 新手指南：3 步驟測試你的 API（不用寫前端）｜Aurora Orbit</title>
+  <meta name="description" content="Postman 讓你不用寫前端就能測 API：輸入網址、選方法、帶參數按送出。新手先學 GET/POST、Header、Body 就夠用。" />
   <link rel="canonical" href="https://buildwithlegend.github.io/post/postman-api-tool/" />
-  <link rel="stylesheet" href="../../assets/css/style.css" />
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"API 測試神器：Postman 新手指南","datePublished":"Sat Feb 07","dateModified":"Sat Feb 07","author":{"@type":"Person","name":"Legend"},"publisher":{"@type":"Organization","name":"Aurora Orbit"},"mainEntityOfPage":"https://buildwithlegend.github.io/post/postman-api-tool/","description":"## 中文版"}</script>
+  <meta name="theme-color" content="#F6B48B" />
+
+  <meta property="og:title" content="Postman 新手指南：3 步驟測試你的 API（不用寫前端）｜Aurora Orbit" />
+  <meta property="og:description" content="Postman 讓你不用寫前端就能測 API：輸入網址、選方法、帶參數按送出。新手先學 GET/POST、Header、Body 就夠用。" />
+  <meta property="og:type" content="website" />
+
+  <link rel="stylesheet" href="/assets/css/style.css" />
 </head>
-<body>
-<header class="topbar">
-  <div class="container topbar-inner">
-    <a class="brand" href="../../"><span class="logo" aria-hidden="true"></span><span>Aurora Orbit</span></a>
-    <nav class="nav" aria-label="Site">
-      <a href="/">首頁</a>
-      <a href="/fix/">錯誤解決</a>
-      <a href="/start/">新手必看</a>
-      <a href="/tools/">工具推薦</a>
-      <a href="/tags/">標籤分類</a>
+
+<body class="page-post">
+  <a class="skip" href="#main">跳到主要內容</a>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="/">
+        <span class="brand-mark" aria-hidden="true">☀️</span>
+        <span class="brand-text">
+          <span class="brand-name">Aurora Orbit</span>
+          <span class="brand-tagline">把踩坑寫成文章，讓 Google 幫你帶人進站。</span>
+        </span>
+      </a>
+
+      <nav class="nav desktop" aria-label="主選單">
+        <a class="nav-link" href="/start/"><span class="nav-emoji">🌱</span>新手入門</a><a class="nav-link" href="/fix/"><span class="nav-emoji">🧯</span>錯誤排除</a><a class="nav-link" href="/tools/"><span class="nav-emoji">🧰</span>開發工具</a><a class="nav-link" href="/backend/"><span class="nav-emoji">🛠️</span>後端實作</a><a class="nav-link" href="/growth/"><span class="nav-emoji">📈</span>成長變現</a>
+        <a class="nav-link subtle" href="/categories/">分類</a>
+        <a class="nav-link subtle" href="/tags/">標籤</a>
+        <a class="nav-link subtle" href="/about/">關於</a>
+      </nav>
+
+      <button class="nav-toggle" aria-label="開啟選單" aria-expanded="false" data-nav-toggle>
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <nav class="nav mobile" aria-label="主選單（手機）" data-nav-panel>
+      <div class="mobile-inner">
+        <a class="nav-link" href="/start/"><span class="nav-emoji">🌱</span>新手入門</a><a class="nav-link" href="/fix/"><span class="nav-emoji">🧯</span>錯誤排除</a><a class="nav-link" href="/tools/"><span class="nav-emoji">🧰</span>開發工具</a><a class="nav-link" href="/backend/"><span class="nav-emoji">🛠️</span>後端實作</a><a class="nav-link" href="/growth/"><span class="nav-emoji">📈</span>成長變現</a>
+        <a class="nav-link subtle" href="/categories/">分類</a>
+        <a class="nav-link subtle" href="/tags/">標籤</a>
+        <a class="nav-link subtle" href="/about/">關於</a>
+      </div>
     </nav>
-    <div class="actions">
-      <span class="kbd">/ 搜尋</span>
-      <button class="iconbtn" type="button" onclick="toggleTheme()" aria-label="Toggle theme"><span id="themeIcon">🌙</span></button>
+  </header>
+
+  <div class="bg-decor" aria-hidden="true">
+    <div class="blob b1"></div>
+    <div class="blob b2"></div>
+    <div class="blob b3"></div>
+  </div>
+
+  <main id="main" class="main">
+    
+<article class="post">
+  <header class="post-head">
+    <h1 class="post-title">Postman 新手指南：3 步驟測試你的 API（不用寫前端）</h1>
+    <div class="post-meta">
+      <span class="meta-item">📅 2026-02-04</span>
+      <span class="meta-item">
+        🧭 路線：<a href="/tools/">開發工具</a>
+      </span>
+      <span class="meta-item">
+        🗂️ 分類：<a href="/category/dev-tools/">工具推薦</a>
+      </span>
+      <span class="meta-item tags"><a class="pill" href="/tag/postman/">#Postman</a><a class="pill" href="/tag/api/">#API</a><a class="pill" href="/tag/tag-a72ef18d9a/">#工具</a></span>
+    </div>
+  </header>
+
+  <div class="post-body">
+    <aside class="post-aside">
+      
+    <div class="toc">
+      <div class="toc-title">本頁快速導航</div>
+      <ul>
+        <li class="l2"><a href="#1-postman">1) Postman 是什麼？為什麼需要它？</a></li><li class="l2"><a href="#2-3">2) 你只要學會 3 個概念，就能上手</a></li><li class="l3"><a href="#1-method">(1) Method（請求方法）</a></li><li class="l3"><a href="#2-url">(2) URL（網址）</a></li><li class="l3"><a href="#3-response">(3) Response（回應）</a></li><li class="l2"><a href="#3-3-api">3) 3 步驟測試你的第一個 API</a></li><li class="l3"><a href="#step-1-get">Step 1：選方法 GET</a></li><li class="l3"><a href="#step-2-url">Step 2：貼上 URL</a></li><li class="l3"><a href="#step-3-send">Step 3：按 Send</a></li><li class="l2"><a href="#4-json-post">4) 常見需求：我要帶 JSON（POST）</a></li><li class="l2"><a href="#5">5) 最常見的錯誤與白話解釋</a></li><li class="l2"><a href="#h-d2bbac70f2">重點整理</a></li>
+      </ul>
+    </div>
+      <div class="aside-card">
+        <div class="aside-title">下一步怎麼走？</div>
+        <div class="aside-sub">建議你從分類繼續讀，主題會更集中。</div>
+        <a class="btn ghost wide" href="/category/dev-tools/">繼續讀同分類</a>
+        <a class="btn ghost wide" href="/tools/">回到路線列表</a>
+      </div>
+    </aside>
+
+    <div class="post-content prose">
+      <h2 id="1-postman">1) Postman 是什麼？為什麼需要它？</h2><p>如果你在做後端 API，最常遇到的痛點是：</p>
+<blockquote>
+<p>我明明寫好了 API，但我沒有前端可以點，怎麼知道它有沒有通？</p>
+</blockquote>
+<p>Postman 就是用來解決這件事的：<br>✅ 直接送 HTTP 請求<br>✅ 看回傳內容（JSON / 文字 / 狀態碼）<br>✅ 方便帶 Header、Token、Body</p>
+<hr>
+<h2 id="2-3">2) 你只要學會 3 個概念，就能上手</h2><h3 id="1-method">(1) Method（請求方法）</h3><p>新手先記兩個就好：</p>
+<ul>
+<li>GET：拿資料</li>
+<li>POST：送資料（通常是新增）</li>
+</ul>
+<h3 id="2-url">(2) URL（網址）</h3><p>例如：</p>
+<pre><code>http://localhost:8080/api/users
+</code></pre>
+<h3 id="3-response">(3) Response（回應）</h3><p>重點看三個：</p>
+<ul>
+<li>狀態碼：200/201/400/401/500</li>
+<li>回傳內容：JSON 是不是你想要的</li>
+<li>回應時間：太慢就要查</li>
+</ul>
+<hr>
+<h2 id="3-3-api">3) 3 步驟測試你的第一個 API</h2><p>假設你有一支 API：</p>
+<ul>
+<li>GET <code>/api/health</code></li>
+</ul>
+<h3 id="step-1-get">Step 1：選方法 GET</h3><h3 id="step-2-url">Step 2：貼上 URL</h3><h3 id="step-3-send">Step 3：按 Send</h3><p>如果看到：</p>
+<ul>
+<li>Status: 200</li>
+<li>Body: <code>ok</code></li>
+</ul>
+<p>代表你至少「打得到」後端。</p>
+<hr>
+<h2 id="4-json-post">4) 常見需求：我要帶 JSON（POST）</h2><p>在 Postman 你要做兩件事：</p>
+<ol>
+<li>Header 加：<ul>
+<li><code>Content-Type: application/json</code></li>
+</ul>
+</li>
+<li>Body → raw → JSON<ul>
+<li>貼上你的 JSON</li>
+</ul>
+</li>
+</ol>
+<p>例如：</p>
+<pre><code class="language-json">{
+  &quot;name&quot;: &quot;Alice&quot;,
+  &quot;age&quot;: 20
+}
+</code></pre>
+<hr>
+<h2 id="5">5) 最常見的錯誤與白話解釋</h2><ul>
+<li>401：你沒帶 Token，或 Token 過期</li>
+<li>403：你有 Token，但你沒權限</li>
+<li>404：網址打錯，或後端沒有這個 API</li>
+<li>500：後端程式爆了（去看 log）</li>
+</ul>
+<hr>
+<h2 id="h-d2bbac70f2">重點整理</h2><ul>
+<li>Postman = 不用前端也能測 API</li>
+<li>新手先學：GET/POST + Header + Body</li>
+<li>狀態碼是你第一個線索：401/404/500 各代表不同方向</li>
+</ul>
+
+      <div class="callout">
+        <div class="callout-title">重點提醒</div>
+        <div class="callout-body">
+          如果你照著做還是卡住，通常是「環境差異」或「依賴版本」造成。
+          先把錯誤訊息（前後 20 行）貼到搜尋或對照本網站的錯誤排除文章，會快很多。
+        </div>
+      </div>
     </div>
   </div>
-</header>
+</article>
 
-<main class="container page">
-  <div class="panel prose">
-    <div class="meta">Sat Feb 07 · 工具推薦 · #Postman #API</div>
-    <h1>API 測試神器：Postman 新手指南</h1>
-    <div class="toc"><b>目錄</b><a class="toc-link h2" href="#中文版">中文版</a><a class="toc-link h2" href="#english-version">English Version</a></div>
-    <div><h2 id="中文版">中文版</h2><p>Postman 可以讓你：</p>
-<p>👉 不用寫前端<br>👉 直接測 API  </p>
-<p>非常適合後端工程師與新手。</p>
-<p>下載：<br><a href="https://www.postman.com/">https://www.postman.com/</a></p>
-<hr>
-<h2 id="english-version">English Version</h2><p>Postman lets you test APIs without building a frontend.</p>
-<p>Perfect for backend developers and beginners.</p>
-<p>Download:<br><a href="https://www.postman.com/">https://www.postman.com/</a></p>
-</div>
-    <hr/>
-    <p><a class="btn" href="../../">← 回首頁</a></p>
-  </div>
-</main>
-<footer class="footer">
-  <div class="container footer-inner">
-    <span class="mini">© 2026 Aurora Orbit</span>
-    <span class="mini">分享到社群：直接複製網址即可</span>
-  </div>
-</footer>
-<script>
-  (function initTheme(){
-    const saved=localStorage.getItem("theme");
-    if(saved) document.documentElement.setAttribute("data-theme", saved);
-    else {
-      const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
-      document.documentElement.setAttribute("data-theme", prefersLight ? "light" : "dark");
-    }
-    const el=document.getElementById("themeIcon");
-    if(el) el.textContent = (document.documentElement.getAttribute("data-theme")==="dark") ? "🌙" : "☀️";
-  })();
-  function toggleTheme(){
-    const cur=document.documentElement.getAttribute("data-theme")||"dark";
-    const next=cur==="dark"?"light":"dark";
-    document.documentElement.setAttribute("data-theme", next);
-    localStorage.setItem("theme", next);
-    const el=document.getElementById("themeIcon");
-    if(el) el.textContent = next==="dark"?"🌙":"☀️";
-  }
-</script>
+  </main>
 
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <div class="footer-title">把踩坑寫成文章，把經驗變成資產。</div>
+        <div class="footer-sub">文章採「白話 + 可複製步驟」風格，方便你快速解決問題。</div>
+      </div>
+      <div class="footer-right">
+        <a class="footer-link" href="/rss.xml">RSS</a>
+        <a class="footer-link" href="/sitemap.xml">Sitemap</a>
+        <a class="footer-link" href="/about/">關於</a>
+      </div>
+    </div>
+    <div class="footer-bottom">© Aurora Orbit · Built with a tiny SSG</div>
+  </footer>
+
+  <script src="/assets/js/app.js" defer></script>
 </body>
 </html>

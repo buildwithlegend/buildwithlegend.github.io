@@ -3,85 +3,198 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Spring Boot 跑不起來？3 分鐘快速排查｜Aurora Orbit</title>
-  <meta name="description" content="Spring Boot 跑不起來？3 分鐘快速排查" />
+  <title>Spring Boot 啟動失敗怎麼辦？先用這 5 個檢查點定位問題｜Aurora Orbit</title>
+  <meta name="description" content="Spring Boot 起不來通常不是單一原因：最常見的是 port 被占用、依賴版本衝突、設定檔寫錯、或環境變數缺失。用 5 個檢查點能快速縮小範圍。" />
   <link rel="canonical" href="https://buildwithlegend.github.io/post/spring-boot-not-start/" />
-  <link rel="stylesheet" href="../../assets/css/style.css" />
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Spring Boot 跑不起來？3 分鐘快速排查","datePublished":"Sat Feb 07","dateModified":"Sat Feb 07","author":{"@type":"Person","name":"Legend"},"publisher":{"@type":"Organization","name":"Aurora Orbit"},"mainEntityOfPage":"https://buildwithlegend.github.io/post/spring-boot-not-start/","description":"## 中文版"}</script>
+  <meta name="theme-color" content="#F6B48B" />
+
+  <meta property="og:title" content="Spring Boot 啟動失敗怎麼辦？先用這 5 個檢查點定位問題｜Aurora Orbit" />
+  <meta property="og:description" content="Spring Boot 起不來通常不是單一原因：最常見的是 port 被占用、依賴版本衝突、設定檔寫錯、或環境變數缺失。用 5 個檢查點能快速縮小範圍。" />
+  <meta property="og:type" content="website" />
+
+  <link rel="stylesheet" href="/assets/css/style.css" />
 </head>
-<body>
-<header class="topbar">
-  <div class="container topbar-inner">
-    <a class="brand" href="../../"><span class="logo" aria-hidden="true"></span><span>Aurora Orbit</span></a>
-    <nav class="nav" aria-label="Site">
-      <a href="/">首頁</a>
-      <a href="/fix/">錯誤解決</a>
-      <a href="/start/">新手必看</a>
-      <a href="/tools/">工具推薦</a>
-      <a href="/tags/">標籤分類</a>
+
+<body class="page-post">
+  <a class="skip" href="#main">跳到主要內容</a>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="/">
+        <span class="brand-mark" aria-hidden="true">☀️</span>
+        <span class="brand-text">
+          <span class="brand-name">Aurora Orbit</span>
+          <span class="brand-tagline">把踩坑寫成文章，讓 Google 幫你帶人進站。</span>
+        </span>
+      </a>
+
+      <nav class="nav desktop" aria-label="主選單">
+        <a class="nav-link" href="/start/"><span class="nav-emoji">🌱</span>新手入門</a><a class="nav-link" href="/fix/"><span class="nav-emoji">🧯</span>錯誤排除</a><a class="nav-link" href="/tools/"><span class="nav-emoji">🧰</span>開發工具</a><a class="nav-link" href="/backend/"><span class="nav-emoji">🛠️</span>後端實作</a><a class="nav-link" href="/growth/"><span class="nav-emoji">📈</span>成長變現</a>
+        <a class="nav-link subtle" href="/categories/">分類</a>
+        <a class="nav-link subtle" href="/tags/">標籤</a>
+        <a class="nav-link subtle" href="/about/">關於</a>
+      </nav>
+
+      <button class="nav-toggle" aria-label="開啟選單" aria-expanded="false" data-nav-toggle>
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <nav class="nav mobile" aria-label="主選單（手機）" data-nav-panel>
+      <div class="mobile-inner">
+        <a class="nav-link" href="/start/"><span class="nav-emoji">🌱</span>新手入門</a><a class="nav-link" href="/fix/"><span class="nav-emoji">🧯</span>錯誤排除</a><a class="nav-link" href="/tools/"><span class="nav-emoji">🧰</span>開發工具</a><a class="nav-link" href="/backend/"><span class="nav-emoji">🛠️</span>後端實作</a><a class="nav-link" href="/growth/"><span class="nav-emoji">📈</span>成長變現</a>
+        <a class="nav-link subtle" href="/categories/">分類</a>
+        <a class="nav-link subtle" href="/tags/">標籤</a>
+        <a class="nav-link subtle" href="/about/">關於</a>
+      </div>
     </nav>
-    <div class="actions">
-      <span class="kbd">/ 搜尋</span>
-      <button class="iconbtn" type="button" onclick="toggleTheme()" aria-label="Toggle theme"><span id="themeIcon">🌙</span></button>
+  </header>
+
+  <div class="bg-decor" aria-hidden="true">
+    <div class="blob b1"></div>
+    <div class="blob b2"></div>
+    <div class="blob b3"></div>
+  </div>
+
+  <main id="main" class="main">
+    
+<article class="post">
+  <header class="post-head">
+    <h1 class="post-title">Spring Boot 啟動失敗怎麼辦？先用這 5 個檢查點定位問題</h1>
+    <div class="post-meta">
+      <span class="meta-item">📅 2026-02-02</span>
+      <span class="meta-item">
+        🧭 路線：<a href="/fix/">錯誤排除</a>
+      </span>
+      <span class="meta-item">
+        🗂️ 分類：<a href="/category/troubleshooting/">錯誤排除</a>
+      </span>
+      <span class="meta-item tags"><a class="pill" href="/tag/spring-boot/">#Spring Boot</a><a class="pill" href="/tag/tag-3662d5534f/">#錯誤排除</a><a class="pill" href="/tag/java/">#Java</a></span>
+    </div>
+  </header>
+
+  <div class="post-body">
+    <aside class="post-aside">
+      
+    <div class="toc">
+      <div class="toc-title">本頁快速導航</div>
+      <ul>
+        <li class="l2"><a href="#1-spring-boot">1) 先別慌：Spring Boot 起不來通常有「套路」</a></li><li class="l2"><a href="#2-5">2) 5 個檢查點（依常見程度排序）</a></li><li class="l3"><a href="#1-port">(1) Port 被占用（超常見）</a></li><li class="l3"><a href="#2-key">(2) 設定檔寫錯（縮排、key 拼錯）</a></li><li class="l3"><a href="#3-nosuchmethoderror-classnotfound">(3) 依賴版本衝突（NoSuchMethodError / ClassNotFound）</a></li><li class="l3"><a href="#4-jdk">(4) JDK 版本不對</a></li><li class="l3"><a href="#5-profile">(5) Profile / 環境變數缺失</a></li><li class="l2"><a href="#3-debug">3) 最推薦的 debug 方式：先做「最小可跑」</a></li><li class="l2"><a href="#h-d2bbac70f2">重點整理</a></li>
+      </ul>
+    </div>
+      <div class="aside-card">
+        <div class="aside-title">下一步怎麼走？</div>
+        <div class="aside-sub">建議你從分類繼續讀，主題會更集中。</div>
+        <a class="btn ghost wide" href="/category/troubleshooting/">繼續讀同分類</a>
+        <a class="btn ghost wide" href="/fix/">回到路線列表</a>
+      </div>
+    </aside>
+
+    <div class="post-content prose">
+      <h2 id="1-spring-boot">1) 先別慌：Spring Boot 起不來通常有「套路」</h2><p>新手遇到 Spring Boot 啟動失敗，常常會盯著一大堆 log 發呆。</p>
+<p>先記住一個原則：<br>✅ <strong>真正的錯誤，多半在最後 20~40 行</strong><br>✅ 前面一堆都是「連鎖反應」</p>
+<hr>
+<h2 id="2-5">2) 5 個檢查點（依常見程度排序）</h2><h3 id="1-port">(1) Port 被占用（超常見）</h3><p>你可能會看到像：</p>
+<ul>
+<li><code>Address already in use</code></li>
+<li><code>Port 8080 was already in use</code></li>
+</ul>
+<p>解法（擇一）：</p>
+<ul>
+<li>把占用的程式關掉</li>
+<li>或在 <code>application.yml</code> 改成：<pre><code class="language-yml">server:
+  port: 8081
+</code></pre>
+</li>
+</ul>
+<hr>
+<h3 id="2-key">(2) 設定檔寫錯（縮排、key 拼錯）</h3><p><code>application.yml</code> 最容易踩坑是「縮排」。</p>
+<p>建議做法：  </p>
+<ul>
+<li>先把最近改的設定註解掉</li>
+<li>一段一段加回去</li>
+</ul>
+<hr>
+<h3 id="3-nosuchmethoderror-classnotfound">(3) 依賴版本衝突（NoSuchMethodError / ClassNotFound）</h3><p>如果看到：</p>
+<ul>
+<li><code>NoSuchMethodError</code></li>
+<li><code>ClassNotFoundException</code></li>
+</ul>
+<p>通常是：</p>
+<ul>
+<li>你引入了不相容的版本</li>
+<li>或同一個 library 被拉了兩份版本</li>
+</ul>
+<p>做法：</p>
+<ul>
+<li>Maven：看 <code>mvn dependency:tree</code></li>
+<li>Gradle：看 <code>./gradlew dependencies</code></li>
+</ul>
+<hr>
+<h3 id="4-jdk">(4) JDK 版本不對</h3><p>如果你專案要求 Java 17，但你用 Java 8 跑，會出現奇怪錯。</p>
+<p>確認：</p>
+<ul>
+<li>IntelliJ 的 Project SDK</li>
+<li>以及你用 terminal 跑的 <code>java -version</code></li>
+</ul>
+<hr>
+<h3 id="5-profile">(5) Profile / 環境變數缺失</h3><p>例如你用了：</p>
+<ul>
+<li><code>SPRING_PROFILES_ACTIVE=prod</code></li>
+<li>但 prod 的設定檔不存在或缺少 DB 連線資訊</li>
+</ul>
+<p>做法：</p>
+<ul>
+<li>先用 <code>dev</code> 或 <code>local</code> 起來</li>
+<li>確認最小可跑後再切回 prod</li>
+</ul>
+<hr>
+<h2 id="3-debug">3) 最推薦的 debug 方式：先做「最小可跑」</h2><p>你可以先把專案縮到：</p>
+<ul>
+<li>只保留一個 Controller</li>
+<li>不連 DB、不連外部服務</li>
+<li>先確認能起來</li>
+</ul>
+<p>這樣你才知道問題是：</p>
+<ul>
+<li>「程式碼」</li>
+<li>還是「外部依賴/環境」</li>
+</ul>
+<hr>
+<h2 id="h-d2bbac70f2">重點整理</h2><ul>
+<li>真正的錯誤通常在最後 20~40 行</li>
+<li>最常見：port、設定檔、依賴衝突、JDK、profile</li>
+<li>先做最小可跑，再加功能回去</li>
+</ul>
+
+      <div class="callout">
+        <div class="callout-title">重點提醒</div>
+        <div class="callout-body">
+          如果你照著做還是卡住，通常是「環境差異」或「依賴版本」造成。
+          先把錯誤訊息（前後 20 行）貼到搜尋或對照本網站的錯誤排除文章，會快很多。
+        </div>
+      </div>
     </div>
   </div>
-</header>
+</article>
 
-<main class="container page">
-  <div class="panel prose">
-    <div class="meta">Sat Feb 07 · 錯誤解決 · #Spring Boot #Java #錯誤排查</div>
-    <h1>Spring Boot 跑不起來？3 分鐘快速排查</h1>
-    <div class="toc"><b>目錄</b><a class="toc-link h2" href="#中文版">中文版</a><a class="toc-link h3" href="#step1：確認-java-版本">Step1：確認 Java 版本</a><a class="toc-link h3" href="#step2：依賴還在下載">Step2：依賴還在下載</a><a class="toc-link h3" href="#step3：port-被佔用">Step3：Port 被佔用</a><a class="toc-link h2" href="#english-version">English Version</a><a class="toc-link h3" href="#spring-boot-wont-start-fix-it-in-3-minutes">Spring Boot Won’t Start? Fix It in 3 Minutes</a></div>
-    <div><h2 id="中文版">中文版</h2><p>剛開始學 Spring Boot 時，最讓人崩潰的就是「為什麼跑不起來？」<br>其實大多數問題都非常好解決。</p>
-<h3 id="step1：確認-java-版本">Step1：確認 Java 版本</h3><p>Spring Boot 3 需要 <strong>Java 17 以上</strong></p>
-<pre><code>java -version
-</code></pre>
-<p>如果低於 17，升級即可。</p>
-<h3 id="step2：依賴還在下載">Step2：依賴還在下載</h3><p>很多新手會以為壞掉，其實只是 Maven / Gradle 還沒下載完。</p>
-<p>👉 等 IDE 跑完再試一次。</p>
-<h3 id="step3：port-被佔用">Step3：Port 被佔用</h3><p>常見錯誤：</p>
-<pre><code>Port 8080 already in use
-</code></pre>
-<p>解法：</p>
-<pre><code>netstat -ano | findstr 8080
-</code></pre>
-<p>關閉該程序即可。</p>
-<hr>
-<h2 id="english-version">English Version</h2><h3 id="spring-boot-wont-start-fix-it-in-3-minutes">Spring Boot Won’t Start? Fix It in 3 Minutes</h3><p>Most startup issues are simple.</p>
-<p><strong>1️⃣ Check Java Version</strong><br>Spring Boot 3 requires Java 17+.</p>
-<p><strong>2️⃣ Dependencies may still be downloading</strong><br>Wait for Maven/Gradle.</p>
-<p><strong>3️⃣ Port already in use</strong><br>Kill the process using port 8080.</p>
-</div>
-    <hr/>
-    <p><a class="btn" href="../../">← 回首頁</a></p>
-  </div>
-</main>
-<footer class="footer">
-  <div class="container footer-inner">
-    <span class="mini">© 2026 Aurora Orbit</span>
-    <span class="mini">分享到社群：直接複製網址即可</span>
-  </div>
-</footer>
-<script>
-  (function initTheme(){
-    const saved=localStorage.getItem("theme");
-    if(saved) document.documentElement.setAttribute("data-theme", saved);
-    else {
-      const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
-      document.documentElement.setAttribute("data-theme", prefersLight ? "light" : "dark");
-    }
-    const el=document.getElementById("themeIcon");
-    if(el) el.textContent = (document.documentElement.getAttribute("data-theme")==="dark") ? "🌙" : "☀️";
-  })();
-  function toggleTheme(){
-    const cur=document.documentElement.getAttribute("data-theme")||"dark";
-    const next=cur==="dark"?"light":"dark";
-    document.documentElement.setAttribute("data-theme", next);
-    localStorage.setItem("theme", next);
-    const el=document.getElementById("themeIcon");
-    if(el) el.textContent = next==="dark"?"🌙":"☀️";
-  }
-</script>
+  </main>
 
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <div class="footer-title">把踩坑寫成文章，把經驗變成資產。</div>
+        <div class="footer-sub">文章採「白話 + 可複製步驟」風格，方便你快速解決問題。</div>
+      </div>
+      <div class="footer-right">
+        <a class="footer-link" href="/rss.xml">RSS</a>
+        <a class="footer-link" href="/sitemap.xml">Sitemap</a>
+        <a class="footer-link" href="/about/">關於</a>
+      </div>
+    </div>
+    <div class="footer-bottom">© Aurora Orbit · Built with a tiny SSG</div>
+  </footer>
+
+  <script src="/assets/js/app.js" defer></script>
 </body>
 </html>

@@ -3,85 +3,189 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Markdown 教學：5 分鐘學會寫技術文章｜Aurora Orbit</title>
-  <meta name="description" content="Markdown 教學：5 分鐘學會寫技術文章" />
+  <title>Markdown 5 分鐘上手：為什麼工程師都用它寫筆記｜Aurora Orbit</title>
+  <meta name="description" content="Markdown 是一種「用純文字寫排版」的方法：不用滑鼠點選，就能快速寫出標題、列表、程式碼區塊，最適合寫技術筆記。" />
   <link rel="canonical" href="https://buildwithlegend.github.io/post/markdown-5min-guide/" />
-  <link rel="stylesheet" href="../../assets/css/style.css" />
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Markdown 教學：5 分鐘學會寫技術文章","datePublished":"Sat Feb 07","dateModified":"Sat Feb 07","author":{"@type":"Person","name":"Legend"},"publisher":{"@type":"Organization","name":"Aurora Orbit"},"mainEntityOfPage":"https://buildwithlegend.github.io/post/markdown-5min-guide/","description":"## 中文版"}</script>
+  <meta name="theme-color" content="#F6B48B" />
+
+  <meta property="og:title" content="Markdown 5 分鐘上手：為什麼工程師都用它寫筆記｜Aurora Orbit" />
+  <meta property="og:description" content="Markdown 是一種「用純文字寫排版」的方法：不用滑鼠點選，就能快速寫出標題、列表、程式碼區塊，最適合寫技術筆記。" />
+  <meta property="og:type" content="website" />
+
+  <link rel="stylesheet" href="/assets/css/style.css" />
 </head>
-<body>
-<header class="topbar">
-  <div class="container topbar-inner">
-    <a class="brand" href="../../"><span class="logo" aria-hidden="true"></span><span>Aurora Orbit</span></a>
-    <nav class="nav" aria-label="Site">
-      <a href="/">首頁</a>
-      <a href="/fix/">錯誤解決</a>
-      <a href="/start/">新手必看</a>
-      <a href="/tools/">工具推薦</a>
-      <a href="/tags/">標籤分類</a>
+
+<body class="page-post">
+  <a class="skip" href="#main">跳到主要內容</a>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="/">
+        <span class="brand-mark" aria-hidden="true">☀️</span>
+        <span class="brand-text">
+          <span class="brand-name">Aurora Orbit</span>
+          <span class="brand-tagline">把踩坑寫成文章，讓 Google 幫你帶人進站。</span>
+        </span>
+      </a>
+
+      <nav class="nav desktop" aria-label="主選單">
+        <a class="nav-link" href="/start/"><span class="nav-emoji">🌱</span>新手入門</a><a class="nav-link" href="/fix/"><span class="nav-emoji">🧯</span>錯誤排除</a><a class="nav-link" href="/tools/"><span class="nav-emoji">🧰</span>開發工具</a><a class="nav-link" href="/backend/"><span class="nav-emoji">🛠️</span>後端實作</a><a class="nav-link" href="/growth/"><span class="nav-emoji">📈</span>成長變現</a>
+        <a class="nav-link subtle" href="/categories/">分類</a>
+        <a class="nav-link subtle" href="/tags/">標籤</a>
+        <a class="nav-link subtle" href="/about/">關於</a>
+      </nav>
+
+      <button class="nav-toggle" aria-label="開啟選單" aria-expanded="false" data-nav-toggle>
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <nav class="nav mobile" aria-label="主選單（手機）" data-nav-panel>
+      <div class="mobile-inner">
+        <a class="nav-link" href="/start/"><span class="nav-emoji">🌱</span>新手入門</a><a class="nav-link" href="/fix/"><span class="nav-emoji">🧯</span>錯誤排除</a><a class="nav-link" href="/tools/"><span class="nav-emoji">🧰</span>開發工具</a><a class="nav-link" href="/backend/"><span class="nav-emoji">🛠️</span>後端實作</a><a class="nav-link" href="/growth/"><span class="nav-emoji">📈</span>成長變現</a>
+        <a class="nav-link subtle" href="/categories/">分類</a>
+        <a class="nav-link subtle" href="/tags/">標籤</a>
+        <a class="nav-link subtle" href="/about/">關於</a>
+      </div>
     </nav>
-    <div class="actions">
-      <span class="kbd">/ 搜尋</span>
-      <button class="iconbtn" type="button" onclick="toggleTheme()" aria-label="Toggle theme"><span id="themeIcon">🌙</span></button>
+  </header>
+
+  <div class="bg-decor" aria-hidden="true">
+    <div class="blob b1"></div>
+    <div class="blob b2"></div>
+    <div class="blob b3"></div>
+  </div>
+
+  <main id="main" class="main">
+    
+<article class="post">
+  <header class="post-head">
+    <h1 class="post-title">Markdown 5 分鐘上手：為什麼工程師都用它寫筆記</h1>
+    <div class="post-meta">
+      <span class="meta-item">📅 2026-02-06</span>
+      <span class="meta-item">
+        🧭 路線：<a href="/start/">新手入門</a>
+      </span>
+      <span class="meta-item">
+        🗂️ 分類：<a href="/category/newbie/">新手必看</a>
+      </span>
+      <span class="meta-item tags"><a class="pill" href="/tag/markdown/">#Markdown</a><a class="pill" href="/tag/tag-339681e312/">#新手</a></span>
+    </div>
+  </header>
+
+  <div class="post-body">
+    <aside class="post-aside">
+      
+    <div class="toc">
+      <div class="toc-title">本頁快速導航</div>
+      <ul>
+        <li class="l2"><a href="#1-markdown">1) Markdown 是什麼？</a></li><li class="l2"><a href="#2-8">2) 最常用語法（你只要記這 8 個）</a></li><li class="l3"><a href="#h-bec815141b">標題</a></li><li class="l3"><a href="#h-282b442fe1">粗體 / 斜體</a></li><li class="l3"><a href="#h-b4bfc2e7b6">無序列表</a></li><li class="l3"><a href="#h-0deb8a5228">有序列表</a></li><li class="l3"><a href="#h-5ee95cc601">連結</a></li><li class="l3"><a href="#h-6d1bd44362">圖片</a></li><li class="l3"><a href="#h-23c0e102a0">引用</a></li><li class="l3"><a href="#h-4105f84c28">程式碼（最重要）</a></li>
+      </ul>
+    </div>
+      <div class="aside-card">
+        <div class="aside-title">下一步怎麼走？</div>
+        <div class="aside-sub">建議你從分類繼續讀，主題會更集中。</div>
+        <a class="btn ghost wide" href="/category/newbie/">繼續讀同分類</a>
+        <a class="btn ghost wide" href="/start/">回到路線列表</a>
+      </div>
+    </aside>
+
+    <div class="post-content prose">
+      <h2 id="1-markdown">1) Markdown 是什麼？</h2><p>Markdown 是一種「用純文字寫排版」的格式。</p>
+<p>白話講：<br>你用鍵盤就能寫出標題、列表、粗體、程式碼區塊，不用一直點工具列。</p>
+<p>工程師愛用的原因很簡單：<br>✅ 快（全鍵盤）<br>✅ 穩（純文字不怕格式跑掉）<br>✅ 好分享（GitHub、Notion、Slack 都支援）</p>
+<hr>
+<h2 id="2-8">2) 最常用語法（你只要記這 8 個）</h2><h3 id="h-bec815141b">標題</h3><pre><code class="language-md"># 大標題
+## 中標題
+### 小標題
+</code></pre>
+<h3 id="h-282b442fe1">粗體 / 斜體</h3><pre><code class="language-md">**粗體**
+*斜體*
+</code></pre>
+<h3 id="h-b4bfc2e7b6">無序列表</h3><pre><code class="language-md">- 第一點
+- 第二點
+</code></pre>
+<h3 id="h-0deb8a5228">有序列表</h3><pre><code class="language-md">1. 第一步
+2. 第二步
+</code></pre>
+<h3 id="h-5ee95cc601">連結</h3><pre><code class="language-md">[顯示文字](https://example.com)
+</code></pre>
+<h3 id="h-6d1bd44362">圖片</h3><pre><code class="language-md">![替代文字](圖片網址)
+</code></pre>
+<h3 id="h-23c0e102a0">引用</h3><pre><code class="language-md">&gt; 這是一段引用
+</code></pre>
+<h3 id="h-4105f84c28">程式碼（最重要）</h3><p>行內：</p>
+<pre><code class="language-md">用 `git status` 看狀態
+</code></pre>
+<p>區塊：</p>
+<pre><code class="language-md">```bash
+npm run build
+</code></pre>
+<pre><code>
+---
+
+## 3) 技術筆記怎麼寫才好用？
+
+我推薦一個「能回來查」的模板：
+
+1. **問題是什麼？**（一句話）
+2. **我做了什麼才解掉？**（步驟）
+3. **為什麼？**（原因）
+4. **下次避免**（注意事項）
+5. **關鍵字**（方便搜尋）
+
+你不是在寫作文，你是在寫「未來的自己看得懂的說明書」。
+
+---
+
+## 4) 常見踩坑：為什麼我貼程式碼會亂？
+
+因為你沒有用「程式碼區塊」。
+
+記得用三個反引號：
+
+```md
+```js
+console.log(&quot;hello&quot;)
+</code></pre>
+<pre><code>
+---
+
+## 重點整理
+
+- Markdown = 用純文字寫排版
+- 工程師最常用的是：標題、列表、連結、程式碼區塊
+- 筆記不是要漂亮，是要「下次回來看得懂」
+</code></pre>
+
+      <div class="callout">
+        <div class="callout-title">重點提醒</div>
+        <div class="callout-body">
+          如果你照著做還是卡住，通常是「環境差異」或「依賴版本」造成。
+          先把錯誤訊息（前後 20 行）貼到搜尋或對照本網站的錯誤排除文章，會快很多。
+        </div>
+      </div>
     </div>
   </div>
-</header>
+</article>
 
-<main class="container page">
-  <div class="panel prose">
-    <div class="meta">Sat Feb 07 · 新手必看 · #Markdown</div>
-    <h1>Markdown 教學：5 分鐘學會寫技術文章</h1>
-    <div class="toc"><b>目錄</b><a class="toc-link h2" href="#中文版">中文版</a><a class="toc-link h2" href="#english-version">English Version</a></div>
-    <div><h2 id="中文版">中文版</h2><p>Markdown 是工程師最愛的寫作格式。</p>
-<p>例如：</p>
-<pre><code># 大標
-## 小標
-**粗體**
-</code></pre>
-<p>優點：</p>
-<ul>
-<li>超快  </li>
-<li>超乾淨  </li>
-<li>超好讀</li>
-</ul>
-<hr>
-<h2 id="english-version">English Version</h2><p>Markdown is the easiest way to write technical content.</p>
-<p>Example:</p>
-<pre><code># Heading
-**Bold**
-</code></pre>
-<p>Fast, clean, and readable.</p>
-</div>
-    <hr/>
-    <p><a class="btn" href="../../">← 回首頁</a></p>
-  </div>
-</main>
-<footer class="footer">
-  <div class="container footer-inner">
-    <span class="mini">© 2026 Aurora Orbit</span>
-    <span class="mini">分享到社群：直接複製網址即可</span>
-  </div>
-</footer>
-<script>
-  (function initTheme(){
-    const saved=localStorage.getItem("theme");
-    if(saved) document.documentElement.setAttribute("data-theme", saved);
-    else {
-      const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
-      document.documentElement.setAttribute("data-theme", prefersLight ? "light" : "dark");
-    }
-    const el=document.getElementById("themeIcon");
-    if(el) el.textContent = (document.documentElement.getAttribute("data-theme")==="dark") ? "🌙" : "☀️";
-  })();
-  function toggleTheme(){
-    const cur=document.documentElement.getAttribute("data-theme")||"dark";
-    const next=cur==="dark"?"light":"dark";
-    document.documentElement.setAttribute("data-theme", next);
-    localStorage.setItem("theme", next);
-    const el=document.getElementById("themeIcon");
-    if(el) el.textContent = next==="dark"?"🌙":"☀️";
-  }
-</script>
+  </main>
 
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <div class="footer-title">把踩坑寫成文章，把經驗變成資產。</div>
+        <div class="footer-sub">文章採「白話 + 可複製步驟」風格，方便你快速解決問題。</div>
+      </div>
+      <div class="footer-right">
+        <a class="footer-link" href="/rss.xml">RSS</a>
+        <a class="footer-link" href="/sitemap.xml">Sitemap</a>
+        <a class="footer-link" href="/about/">關於</a>
+      </div>
+    </div>
+    <div class="footer-bottom">© Aurora Orbit · Built with a tiny SSG</div>
+  </footer>
+
+  <script src="/assets/js/app.js" defer></script>
 </body>
 </html>

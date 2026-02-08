@@ -1,0 +1,45 @@
+
+<section class="hero hero-start">
+  <div class="hero-content">
+    <div class="eyebrow">{{ICON}} 路線 01</div>
+    <h1>{{TITLE}}</h1>
+    <p class="lead">{{DESC}}</p>
+
+    <div class="steps">
+      <div class="step"><div class="n">1</div><div class="t">先懂觀念</div><div class="d">不用背一堆名詞，先搞懂「它用來解決什麼」。</div></div>
+      <div class="step"><div class="n">2</div><div class="t">再做一次</div><div class="d">照著文章做一輪，讓大腦有「成功的記憶」。</div></div>
+      <div class="step"><div class="n">3</div><div class="t">最後做筆記</div><div class="d">把你遇到的差異寫下來，下次就會更快。</div></div>
+    </div>
+  </div>
+
+  <div class="hero-side">
+    <div class="note-card">
+      <div class="note-title">你會得到什麼？</div>
+      <ul class="check">
+        <li>知道 Git / Markdown 等工具到底在幹嘛</li>
+        <li>能做出「最小可跑」的專案流程</li>
+        <li>遇到問題時知道去哪裡查、怎麼問</li>
+      </ul>
+      <a class="btn primary wide" href="/categories/">先逛逛分類</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <h2>這個路線的文章</h2>
+    <p>建議從上到下讀；每篇文章都會在頁首提供「分類連結」，方便你繼續延伸。</p>
+  </div>
+  <div class="post-list" id="postList"></div>
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <h2>同路線的分類</h2>
+    <p>想快速補齊某一塊？直接從分類切入。</p>
+  </div>
+  <div class="cat-cards" id="catCards"></div>
+</section>
+
+<script type="application/json" id="postsJson">{{POSTS_JSON}}</script>
+<script type="application/json" id="catsJson">{{CATS_JSON}}</script>

@@ -4,77 +4,102 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>分類｜Aurora Orbit</title>
-  <meta name="description" content="分類列表" />
+  <meta name="description" content="每個分類都是一條可跟的學習路線。" />
   <link rel="canonical" href="https://buildwithlegend.github.io/categories/" />
-  <link rel="stylesheet" href="../assets/css/style.css" />
+  <meta name="theme-color" content="#F6B48B" />
+
+  <meta property="og:title" content="分類｜Aurora Orbit" />
+  <meta property="og:description" content="每個分類都是一條可跟的學習路線。" />
+  <meta property="og:type" content="website" />
+
+  <link rel="stylesheet" href="/assets/css/style.css" />
 </head>
-<body>
-<header class="topbar">
-  <div class="container topbar-inner">
-    <a class="brand" href="../"><span class="logo" aria-hidden="true"></span><span>Aurora Orbit</span></a>
-    <nav class="nav">
-      <a href="/">首頁</a>
-      <a href="/fix/">錯誤解決</a>
-      <a href="/start/">新手必看</a>
-      <a href="/tools/">工具推薦</a>
-      <a href="/tags/">標籤分類</a>
+
+<body class="page-tax page-categories">
+  <a class="skip" href="#main">跳到主要內容</a>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="/">
+        <span class="brand-mark" aria-hidden="true">☀️</span>
+        <span class="brand-text">
+          <span class="brand-name">Aurora Orbit</span>
+          <span class="brand-tagline">把踩坑寫成文章，讓 Google 幫你帶人進站。</span>
+        </span>
+      </a>
+
+      <nav class="nav desktop" aria-label="主選單">
+        <a class="nav-link" href="/start/"><span class="nav-emoji">🌱</span>新手入門</a><a class="nav-link" href="/fix/"><span class="nav-emoji">🧯</span>錯誤排除</a><a class="nav-link" href="/tools/"><span class="nav-emoji">🧰</span>開發工具</a><a class="nav-link" href="/backend/"><span class="nav-emoji">🛠️</span>後端實作</a><a class="nav-link" href="/growth/"><span class="nav-emoji">📈</span>成長變現</a>
+        <a class="nav-link subtle" href="/categories/">分類</a>
+        <a class="nav-link subtle" href="/tags/">標籤</a>
+        <a class="nav-link subtle" href="/about/">關於</a>
+      </nav>
+
+      <button class="nav-toggle" aria-label="開啟選單" aria-expanded="false" data-nav-toggle>
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <nav class="nav mobile" aria-label="主選單（手機）" data-nav-panel>
+      <div class="mobile-inner">
+        <a class="nav-link" href="/start/"><span class="nav-emoji">🌱</span>新手入門</a><a class="nav-link" href="/fix/"><span class="nav-emoji">🧯</span>錯誤排除</a><a class="nav-link" href="/tools/"><span class="nav-emoji">🧰</span>開發工具</a><a class="nav-link" href="/backend/"><span class="nav-emoji">🛠️</span>後端實作</a><a class="nav-link" href="/growth/"><span class="nav-emoji">📈</span>成長變現</a>
+        <a class="nav-link subtle" href="/categories/">分類</a>
+        <a class="nav-link subtle" href="/tags/">標籤</a>
+        <a class="nav-link subtle" href="/about/">關於</a>
+      </div>
     </nav>
-    <div class="actions">
-      <button class="iconbtn" type="button" onclick="toggleTheme()"><span id="themeIcon">🌙</span></button>
+  </header>
+
+  <div class="bg-decor" aria-hidden="true">
+    <div class="blob b1"></div>
+    <div class="blob b2"></div>
+    <div class="blob b3"></div>
+  </div>
+
+  <main id="main" class="main">
+    
+<section class="hero hero-tax">
+  <div class="hero-content">
+    <div class="eyebrow">🧭 導覽</div>
+    <h1>分類</h1>
+    <p class="lead">用分類快速找到你要的文章。點進去就是文章清單。</p>
+  </div>
+  <div class="hero-side">
+    <div class="glass-card">
+      <div class="glass-title">小技巧</div>
+      <ul class="bullets">
+        <li>想照路線讀：去「新手入門 / 錯誤排除 / 工具 / 後端 / 成長」。</li>
+        <li>想沿著主題讀：用「分類」。</li>
+        <li>想關鍵字跳讀：用「標籤」。</li>
+      </ul>
     </div>
   </div>
-</header>
+</section>
 
-<main class="container page">
-  <div class="panel prose">
-    <h1>分類</h1>
-    <div id="list"></div>
-  </div>
-</main>
+<section class="section">
+  <div class="tax-grid" id="taxGrid"></div>
+</section>
 
-<footer class="footer"><div class="container footer-inner">
-  <span class="mini">© 2026 Aurora Orbit</span><span class="mini">Auto generated</span>
-</div></footer>
+<script type="application/json" id="itemsJson">[{"tag":"新手必看","slug":"newbie","count":2,"section":"start"},{"tag":"工具推薦","slug":"dev-tools","count":2,"section":"tools"},{"tag":"錯誤排除","slug":"troubleshooting","count":2,"section":"fix"},{"tag":"Spring / Java","slug":"spring-java","count":2,"section":"backend"},{"tag":"成長與變現","slug":"growth","count":2,"section":"growth"}]</script>
+<script>window.__TAX_KIND__ = "category";</script>
 
-<script>
-  const items = [{"tag":"工具推薦","count":2},{"tag":"新手必看","count":2},{"tag":"錯誤解決","count":2},{"tag":"變現","count":1},{"tag":"IntelliJ","count":1},{"tag":"Spring Boot","count":1}];
-  const kind = "category"; // tag | category
-  const wrap = document.getElementById("list");
-  const toSlug = (s) => (s||"").toLowerCase().trim().replace(/[^\w\u4e00-\u9fff]+/g,"-").replace(/^-+|-+$/g,"");
-  wrap.innerHTML = '<div class="grid">' + items.map(it => `
-    <article class="card">
-      <div class="card-body">
-        <div class="meta">${it.count} 篇</div>
-        <h2><a href="../${kind}/${toSlug(it.tag)}/">${kind==='tag'?'#':''}${it.tag}</a></h2>
-        <p class="excerpt">點進去看文章列表</p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <div class="footer-title">把踩坑寫成文章，把經驗變成資產。</div>
+        <div class="footer-sub">文章採「白話 + 可複製步驟」風格，方便你快速解決問題。</div>
       </div>
-      <div class="card-footer">
-        <span class="tag">${kind==='tag'?'#':''}${it.tag}</span>
-        <a class="read" href="../${kind}/${toSlug(it.tag)}/">進入 →</a>
+      <div class="footer-right">
+        <a class="footer-link" href="/rss.xml">RSS</a>
+        <a class="footer-link" href="/sitemap.xml">Sitemap</a>
+        <a class="footer-link" href="/about/">關於</a>
       </div>
-    </article>
-  `).join("") + "</div>";
-</script>
-<script>
-  (function initTheme(){
-    const saved=localStorage.getItem("theme");
-    if(saved) document.documentElement.setAttribute("data-theme", saved);
-    else {
-      const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
-      document.documentElement.setAttribute("data-theme", prefersLight ? "light" : "dark");
-    }
-    const el=document.getElementById("themeIcon");
-    if(el) el.textContent = (document.documentElement.getAttribute("data-theme")==="dark") ? "🌙" : "☀️";
-  })();
-  function toggleTheme(){
-    const cur=document.documentElement.getAttribute("data-theme")||"dark";
-    const next=cur==="dark"?"light":"dark";
-    document.documentElement.setAttribute("data-theme", next);
-    localStorage.setItem("theme", next);
-    const el=document.getElementById("themeIcon");
-    if(el) el.textContent = next==="dark"?"🌙":"☀️";
-  }
-</script>
+    </div>
+    <div class="footer-bottom">© Aurora Orbit · Built with a tiny SSG</div>
+  </footer>
 
+  <script src="/assets/js/app.js" defer></script>
 </body>
 </html>

@@ -1,195 +1,83 @@
-<<<<<<< HEAD
-<!doctype html>
-=======
-﻿<!doctype html>
->>>>>>> f84962f (Fix CSS path to absolute (/assets/...))
-<html lang="zh-Hant">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-<<<<<<< HEAD
-  <title>{{SITE_NAME}}｜獨一無二的技術雜誌</title>
-=======
-  <title>{{SITE_NAME}}嚚銝?∩???銵?隤?/title>
->>>>>>> f84962f (Fix CSS path to absolute (/assets/...))
-  <meta name="description" content="{{DESC}}" />
-  <link rel="canonical" href="{{CANONICAL}}" />
-  <link rel="stylesheet" href="./assets/css/style.css" />
-</head>
-<body>
-<header class="topbar">
-  <div class="container topbar-inner">
-    <a class="brand" href="./"><span class="logo" aria-hidden="true"></span><span>{{SITE_NAME}}</span></a>
-    <nav class="nav" aria-label="Site">
-<<<<<<< HEAD
-      <a href="/">首頁</a>
-      <a href="/fix/">錯誤解決</a>
-      <a href="/start/">新手必看</a>
-      <a href="/tools/">工具推薦</a>
-      <a href="/tags/">標籤分類</a>
-    </nav>
-    <div class="actions">
-      <span class="kbd">/ 搜尋</span>
-      <button class="iconbtn" type="button" onclick="toggleTheme()" aria-label="Toggle theme"><span id="themeIcon">🌙</span></button>
-=======
-      <a href="/">擐?</a>
-      <a href="/fix/">?航炊閫?捱</a>
-      <a href="/start/">?唳?敹?</a>
-      <a href="/tools/">撌亙?刻</a>
-      <a href="/tags/">璅惜??</a>
-    </nav>
-    <div class="actions">
-      <span class="kbd">/ ??</span>
-      <button class="iconbtn" type="button" onclick="toggleTheme()" aria-label="Toggle theme"><span id="themeIcon">??</span></button>
->>>>>>> f84962f (Fix CSS path to absolute (/assets/...))
+
+<section class="hero hero-home">
+  <div class="hero-content">
+    <div class="eyebrow">溫暖技術雜誌</div>
+    <h1>把「看不懂的錯誤」翻成白話<br/>把「學過就忘」變成可回來查的筆記</h1>
+    <p class="lead">
+      這裡的文章都用同一套格式：<b>問題是什麼 → 為什麼會發生 → 3~5 步驟解法 → 重點整理</b>。
+      你不用背，遇到再回來找就好。
+    </p>
+
+    <div class="hero-actions">
+      <a class="btn primary" href="/start/">先從新手入門開始</a>
+      <a class="btn ghost" href="/fix/">我現在就遇到錯誤</a>
+    </div>
+
+    <div class="hero-badges">
+      <span class="badge">🌱 新手友善</span>
+      <span class="badge">🧩 可複製步驟</span>
+      <span class="badge">🧠 概念講人話</span>
     </div>
   </div>
-</header>
 
-<main class="container">
-  <section class="hero">
-    <div class="panel hero-main">
-      <div class="hero-content">
-        <h1>{{TAGLINE}}</h1>
-        <p class="sub">{{DESC}}</p>
-        <div class="hero-cta">
-<<<<<<< HEAD
-          <a class="btn primary" href="./post/{{FIRST_SLUG}}/">🚀 先看最新文章</a>
-          <a class="btn" href="./about/">✨ 如何寫才會紅</a>
-        </div>
-        <div class="pills">
-          <span class="pill">站內搜尋</span>
-          <span class="pill">標籤/分類</span>
-          <span class="pill">自動 RSS / Sitemap</span>
-          <span class="pill">GitHub Actions 自動部署</span>
-          <span class="pill">深淺色</span>
-=======
-          <a class="btn primary" href="./post/{{FIRST_SLUG}}/">?? ????唳?蝡?/a>
-          <a class="btn" href="./about/">??憒?撖急???</a>
-        </div>
-        <div class="pills">
-          <span class="pill">蝡??</span>
-          <span class="pill">璅惜/??</span>
-          <span class="pill">?芸? RSS / Sitemap</span>
-          <span class="pill">GitHub Actions ?芸??函蔡</span>
-          <span class="pill">瘛望滓??/span>
->>>>>>> f84962f (Fix CSS path to absolute (/assets/...))
-        </div>
+  <div class="hero-side">
+    <div class="glass-card">
+      <div class="glass-title">快速找文章</div>
+      <div class="search">
+        <input id="searchInput" type="search" placeholder="輸入關鍵字：Git / Spring Boot / Maven / Postman…" />
+      </div>
+      <div class="mini-hint">支援標題、摘要、分類、標籤。</div>
+      <div class="mini-divider"></div>
+      <div class="mini-title">熱門主題</div>
+      <div class="chips">
+        <button class="chip" data-chip="Git">#Git</button>
+        <button class="chip" data-chip="Spring Boot">#Spring Boot</button>
+        <button class="chip" data-chip="IntelliJ">#IntelliJ</button>
+        <button class="chip" data-chip="Postman">#Postman</button>
       </div>
     </div>
-    <div class="panel hero-side">
-<<<<<<< HEAD
-      <div class="metric"><span class="mini">寫作方法</span><b>解題卡</b></div>
-      <div class="metric"><span class="mini">結構</span><b>問題→原因→解法</b></div>
-      <div class="metric"><span class="mini">目標</span><b>長期搜尋流量</b></div>
-      <div class="mini" style="margin-top:10px">提示：按 <span class="kbd">/</span> 直接搜尋</div>
-=======
-      <div class="metric"><span class="mini">撖思??寞?</span><b>閫????/b></div>
-      <div class="metric"><span class="mini">蝯?</span><b>??????閫??</b></div>
-      <div class="metric"><span class="mini">?格?</span><b>?瑟???瘚?</b></div>
-      <div class="mini" style="margin-top:10px">?內嚗? <span class="kbd">/</span> ?湔??</div>
->>>>>>> f84962f (Fix CSS path to absolute (/assets/...))
-    </div>
-  </section>
-
-
-  <section class="panel" style="padding:16px; margin-top:16px">
-    <div style="display:flex; align-items:baseline; justify-content:space-between; gap:12px; flex-wrap:wrap">
-<<<<<<< HEAD
-      <h2 style="margin:0">🔥 首頁熱門文章</h2>
-      <span class="mini">依 frontmatter 的 <b>views</b> 排序（沒填就會以最新文章為主）</span>
-=======
-      <h2 style="margin:0">? 擐??梢???</h2>
-      <span class="mini">靘?frontmatter ??<b>views</b> ??嚗?憛怠停?誑??唳?蝡銝鳴?</span>
->>>>>>> f84962f (Fix CSS path to absolute (/assets/...))
-    </div>
-    <div class="grid" id="hotGrid" aria-label="Hot Posts" style="margin-top:12px"></div>
-  </section>
-
-  <section class="toolbar">
-    <div class="input" role="search">
-<<<<<<< HEAD
-      <span style="opacity:.75">🔎</span>
-      <input id="searchInput" placeholder="搜尋：whitelabel、maven、module、npm..." />
-    </div>
-    <select class="select" id="categorySelect" aria-label="Category"></select>
-    <div id="tagChips" style="display:flex; gap:8px; flex-wrap:wrap"></div>
-    <span class="mini">結果：<b id="resultCount">0</b></span>
-=======
-      <span style="opacity:.75">??</span>
-      <input id="searchInput" placeholder="??嚗hitelabel?aven?odule?pm..." />
-    </div>
-    <select class="select" id="categorySelect" aria-label="Category"></select>
-    <div id="tagChips" style="display:flex; gap:8px; flex-wrap:wrap"></div>
-    <span class="mini">蝯?嚗?b id="resultCount">0</b></span>
->>>>>>> f84962f (Fix CSS path to absolute (/assets/...))
-  </section>
-
-  <section class="grid" id="postGrid" aria-label="Posts"></section>
-
-  <script id="DATA_POSTS" type="application/json">{{POSTS_JSON}}</script>
-  <script id="DATA_TAGS" type="application/json">{{TAGS_JSON}}</script>
-  <script id="DATA_CATS" type="application/json">{{CATS_JSON}}</script>
-
-  <script id="DATA_HOT" type="application/json">{{HOT_JSON}}</script>
-  <script>
-    (function renderHot(){
-      const el = document.getElementById("hotGrid");
-      const dataEl = document.getElementById("DATA_HOT");
-      if(!el || !dataEl) return;
-      let hot = [];
-      try{ hot = JSON.parse(dataEl.textContent || "[]"); }catch(e){ hot = []; }
-      if(!hot.length){
-<<<<<<< HEAD
-        el.innerHTML = '<div class="mini">目前還沒有設定熱門文章（在文章 md 的 frontmatter 加上 views: 123 即可）。</div>';
-=======
-        el.innerHTML = '<div class="mini">?桀????身摰???嚗?? md ??frontmatter ?? views: 123 ?喳嚗?/div>';
->>>>>>> f84962f (Fix CSS path to absolute (/assets/...))
-        return;
-      }
-      el.innerHTML = hot.map(p => `
-        <article class="card">
-          <div class="card-head">
-<<<<<<< HEAD
-            <span class="mini">${p.date || ""} · ${p.category || ""}</span>
-=======
-            <span class="mini">${p.date || ""} 繚 ${p.category || ""}</span>
->>>>>>> f84962f (Fix CSS path to absolute (/assets/...))
-          </div>
-          <h3 class="card-title">${p.title}</h3>
-          <p class="card-excerpt">${p.excerpt || ""}</p>
-          <div class="card-foot">
-            <span class="mini">${(p.tags||[]).slice(0,3).map(t=>"#"+t).join(" ")}</span>
-<<<<<<< HEAD
-            <a class="mini link" href="./post/${p.slug}/">閱讀 →</a>
-=======
-            <a class="mini link" href="./post/${p.slug}/">?梯? ??/a>
->>>>>>> f84962f (Fix CSS path to absolute (/assets/...))
-          </div>
-        </article>
-      `).join("");
-    })();
-  </script>
-
-</main>
-
-<footer class="footer">
-  <div class="container footer-inner">
-<<<<<<< HEAD
-    <span class="mini">© 2026 {{SITE_NAME}} · 自動化專業版</span>
-    <span class="mini">RSS: /rss.xml · Sitemap: /sitemap.xml</span>
-=======
-    <span class="mini">穢 2026 {{SITE_NAME}} 繚 ?芸???璆剔?</span>
-    <span class="mini">RSS: /rss.xml 繚 Sitemap: /sitemap.xml</span>
->>>>>>> f84962f (Fix CSS path to absolute (/assets/...))
   </div>
-</footer>
+</section>
 
-<script src="./assets/js/app.js"></script>
-{{THEME}}
-</body>
-</html>
-<<<<<<< HEAD
-=======
+<section class="section">
+  <div class="section-head">
+    <h2>學習路線（選單）</h2>
+    <p>每個路線至少 2 篇文章起跳，先照路線走，進步會更快。</p>
+  </div>
+  <div class="route-grid" id="menuCards"></div>
+</section>
 
->>>>>>> f84962f (Fix CSS path to absolute (/assets/...))
+<section class="section split">
+  <div>
+    <div class="section-head compact">
+      <h2>精選文章</h2>
+      <p>依瀏覽量/熱門度優先顯示（沒有設定 views 就顯示最新）。</p>
+    </div>
+    <div class="post-grid" id="postGrid"></div>
+    <div class="empty" id="emptyState" hidden>
+      <div class="empty-title">找不到符合的文章</div>
+      <div class="empty-sub">試試看換個關鍵字，或點上面的主題按鈕。</div>
+    </div>
+  </div>
+
+  <aside class="rail">
+    <div class="rail-card">
+      <div class="rail-title">分類總覽</div>
+      <div class="rail-sub">每篇文章都會連回對應分類頁，方便你「沿著主題」繼續讀。</div>
+      <div class="cat-list" id="catList"></div>
+    </div>
+
+    <div class="rail-card tip">
+      <div class="rail-title">閱讀小技巧</div>
+      <ul class="bullets">
+        <li>先看「重點整理」，知道這篇能幫你什麼。</li>
+        <li>再看「原因」，下次遇到才不會重複卡住。</li>
+        <li>最後照步驟做，做完就收工。</li>
+      </ul>
+    </div>
+  </aside>
+</section>
+
+<script type="application/json" id="postsJson">{{POSTS_JSON}}</script>
+<script type="application/json" id="menuJson">{{MENU_JSON}}</script>
+<script type="application/json" id="catsJson">{{CATS_JSON}}</script>

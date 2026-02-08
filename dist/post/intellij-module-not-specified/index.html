@@ -3,76 +3,171 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>module not specified？IntelliJ 常見錯誤一次解決｜Aurora Orbit</title>
-  <meta name="description" content="module not specified？IntelliJ 常見錯誤一次解決" />
+  <title>IntelliJ: Module not specified（白話原因 + 3 步驟修好）｜Aurora Orbit</title>
+  <meta name="description" content="看到 Module not specified 通常不是你程式寫錯，而是 IDE 沒有把專案「當成一個可執行的模組」載入。用重新匯入與設定 Run Configuration 多半能解。" />
   <link rel="canonical" href="https://buildwithlegend.github.io/post/intellij-module-not-specified/" />
-  <link rel="stylesheet" href="../../assets/css/style.css" />
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"module not specified？IntelliJ 常見錯誤一次解決","datePublished":"Sat Feb 07","dateModified":"Sat Feb 07","author":{"@type":"Person","name":"Legend"},"publisher":{"@type":"Organization","name":"Aurora Orbit"},"mainEntityOfPage":"https://buildwithlegend.github.io/post/intellij-module-not-specified/","description":"## 中文版"}</script>
+  <meta name="theme-color" content="#F6B48B" />
+
+  <meta property="og:title" content="IntelliJ: Module not specified（白話原因 + 3 步驟修好）｜Aurora Orbit" />
+  <meta property="og:description" content="看到 Module not specified 通常不是你程式寫錯，而是 IDE 沒有把專案「當成一個可執行的模組」載入。用重新匯入與設定 Run Configuration 多半能解。" />
+  <meta property="og:type" content="website" />
+
+  <link rel="stylesheet" href="/assets/css/style.css" />
 </head>
-<body>
-<header class="topbar">
-  <div class="container topbar-inner">
-    <a class="brand" href="../../"><span class="logo" aria-hidden="true"></span><span>Aurora Orbit</span></a>
-    <nav class="nav" aria-label="Site">
-      <a href="/">首頁</a>
-      <a href="/fix/">錯誤解決</a>
-      <a href="/start/">新手必看</a>
-      <a href="/tools/">工具推薦</a>
-      <a href="/tags/">標籤分類</a>
+
+<body class="page-post">
+  <a class="skip" href="#main">跳到主要內容</a>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="/">
+        <span class="brand-mark" aria-hidden="true">☀️</span>
+        <span class="brand-text">
+          <span class="brand-name">Aurora Orbit</span>
+          <span class="brand-tagline">把踩坑寫成文章，讓 Google 幫你帶人進站。</span>
+        </span>
+      </a>
+
+      <nav class="nav desktop" aria-label="主選單">
+        <a class="nav-link" href="/start/"><span class="nav-emoji">🌱</span>新手入門</a><a class="nav-link" href="/fix/"><span class="nav-emoji">🧯</span>錯誤排除</a><a class="nav-link" href="/tools/"><span class="nav-emoji">🧰</span>開發工具</a><a class="nav-link" href="/backend/"><span class="nav-emoji">🛠️</span>後端實作</a><a class="nav-link" href="/growth/"><span class="nav-emoji">📈</span>成長變現</a>
+        <a class="nav-link subtle" href="/categories/">分類</a>
+        <a class="nav-link subtle" href="/tags/">標籤</a>
+        <a class="nav-link subtle" href="/about/">關於</a>
+      </nav>
+
+      <button class="nav-toggle" aria-label="開啟選單" aria-expanded="false" data-nav-toggle>
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <nav class="nav mobile" aria-label="主選單（手機）" data-nav-panel>
+      <div class="mobile-inner">
+        <a class="nav-link" href="/start/"><span class="nav-emoji">🌱</span>新手入門</a><a class="nav-link" href="/fix/"><span class="nav-emoji">🧯</span>錯誤排除</a><a class="nav-link" href="/tools/"><span class="nav-emoji">🧰</span>開發工具</a><a class="nav-link" href="/backend/"><span class="nav-emoji">🛠️</span>後端實作</a><a class="nav-link" href="/growth/"><span class="nav-emoji">📈</span>成長變現</a>
+        <a class="nav-link subtle" href="/categories/">分類</a>
+        <a class="nav-link subtle" href="/tags/">標籤</a>
+        <a class="nav-link subtle" href="/about/">關於</a>
+      </div>
     </nav>
-    <div class="actions">
-      <span class="kbd">/ 搜尋</span>
-      <button class="iconbtn" type="button" onclick="toggleTheme()" aria-label="Toggle theme"><span id="themeIcon">🌙</span></button>
+  </header>
+
+  <div class="bg-decor" aria-hidden="true">
+    <div class="blob b1"></div>
+    <div class="blob b2"></div>
+    <div class="blob b3"></div>
+  </div>
+
+  <main id="main" class="main">
+    
+<article class="post">
+  <header class="post-head">
+    <h1 class="post-title">IntelliJ: Module not specified（白話原因 + 3 步驟修好）</h1>
+    <div class="post-meta">
+      <span class="meta-item">📅 2026-02-03</span>
+      <span class="meta-item">
+        🧭 路線：<a href="/fix/">錯誤排除</a>
+      </span>
+      <span class="meta-item">
+        🗂️ 分類：<a href="/category/troubleshooting/">錯誤排除</a>
+      </span>
+      <span class="meta-item tags"><a class="pill" href="/tag/intellij/">#IntelliJ</a><a class="pill" href="/tag/tag-3662d5534f/">#錯誤排除</a><a class="pill" href="/tag/java/">#Java</a></span>
+    </div>
+  </header>
+
+  <div class="post-body">
+    <aside class="post-aside">
+      
+    <div class="toc">
+      <div class="toc-title">本頁快速導航</div>
+      <ul>
+        <li class="l2"><a href="#1">1) 這個錯誤在說什麼（白話）</a></li><li class="l2"><a href="#2">2) 最常見原因（依機率排序）</a></li><li class="l2"><a href="#3-3">3) 3 步驟解法（照做就好）</a></li><li class="l3"><a href="#step-1-maven-gradle">Step 1：確認你有用 Maven/Gradle 匯入</a></li><li class="l3"><a href="#step-2-run-configuration">Step 2：重建 Run Configuration</a></li><li class="l3"><a href="#step-3-invalidate-caches">Step 3：Invalidate Caches（最後手段）</a></li><li class="l2"><a href="#4">4) 做完如何確認真的好了？</a></li><li class="l2"><a href="#h-d2bbac70f2">重點整理</a></li>
+      </ul>
+    </div>
+      <div class="aside-card">
+        <div class="aside-title">下一步怎麼走？</div>
+        <div class="aside-sub">建議你從分類繼續讀，主題會更集中。</div>
+        <a class="btn ghost wide" href="/category/troubleshooting/">繼續讀同分類</a>
+        <a class="btn ghost wide" href="/fix/">回到路線列表</a>
+      </div>
+    </aside>
+
+    <div class="post-content prose">
+      <h2 id="1">1) 這個錯誤在說什麼（白話）</h2><p>你按下 Run，IntelliJ 跟你說：</p>
+<blockquote>
+<p>Module not specified</p>
+</blockquote>
+<p>白話翻譯：<br>「我不知道你要跑哪一個模組（module）。」</p>
+<p>很多新手會以為是程式寫錯，但其實通常是 <strong>專案匯入方式</strong> 或 <strong>Run Configuration</strong> 沒設定好。</p>
+<hr>
+<h2 id="2">2) 最常見原因（依機率排序）</h2><ol>
+<li>你是用「開資料夾」的方式打開專案，而不是用 Maven/Gradle 專案匯入  </li>
+<li>你的 Run Configuration 指到不存在的 module  </li>
+<li>IntelliJ 的專案索引（index）壞掉或沒跑完</li>
+</ol>
+<hr>
+<h2 id="3-3">3) 3 步驟解法（照做就好）</h2><h3 id="step-1-maven-gradle">Step 1：確認你有用 Maven/Gradle 匯入</h3><ul>
+<li>看到右側有 Maven 或 Gradle 的工具視窗  </li>
+<li>或 <code>pom.xml</code> / <code>build.gradle</code> 有被識別（會有小圖示）</li>
+</ul>
+<p>如果沒有：<br>用 <code>File → Open</code> 選 <code>pom.xml</code> 重新開。</p>
+<hr>
+<h3 id="step-2-run-configuration">Step 2：重建 Run Configuration</h3><ol>
+<li>右上角 Run 下拉 → <code>Edit Configurations...</code></li>
+<li>找到有問題的設定（或直接刪掉）</li>
+<li>重新新增：<ul>
+<li>Spring Boot 就選 <code>Spring Boot</code></li>
+<li>純 Java main 就選 <code>Application</code></li>
+</ul>
+</li>
+</ol>
+<p>然後確認：</p>
+<ul>
+<li><code>Module</code> 有選到正確專案（通常是 <code>xxx.main</code>）</li>
+</ul>
+<hr>
+<h3 id="step-3-invalidate-caches">Step 3：Invalidate Caches（最後手段）</h3><p>如果你做完 Step 1/2 還是不行：</p>
+<p><code>File → Invalidate Caches / Restart… → Invalidate and Restart</code></p>
+<p>這會讓 IntelliJ 重新索引專案。</p>
+<hr>
+<h2 id="4">4) 做完如何確認真的好了？</h2><p>你按 Run 之後應該看到：</p>
+<ul>
+<li>Console 開始跑 log</li>
+<li>或至少 main 方法有被執行</li>
+</ul>
+<hr>
+<h2 id="h-d2bbac70f2">重點整理</h2><ul>
+<li>這個錯誤多半是 IDE 設定，不是程式碼</li>
+<li>先重新用 Maven/Gradle 匯入，再重建 Run Configuration</li>
+<li>真的卡住才用 Invalidate Caches</li>
+</ul>
+
+      <div class="callout">
+        <div class="callout-title">重點提醒</div>
+        <div class="callout-body">
+          如果你照著做還是卡住，通常是「環境差異」或「依賴版本」造成。
+          先把錯誤訊息（前後 20 行）貼到搜尋或對照本網站的錯誤排除文章，會快很多。
+        </div>
+      </div>
     </div>
   </div>
-</header>
+</article>
 
-<main class="container page">
-  <div class="panel prose">
-    <div class="meta">Sat Feb 07 · 錯誤解決 · #IntelliJ #Maven</div>
-    <h1>module not specified？IntelliJ 常見錯誤一次解決</h1>
-    <div class="toc"><b>目錄</b><a class="toc-link h2" href="#中文版">中文版</a><a class="toc-link h3" href="#解法">解法</a><a class="toc-link h2" href="#english-version">English Version</a><a class="toc-link h3" href="#module-not-specified-intellij-fix">module not specified — IntelliJ Fix</a></div>
-    <div><h2 id="中文版">中文版</h2><p>看到這個錯誤通常會嚇一跳：</p>
-<pre><code>Error: module not specified
-</code></pre>
-<p>其實只是 IntelliJ 找不到你的模組。</p>
-<h3 id="解法">解法</h3><p>重新匯入專案：</p>
-<p>👉 File → Open → 選 <strong>pom.xml</strong></p>
-<p>不要直接開資料夾。</p>
-<hr>
-<h2 id="english-version">English Version</h2><h3 id="module-not-specified-intellij-fix">module not specified — IntelliJ Fix</h3><p>Cause: IntelliJ cannot detect the module.</p>
-<p><strong>Fix:</strong><br>Open the <code>pom.xml</code> instead of the folder.</p>
-</div>
-    <hr/>
-    <p><a class="btn" href="../../">← 回首頁</a></p>
-  </div>
-</main>
-<footer class="footer">
-  <div class="container footer-inner">
-    <span class="mini">© 2026 Aurora Orbit</span>
-    <span class="mini">分享到社群：直接複製網址即可</span>
-  </div>
-</footer>
-<script>
-  (function initTheme(){
-    const saved=localStorage.getItem("theme");
-    if(saved) document.documentElement.setAttribute("data-theme", saved);
-    else {
-      const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
-      document.documentElement.setAttribute("data-theme", prefersLight ? "light" : "dark");
-    }
-    const el=document.getElementById("themeIcon");
-    if(el) el.textContent = (document.documentElement.getAttribute("data-theme")==="dark") ? "🌙" : "☀️";
-  })();
-  function toggleTheme(){
-    const cur=document.documentElement.getAttribute("data-theme")||"dark";
-    const next=cur==="dark"?"light":"dark";
-    document.documentElement.setAttribute("data-theme", next);
-    localStorage.setItem("theme", next);
-    const el=document.getElementById("themeIcon");
-    if(el) el.textContent = next==="dark"?"🌙":"☀️";
-  }
-</script>
+  </main>
 
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <div class="footer-title">把踩坑寫成文章，把經驗變成資產。</div>
+        <div class="footer-sub">文章採「白話 + 可複製步驟」風格，方便你快速解決問題。</div>
+      </div>
+      <div class="footer-right">
+        <a class="footer-link" href="/rss.xml">RSS</a>
+        <a class="footer-link" href="/sitemap.xml">Sitemap</a>
+        <a class="footer-link" href="/about/">關於</a>
+      </div>
+    </div>
+    <div class="footer-bottom">© Aurora Orbit · Built with a tiny SSG</div>
+  </footer>
+
+  <script src="/assets/js/app.js" defer></script>
 </body>
 </html>

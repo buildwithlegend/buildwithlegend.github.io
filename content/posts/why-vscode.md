@@ -1,51 +1,80 @@
-<<<<<<< HEAD
-﻿---
-=======
 ---
->>>>>>> f84962f (Fix CSS path to absolute (/assets/...))
-title: 為什麼我推薦 VS Code？工程師必裝神器
-date: 2026-02-07
-category: 工具推薦
-tags: [VS Code]
-views: 200
-section: tools
-<<<<<<< HEAD
+title: 為什麼大家都用 VS Code？新手該怎麼設定才不會迷路
+date: '2026-02-05'
 slug: why-vscode
-=======
->>>>>>> f84962f (Fix CSS path to absolute (/assets/...))
+section: tools
+category: 工具推薦
+category_slug: dev-tools
+tags:
+- VS Code
+- 工具
+- 新手
+views: 120
+excerpt: VS Code 的強項是：輕量、外掛多、跨語言。新手不用一次裝滿外掛，先做到「能寫、能跑、能 debug」就夠。
 ---
 
-## 中文版
+## 1) VS Code 強在哪？一句話
 
-如果只能推薦一套編輯器：  
-👉 我會選 VS Code。
-
-原因：
-
-- 免費  
-- 快  
-- 插件超多  
-
-下載：  
-https://code.visualstudio.com/
+VS Code 是「輕量但可擴充」的編輯器。  
+你可以把它想成：**基本款很好用，想要更強就加外掛**。
 
 ---
 
-## English Version
+## 2) 新手最容易踩坑：外掛裝太多
 
-If I could recommend only one editor:
+很多人一開始就搜尋「VS Code 必裝外掛」然後裝 30 個，結果：
 
-👉 VS Code.
+- 變慢
+- 互相衝突
+- 你根本不知道哪個在做什麼
 
-Why?
+新手策略：  
+✅ 先裝 3 個就好  
+✅ 先把「可寫、可跑、可看錯誤」做起來
 
-- Free  
-- Fast  
-- Huge extension ecosystem  
+---
 
-Download:  
-https://code.visualstudio.com/
-<<<<<<< HEAD
+## 3) 新手建議的最小外掛組合（3 個）
 
-=======
->>>>>>> f84962f (Fix CSS path to absolute (/assets/...))
+### (1) 中文語系（可選）
+- 目的：介面看得懂，減少挫折
+
+### (2) Prettier（格式化）
+- 目的：排版自動整理，團隊協作不吵架
+
+### (3) 你正在學的語言外掛（例如 Java / Python）
+- 目的：補完、提示、跳轉
+
+> 先不要追求「很帥」，先追求「能用」。
+
+---
+
+## 4) 3 個你一定要學會的快捷鍵
+
+（Windows / Linux）
+
+- `Ctrl + P`：快速開檔（超常用）
+- `Ctrl + Shift + P`：開指令面板（找功能不用翻）
+- `Ctrl + /`：註解（Debug 超快）
+
+---
+
+## 5) 建議你做一個「新手不迷路」的設定
+
+### 把專案的設定放進 `.vscode/`
+
+你可以在專案根目錄建立：
+
+- `.vscode/settings.json`
+
+好處是：  
+✅ 同一個專案，大家設定一致  
+✅ 你換電腦也不會忘記
+
+---
+
+## 重點整理
+
+- VS Code = 輕量 + 外掛擴充
+- 新手別裝一堆外掛：先 3 個就夠
+- 先做到：能寫 / 能跑 / 能看到錯誤
