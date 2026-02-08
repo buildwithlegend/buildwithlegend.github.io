@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>關於｜Aurora Orbit</title>
+  <meta name="description" content="如何寫出可搜尋、可分享、可變現的技術內容。" />
+  <link rel="canonical" href="https://buildwithlegend.github.io/about/" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+</head>
+<body>
+<header class="topbar">
+  <div class="container topbar-inner">
+    <a class="brand" href="../"><span class="logo" aria-hidden="true"></span><span>Aurora Orbit</span></a>
+    <nav class="nav" aria-label="Site">
+      <a href="/">首頁</a>
+      <a href="/fix/">錯誤解決</a>
+      <a href="/start/">新手必看</a>
+      <a href="/tools/">工具推薦</a>
+      <a href="/tags/">標籤分類</a>
+    </nav>
+    <div class="actions">
+      <span class="kbd">/ 搜尋</span>
+      <button class="iconbtn" type="button" onclick="toggleTheme()" aria-label="Toggle theme"><span id="themeIcon">🌙</span></button>
+    </div>
+  </div>
+</header>
+
+<main class="container page">
+  <div class="panel prose">
+    <h1>專業級「自動化內容系統」</h1>
+    <p>你只要做一件事：<strong>新增一篇 Markdown</strong>。其餘全部自動：</p>
+    <ul>
+      <li>首頁列表（含搜尋/篩選）</li>
+      <li>標籤頁、分類頁</li>
+      <li>RSS / sitemap.xml / robots.txt</li>
+      <li>GitHub Actions 自動部署到 Pages</li>
+    </ul>
+    <h2>文章模板（你照抄就會被搜到）</h2>
+    <blockquote>
+      我遇到什麼問題？（錯誤訊息）<br/>
+      為什麼會發生？（一句話原因）<br/>
+      我怎麼解決？（步驟列表）<br/>
+      我踩過哪些雷？（避免走冤枉路）
+    </blockquote>
+    <p><a class="btn primary" href="../">回首頁 →</a></p>
+  </div>
+</main>
+<footer class="footer">
+  <div class="container footer-inner">
+    <span class="mini">© 2026 Aurora Orbit</span>
+    <span class="mini">你寫文章，系統自動管理</span>
+  </div>
+</footer>
+<script>
+  (function initTheme(){
+    const saved=localStorage.getItem("theme");
+    if(saved) document.documentElement.setAttribute("data-theme", saved);
+    else {
+      const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+      document.documentElement.setAttribute("data-theme", prefersLight ? "light" : "dark");
+    }
+    const el=document.getElementById("themeIcon");
+    if(el) el.textContent = (document.documentElement.getAttribute("data-theme")==="dark") ? "🌙" : "☀️";
+  })();
+  function toggleTheme(){
+    const cur=document.documentElement.getAttribute("data-theme")||"dark";
+    const next=cur==="dark"?"light":"dark";
+    document.documentElement.setAttribute("data-theme", next);
+    localStorage.setItem("theme", next);
+    const el=document.getElementById("themeIcon");
+    if(el) el.textContent = next==="dark"?"🌙":"☀️";
+  }
+</script>
+
+</body>
+</html>
