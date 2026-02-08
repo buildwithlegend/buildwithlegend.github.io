@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{TITLE}}｜{{SITE_NAME}}</title>
+  <meta name="description" content="{{TITLE}}" />
+  <link rel="canonical" href="{{CANONICAL}}" />
+  <link rel="stylesheet" href="../../assets/css/style.css" />
+  {{JSON_LD}}
+</head>
+<body>
+<header class="topbar">
+  <div class="container topbar-inner">
+    <a class="brand" href="../../"><span class="logo" aria-hidden="true"></span><span>{{SITE_NAME}}</span></a>
+    <nav class="nav" aria-label="Site">
+      <a href="/">首頁</a>
+      <a href="/fix/">錯誤解決</a>
+      <a href="/start/">新手必看</a>
+      <a href="/tools/">工具推薦</a>
+      <a href="/tags/">標籤分類</a>
+    </nav>
+    <div class="actions">
+      <span class="kbd">/ 搜尋</span>
+      <button class="iconbtn" type="button" onclick="toggleTheme()" aria-label="Toggle theme"><span id="themeIcon">🌙</span></button>
+    </div>
+  </div>
+</header>
+
+<main class="container page">
+  <div class="panel prose">
+    <div class="meta">{{META}}</div>
+    <h1>{{TITLE}}</h1>
+    {{TOC}}
+    <div>{{BODY}}</div>
+    <hr/>
+    <p><a class="btn" href="../../">← 回首頁</a></p>
+  </div>
+</main>
+<footer class="footer">
+  <div class="container footer-inner">
+    <span class="mini">© 2026 {{SITE_NAME}}</span>
+    <span class="mini">分享到社群：直接複製網址即可</span>
+  </div>
+</footer>
+{{THEME}}
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{TITLE}}｜{{SITE_NAME}}</title>
+  <meta name="description" content="{{DESC}}" />
+  <link rel="canonical" href="{{CANONICAL}}" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+</head>
+<body>
+<header class="topbar">
+  <div class="container topbar-inner">
+    <a class="brand" href="/"><span class="logo" aria-hidden="true"></span><span>{{SITE_NAME}}</span></a>
+    <nav class="nav" aria-label="Site">
+      <a href="/">首頁</a>
+      <a href="/fix/">錯誤解決</a>
+      <a href="/start/">新手必看</a>
+      <a href="/tools/">工具推薦</a>
+      <a href="/tags/">標籤分類</a>
+    </nav>
+    <div class="actions">
+      <span class="kbd">/ 搜尋</span>
+      <button class="iconbtn" type="button" onclick="toggleTheme()" aria-label="Toggle theme"><span id="themeIcon">🌙</span></button>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <section class="hero">
+    <div class="panel hero-main">
+      <div class="hero-content">
+        <h1>{{TITLE}}</h1>
+        <p class="sub">{{DESC}}</p>
+        <div class="pills">
+          <span class="pill">精選入口</span>
+          <span class="pill">可長期排名</span>
+          <span class="pill">可放置變現連結</span>
+        </div>
+      </div>
+    </div>
+    <div class="panel hero-side">
+      <div class="metric"><span class="mini">文章數</span><b id="count">0</b></div>
+      <div class="metric"><span class="mini">提示</span><b>先挑一篇開始</b></div>
+      <div class="mini" style="margin-top:10px">想讓文章出現在這頁：在 md frontmatter 設 <b>section</b> 或 <b>category</b> 或 <b>tag</b></div>
+    </div>
+  </section>
+
+  <section class="grid" id="postGrid" aria-label="Posts"></section>
+
+  <script id="DATA_POSTS" type="application/json">{{POSTS_JSON}}</script>
+</main>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <span class="mini">© 2026 {{SITE_NAME}}</span>
+    <span class="mini"><a class="mini link" href="/rss.xml">RSS</a> · <a class="mini link" href="/sitemap.xml">Sitemap</a></span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const grid = document.getElementById("postGrid");
+  const dataEl = document.getElementById("DATA_POSTS");
+  const countEl = document.getElementById("count");
+  if(!grid || !dataEl) return;
+  let posts = [];
+  try{ posts = JSON.parse(dataEl.textContent || "[]"); }catch(e){ posts = []; }
+  if(countEl) countEl.textContent = String(posts.length);
+  if(!posts.length){
+    grid.innerHTML = '<div class="mini">目前還沒有文章被歸類到這個專區。你可以在文章 md 的 frontmatter 加上：<b>section: fix/start/tools</b> 或把 <b>category</b> 設成對應名稱。</div>';
+    return;
+  }
+  grid.innerHTML = posts.map(p => `
+    <article class="card">
+      <div class="card-head">
+        <span class="mini">${p.date || ""} · ${p.category || ""}</span>
+      </div>
+      <h3 class="card-title">${p.title}</h3>
+      <p class="card-excerpt">${p.excerpt || ""}</p>
+      <div class="card-foot">
+        <span class="mini">${(p.tags||[]).slice(0,4).map(t=>"#"+t).join(" ")}</span>
+        <a class="mini link" href="/post/${p.slug}/">閱讀 →</a>
+      </div>
+    </article>
+  `).join("");
+})();
+</script>
+
+{{THEME}}
+</body>
+</html>
