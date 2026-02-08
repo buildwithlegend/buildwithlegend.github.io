@@ -28,7 +28,9 @@ jobs:
       - name: Install
         run: |
           npm config set registry https://registry.npmjs.org/
-          npm config set fetch-retries 5
+          npm config set prefer-online true
+          npm config set maxsockets 1
+          npm config set fetch-retries 10
           npm config set fetch-retry-mintimeout 20000
           npm config set fetch-retry-maxtimeout 120000
           npm ci --no-audit --fund=false
