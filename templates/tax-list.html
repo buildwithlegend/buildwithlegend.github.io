@@ -1,30 +1,18 @@
-<<<<<<< HEAD
 <!doctype html>
-=======
-﻿<!doctype html>
->>>>>>> f84962f (Fix CSS path to absolute (/assets/...))
 <html lang="zh-Hant">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-<<<<<<< HEAD
   <title>{{TITLE}}｜{{SITE_NAME}}</title>
   <meta name="description" content="{{TITLE}}文章列表" />
   <link rel="canonical" href="{{CANONICAL}}" />
-  <link rel="stylesheet" href="../../assets/css/style.css" />
-=======
-  <title>{{TITLE}}嚚{SITE_NAME}}</title>
-  <meta name="description" content="{{TITLE}}???”" />
-  <link rel="canonical" href="{{CANONICAL}}" />
   <link rel="stylesheet" href="/assets/css/style.css" />
->>>>>>> f84962f (Fix CSS path to absolute (/assets/...))
 </head>
 <body>
 <header class="topbar">
   <div class="container topbar-inner">
-    <a class="brand" href="../../"><span class="logo" aria-hidden="true"></span><span>{{SITE_NAME}}</span></a>
+    <a class="brand" href="/"><span class="logo" aria-hidden="true"></span><span>{{SITE_NAME}}</span></a>
     <nav class="nav">
-<<<<<<< HEAD
       <a href="/">首頁</a>
       <a href="/fix/">錯誤解決</a>
       <a href="/start/">新手必看</a>
@@ -33,16 +21,6 @@
     </nav>
     <div class="actions">
       <button class="iconbtn" type="button" onclick="toggleTheme()"><span id="themeIcon">🌙</span></button>
-=======
-      <a href="/">擐?</a>
-      <a href="/fix/">?航炊閫?捱</a>
-      <a href="/start/">?唳?敹?</a>
-      <a href="/tools/">撌亙?刻</a>
-      <a href="/tags/">璅惜??</a>
-    </nav>
-    <div class="actions">
-      <button class="iconbtn" type="button" onclick="toggleTheme()"><span id="themeIcon">??</span></button>
->>>>>>> f84962f (Fix CSS path to absolute (/assets/...))
     </div>
   </div>
 </header>
@@ -51,20 +29,12 @@
   <div class="panel prose">
     <h1>{{TITLE}}</h1>
     <div class="grid" id="grid"></div>
-<<<<<<< HEAD
     <p><a class="btn" href="../../">← 回首頁</a></p>
-=======
-    <p><a class="btn" href="../../">??????/a></p>
->>>>>>> f84962f (Fix CSS path to absolute (/assets/...))
   </div>
 </main>
 
 <footer class="footer"><div class="container footer-inner">
-<<<<<<< HEAD
   <span class="mini">© 2026 {{SITE_NAME}}</span><span class="mini">Auto generated</span>
-=======
-  <span class="mini">穢 2026 {{SITE_NAME}}</span><span class="mini">Auto generated</span>
->>>>>>> f84962f (Fix CSS path to absolute (/assets/...))
 </div></footer>
 
 <script>
@@ -73,21 +43,13 @@
   grid.innerHTML = posts.map(p => `
     <article class="card">
       <div class="card-body">
-<<<<<<< HEAD
         <div class="meta">${p.date} · ${p.category}</div>
-=======
-        <div class="meta">${p.date} 繚 ${p.category}</div>
->>>>>>> f84962f (Fix CSS path to absolute (/assets/...))
-        <h2><a href="../../post/${p.slug}/">${p.title}</a></h2>
+        <h2><a href="/post/${p.slug}/">${p.title}</a></h2>
         <p class="excerpt">${p.excerpt}</p>
       </div>
       <div class="card-footer">
         <div class="tagrow">${p.tags.map(t=>`<span class="tag">#${t}</span>`).join("")}</div>
-<<<<<<< HEAD
-        <a class="read" href="../../post/${p.slug}/">閱讀 →</a>
-=======
-        <a class="read" href="../../post/${p.slug}/">?梯? ??/a>
->>>>>>> f84962f (Fix CSS path to absolute (/assets/...))
+        <a class="read" href="/post/${p.slug}/">閱讀 →</a>
       </div>
     </article>
   `).join("");
@@ -95,7 +57,3 @@
 {{THEME}}
 </body>
 </html>
-<<<<<<< HEAD
-=======
-
->>>>>>> f84962f (Fix CSS path to absolute (/assets/...))

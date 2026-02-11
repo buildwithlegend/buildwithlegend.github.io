@@ -1,5 +1,6 @@
-﻿node_modules/
-dist/
-templates.bak/
-.idea/
 .DS_Store
+.idea/
+dist/
+node_modules/
+templates.bak/
+﻿node_modules/

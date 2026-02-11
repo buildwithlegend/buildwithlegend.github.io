@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 <script>
-=======
-﻿<script>
->>>>>>> f84962f (Fix CSS path to absolute (/assets/...))
   (function initTheme(){
     const saved=localStorage.getItem("theme");
     if(saved) document.documentElement.setAttribute("data-theme", saved);
@@ -11,11 +7,7 @@
       document.documentElement.setAttribute("data-theme", prefersLight ? "light" : "dark");
     }
     const el=document.getElementById("themeIcon");
-<<<<<<< HEAD
     if(el) el.textContent = (document.documentElement.getAttribute("data-theme")==="dark") ? "🌙" : "☀️";
-=======
-    if(el) el.textContent = (document.documentElement.getAttribute("data-theme")==="dark") ? "??" : "?儭?;
->>>>>>> f84962f (Fix CSS path to absolute (/assets/...))
   })();
   function toggleTheme(){
     const cur=document.documentElement.getAttribute("data-theme")||"dark";
@@ -23,13 +15,6 @@
     document.documentElement.setAttribute("data-theme", next);
     localStorage.setItem("theme", next);
     const el=document.getElementById("themeIcon");
-<<<<<<< HEAD
     if(el) el.textContent = next==="dark"?"🌙":"☀️";
   }
 </script>
-=======
-    if(el) el.textContent = next==="dark"?"??":"?儭?;
-  }
-</script>
-
->>>>>>> f84962f (Fix CSS path to absolute (/assets/...))

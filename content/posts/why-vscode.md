@@ -1,18 +1,11 @@
-<<<<<<< HEAD
-﻿---
-=======
 ---
->>>>>>> f84962f (Fix CSS path to absolute (/assets/...))
 title: 為什麼我推薦 VS Code？工程師必裝神器
 date: 2026-02-07
 category: 工具推薦
 tags: [VS Code]
 views: 200
 section: tools
-<<<<<<< HEAD
 slug: why-vscode
-=======
->>>>>>> f84962f (Fix CSS path to absolute (/assets/...))
 ---
 
 ## 中文版
@@ -45,7 +38,4 @@ Why?
 
 Download:  
 https://code.visualstudio.com/
-<<<<<<< HEAD
 
-=======
->>>>>>> f84962f (Fix CSS path to absolute (/assets/...))
