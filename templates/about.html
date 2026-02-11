@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!doctype html>
 <html lang="zh-Hant">
 <head>
@@ -22,10 +23,35 @@
     <div class="actions">
       <span class="kbd">/ 搜尋</span>
       <button class="iconbtn" type="button" onclick="toggleTheme()" aria-label="Toggle theme"><span id="themeIcon">🌙</span></button>
+=======
+
+<section class="hero hero-about">
+  <div class="hero-content">
+    <div class="eyebrow">👋 關於這個網站</div>
+    <h1>寫給正在學的人</h1>
+    <p class="lead">
+      我把自己遇到的坑整理成「可複製的步驟」，希望你在卡住的時候，可以 10 分鐘內找到方向。
+      這不是教科書，而是「做過的人」留下的路標。
+    </p>
+
+    <div class="about-cards">
+      <div class="about-card">
+        <div class="k">文章格式</div>
+        <div class="v">問題 → 原因 → 步驟 → 重點整理</div>
+      </div>
+      <div class="about-card">
+        <div class="k">風格</div>
+        <div class="v">白話、例子多、可直接照做</div>
+      </div>
+      <div class="about-card">
+        <div class="k">目的</div>
+        <div class="v">讓你少走彎路，把時間花在真正有價值的地方</div>
+      </div>
+>>>>>>> cf7d887afd57a6ca0afd9bfaf7f496383a1ce104
     </div>
   </div>
-</header>
 
+<<<<<<< HEAD
 <main class="container page">
   <div class="panel prose">
     <h1>專業級「自動化內容系統」</h1>
@@ -55,3 +81,36 @@
 {{THEME}}
 </body>
 </html>
+=======
+  <div class="hero-side">
+    <div class="glass-card">
+      <div class="glass-title">你可以怎麼用？</div>
+      <ol class="panic">
+        <li>先選一條路線（選單）</li>
+        <li>遇到錯誤就看錯誤排除</li>
+        <li>想深入就從分類一路讀下去</li>
+      </ol>
+      <a class="btn primary wide" href="/">回首頁</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <h2>路線導覽</h2>
+    <p>每條路線至少 2 篇文章起跳，讓你不是「看完就沒了」。</p>
+  </div>
+  <div class="route-grid" id="menuCards"></div>
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <h2>分類快速入口</h2>
+    <p>想集中補某個主題，從分類開始最快。</p>
+  </div>
+  <div class="cat-cards" id="catCards"></div>
+</section>
+
+<script type="application/json" id="menuJson">{{MENU_JSON}}</script>
+<script type="application/json" id="catsJson">{{CATS_JSON}}</script>
+>>>>>>> cf7d887afd57a6ca0afd9bfaf7f496383a1ce104

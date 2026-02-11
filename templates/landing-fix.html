@@ -1,0 +1,51 @@
+
+<section class="hero hero-fix">
+  <div class="hero-content">
+    <div class="eyebrow">{{ICON}} 路線 02</div>
+    <h1>{{TITLE}}</h1>
+    <p class="lead">{{DESC}}</p>
+
+    <div class="console">
+      <div class="console-top">
+        <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+        <span class="console-title">debug-console</span>
+      </div>
+      <pre class="console-body"><code>錯誤訊息看不懂？先做兩件事：
+1) 把「真正的錯誤行」找出來（通常在最後 20 行）
+2) 把錯誤拆成：現象 / 原因 / 解法
+
+這個路線的文章會直接把你要做的步驟寫出來 ✅</code></pre>
+    </div>
+  </div>
+
+  <div class="hero-side">
+    <div class="panic-card">
+      <div class="panic-title">急救包（3分鐘）</div>
+      <ol class="panic">
+        <li>先複製錯誤訊息 + 前後 20 行</li>
+        <li>確認：是編譯失敗？啟動失敗？連線失敗？</li>
+        <li>用本路線文章對照 → 先讓它跑起來</li>
+      </ol>
+      <a class="btn ghost wide" href="/tags/">用標籤快速找</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <h2>常見錯誤文章</h2>
+    <p>每篇都會用「白話」解釋原因，並附上可直接照做的修正步驟。</p>
+  </div>
+  <div class="post-grid" id="postGrid"></div>
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <h2>相關分類</h2>
+    <p>把同類型錯誤集中起來，方便你一次補齊。</p>
+  </div>
+  <div class="cat-cards" id="catCards"></div>
+</section>
+
+<script type="application/json" id="postsJson">{{POSTS_JSON}}</script>
+<script type="application/json" id="catsJson">{{CATS_JSON}}</script>

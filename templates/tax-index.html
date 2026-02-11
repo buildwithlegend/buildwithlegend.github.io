@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!doctype html>
 <html lang="zh-Hant">
 <head>
@@ -21,17 +22,32 @@
     </nav>
     <div class="actions">
       <button class="iconbtn" type="button" onclick="toggleTheme()"><span id="themeIcon">🌙</span></button>
+=======
+
+<section class="hero hero-tax">
+  <div class="hero-content">
+    <div class="eyebrow">🧭 導覽</div>
+    <h1>{{TITLE}}</h1>
+    <p class="lead">用{{TITLE}}快速找到你要的文章。點進去就是文章清單。</p>
+  </div>
+  <div class="hero-side">
+    <div class="glass-card">
+      <div class="glass-title">小技巧</div>
+      <ul class="bullets">
+        <li>想照路線讀：去「新手入門 / 錯誤排除 / 工具 / 後端 / 成長」。</li>
+        <li>想沿著主題讀：用「分類」。</li>
+        <li>想關鍵字跳讀：用「標籤」。</li>
+      </ul>
+>>>>>>> cf7d887afd57a6ca0afd9bfaf7f496383a1ce104
     </div>
   </div>
-</header>
+</section>
 
-<main class="container page">
-  <div class="panel prose">
-    <h1>{{TITLE}}</h1>
-    <div id="list"></div>
-  </div>
-</main>
+<section class="section">
+  <div class="tax-grid" id="taxGrid"></div>
+</section>
 
+<<<<<<< HEAD
 <footer class="footer"><div class="container footer-inner">
   <span class="mini">© 2026 {{SITE_NAME}}</span><span class="mini">Auto generated</span>
 </div></footer>
@@ -58,3 +74,7 @@
 {{THEME}}
 </body>
 </html>
+=======
+<script type="application/json" id="itemsJson">{{ITEMS_JSON}}</script>
+<script>window.__TAX_KIND__ = "{{KIND}}";</script>
+>>>>>>> cf7d887afd57a6ca0afd9bfaf7f496383a1ce104

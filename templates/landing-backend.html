@@ -1,0 +1,48 @@
+
+<section class="hero hero-backend">
+  <div class="hero-content">
+    <div class="eyebrow">{{ICON}} 路線 04</div>
+    <h1>{{TITLE}}</h1>
+    <p class="lead">{{DESC}}</p>
+
+    <div class="code-card">
+      <div class="code-title">你會在這裡學到的「最小可跑」</div>
+      <pre><code>✅ 能啟動
+✅ 能看懂 log
+✅ 能導入依賴（Maven/Gradle）
+✅ 能跑一個 API
+✅ 能用 Postman 測試</code></pre>
+    </div>
+  </div>
+
+  <div class="hero-side">
+    <div class="metric-card">
+      <div class="metric-title">後端新手最常卡住的 3 件事</div>
+      <div class="metrics">
+        <div class="m"><div class="k">依賴</div><div class="v">Maven/Gradle</div></div>
+        <div class="m"><div class="k">設定</div><div class="v">port / profile</div></div>
+        <div class="m"><div class="k">啟動</div><div class="v">log 看不懂</div></div>
+      </div>
+      <div class="metric-sub">文章會把它拆成可照做的步驟。</div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <h2>後端文章</h2>
+    <p>以「能跑起來」為優先，並補上你需要的概念。</p>
+  </div>
+  <div class="post-grid" id="postGrid"></div>
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <h2>相關分類</h2>
+    <p>想沿著同一個主題往下挖？從分類進去最省時間。</p>
+  </div>
+  <div class="cat-cards" id="catCards"></div>
+</section>
+
+<script type="application/json" id="postsJson">{{POSTS_JSON}}</script>
+<script type="application/json" id="catsJson">{{CATS_JSON}}</script>

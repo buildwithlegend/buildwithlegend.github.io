@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <script>
   (function initTheme(){
     const saved=localStorage.getItem("theme");
@@ -18,3 +19,85 @@
     if(el) el.textContent = next==="dark"?"🌙":"☀️";
   }
 </script>
+=======
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{PAGE_TITLE}}</title>
+  <meta name="description" content="{{PAGE_DESC}}" />
+  <link rel="canonical" href="{{CANONICAL}}" />
+  <meta name="theme-color" content="#F6B48B" />
+
+  <meta property="og:title" content="{{PAGE_TITLE}}" />
+  <meta property="og:description" content="{{PAGE_DESC}}" />
+  <meta property="og:type" content="website" />
+
+  <link rel="stylesheet" href="/assets/css/style.css" />
+</head>
+
+<body class="{{BODY_CLASS}}">
+  <a class="skip" href="#main">跳到主要內容</a>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="/">
+        <span class="brand-mark" aria-hidden="true">☀️</span>
+        <span class="brand-text">
+          <span class="brand-name">{{SITE_NAME}}</span>
+          <span class="brand-tagline">{{SITE_TAGLINE}}</span>
+        </span>
+      </a>
+
+      <nav class="nav desktop" aria-label="主選單">
+        {{NAV_ITEMS}}
+        <a class="nav-link subtle" href="/categories/">分類</a>
+        <a class="nav-link subtle" href="/tags/">標籤</a>
+        <a class="nav-link subtle" href="/about/">關於</a>
+      </nav>
+
+      <button class="nav-toggle" aria-label="開啟選單" aria-expanded="false" data-nav-toggle>
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <nav class="nav mobile" aria-label="主選單（手機）" data-nav-panel>
+      <div class="mobile-inner">
+        {{NAV_ITEMS}}
+        <a class="nav-link subtle" href="/categories/">分類</a>
+        <a class="nav-link subtle" href="/tags/">標籤</a>
+        <a class="nav-link subtle" href="/about/">關於</a>
+      </div>
+    </nav>
+  </header>
+
+  <div class="bg-decor" aria-hidden="true">
+    <div class="blob b1"></div>
+    <div class="blob b2"></div>
+    <div class="blob b3"></div>
+  </div>
+
+  <main id="main" class="main">
+    {{CONTENT}}
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <div class="footer-title">把踩坑寫成文章，把經驗變成資產。</div>
+        <div class="footer-sub">文章採「白話 + 可複製步驟」風格，方便你快速解決問題。</div>
+      </div>
+      <div class="footer-right">
+        <a class="footer-link" href="/rss.xml">RSS</a>
+        <a class="footer-link" href="/sitemap.xml">Sitemap</a>
+        <a class="footer-link" href="/about/">關於</a>
+      </div>
+    </div>
+    <div class="footer-bottom">© {{SITE_NAME}} · Built with a tiny SSG</div>
+  </footer>
+
+  <script src="/assets/js/app.js" defer></script>
+</body>
+</html>
+>>>>>>> cf7d887afd57a6ca0afd9bfaf7f496383a1ce104

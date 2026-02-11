@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Aurora Orbit</title>
+  <meta name="description" content="溫暖但專業的技術雜誌：新手入門、錯誤排除、工具推薦、後端實作、成長變現。" />
+  <link rel="canonical" href="https://buildwithlegend.github.io/" />
+  <meta name="theme-color" content="#F6B48B" />
+
+  <meta property="og:title" content="Aurora Orbit" />
+  <meta property="og:description" content="溫暖但專業的技術雜誌：新手入門、錯誤排除、工具推薦、後端實作、成長變現。" />
+  <meta property="og:type" content="website" />
+
+  <link rel="stylesheet" href="/assets/css/style.css" />
+</head>
+
+<body class="page-home">
+  <a class="skip" href="#main">跳到主要內容</a>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="/">
+        <span class="brand-mark" aria-hidden="true">☀️</span>
+        <span class="brand-text">
+          <span class="brand-name">Aurora Orbit</span>
+          <span class="brand-tagline">把踩坑寫成文章，讓 Google 幫你帶人進站。</span>
+        </span>
+      </a>
+
+      <nav class="nav desktop" aria-label="主選單">
+        <a class="nav-link" href="/start/"><span class="nav-emoji">🌱</span>新手入門</a><a class="nav-link" href="/fix/"><span class="nav-emoji">🧯</span>錯誤排除</a><a class="nav-link" href="/tools/"><span class="nav-emoji">🧰</span>開發工具</a><a class="nav-link" href="/backend/"><span class="nav-emoji">🛠️</span>後端實作</a><a class="nav-link" href="/growth/"><span class="nav-emoji">📈</span>成長變現</a>
+        <a class="nav-link subtle" href="/categories/">分類</a>
+        <a class="nav-link subtle" href="/tags/">標籤</a>
+        <a class="nav-link subtle" href="/about/">關於</a>
+      </nav>
+
+      <button class="nav-toggle" aria-label="開啟選單" aria-expanded="false" data-nav-toggle>
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <nav class="nav mobile" aria-label="主選單（手機）" data-nav-panel>
+      <div class="mobile-inner">
+        <a class="nav-link" href="/start/"><span class="nav-emoji">🌱</span>新手入門</a><a class="nav-link" href="/fix/"><span class="nav-emoji">🧯</span>錯誤排除</a><a class="nav-link" href="/tools/"><span class="nav-emoji">🧰</span>開發工具</a><a class="nav-link" href="/backend/"><span class="nav-emoji">🛠️</span>後端實作</a><a class="nav-link" href="/growth/"><span class="nav-emoji">📈</span>成長變現</a>
+        <a class="nav-link subtle" href="/categories/">分類</a>
+        <a class="nav-link subtle" href="/tags/">標籤</a>
+        <a class="nav-link subtle" href="/about/">關於</a>
+      </div>
+    </nav>
+  </header>
+
+  <div class="bg-decor" aria-hidden="true">
+    <div class="blob b1"></div>
+    <div class="blob b2"></div>
+    <div class="blob b3"></div>
+  </div>
+
+  <main id="main" class="main">
+    
+<section class="hero hero-home">
+  <div class="hero-content">
+    <div class="eyebrow">溫暖技術雜誌</div>
+    <h1>把「看不懂的錯誤」翻成白話<br/>把「學過就忘」變成可回來查的筆記</h1>
+    <p class="lead">
+      這裡的文章都用同一套格式：<b>問題是什麼 → 為什麼會發生 → 3~5 步驟解法 → 重點整理</b>。
+      你不用背，遇到再回來找就好。
+    </p>
+
+    <div class="hero-actions">
+      <a class="btn primary" href="/start/">先從新手入門開始</a>
+      <a class="btn ghost" href="/fix/">我現在就遇到錯誤</a>
+    </div>
+
+    <div class="hero-badges">
+      <span class="badge">🌱 新手友善</span>
+      <span class="badge">🧩 可複製步驟</span>
+      <span class="badge">🧠 概念講人話</span>
+    </div>
+  </div>
+
+  <div class="hero-side">
+    <div class="glass-card">
+      <div class="glass-title">快速找文章</div>
+      <div class="search">
+        <input id="searchInput" type="search" placeholder="輸入關鍵字：Git / Spring Boot / Maven / Postman…" />
+      </div>
+      <div class="mini-hint">支援標題、摘要、分類、標籤。</div>
+      <div class="mini-divider"></div>
+      <div class="mini-title">熱門主題</div>
+      <div class="chips">
+        <button class="chip" data-chip="Git">#Git</button>
+        <button class="chip" data-chip="Spring Boot">#Spring Boot</button>
+        <button class="chip" data-chip="IntelliJ">#IntelliJ</button>
+        <button class="chip" data-chip="Postman">#Postman</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <h2>學習路線（選單）</h2>
+    <p>每個路線至少 2 篇文章起跳，先照路線走，進步會更快。</p>
+  </div>
+  <div class="route-grid" id="menuCards"></div>
+</section>
+
+<section class="section split">
+  <div>
+    <div class="section-head compact">
+      <h2>精選文章</h2>
+      <p>依瀏覽量/熱門度優先顯示（沒有設定 views 就顯示最新）。</p>
+    </div>
+    <div class="post-grid" id="postGrid"></div>
+    <div class="empty" id="emptyState" hidden>
+      <div class="empty-title">找不到符合的文章</div>
+      <div class="empty-sub">試試看換個關鍵字，或點上面的主題按鈕。</div>
+    </div>
+  </div>
+
+  <aside class="rail">
+    <div class="rail-card">
+      <div class="rail-title">分類總覽</div>
+      <div class="rail-sub">每篇文章都會連回對應分類頁，方便你「沿著主題」繼續讀。</div>
+      <div class="cat-list" id="catList"></div>
+    </div>
+
+    <div class="rail-card tip">
+      <div class="rail-title">閱讀小技巧</div>
+      <ul class="bullets">
+        <li>先看「重點整理」，知道這篇能幫你什麼。</li>
+        <li>再看「原因」，下次遇到才不會重複卡住。</li>
+        <li>最後照步驟做，做完就收工。</li>
+      </ul>
+    </div>
+  </aside>
+</section>
+
+<script type="application/json" id="postsJson">[{"file":"what-is-git.md","title":"Git 是什麼？為什麼工程師一定要會","slug":"what-is-git","date":"2026-02-07","category":"新手必看","category_slug":"newbie","section":"start","tags":["Git","新手"],"excerpt":"Git 就像「程式的存檔系統」：你可以回到任何一個版本，知道誰改了什麼，也能和團隊安全地一起改同一份專案。","views":150},{"file":"003-monetize-roadmap.md","title":"工程師變現路線圖：從 0 到第一筆收入（白話版）","slug":"monetize-roadmap","date":"2026-01-30","category":"成長與變現","category_slug":"growth","section":"growth","tags":["SEO","作品集","職涯"],"excerpt":"變現不是神秘技巧，而是把「你做得到的事」變成別人找得到、看得懂、買得起的服務或產品。這篇用一條路線帶你從 0 到第一筆收入。","views":140},{"file":"001-spring-boot-first-run.md","title":"Spring Boot 第一次跑起來：從建立專案到看到 Hello API","slug":"spring-boot-first-run","date":"2026-02-01","category":"Spring / Java","category_slug":"spring-java","section":"backend","tags":["Spring Boot","Java","入門"],"excerpt":"你只要做到三件事：建立專案、寫一個 Controller、打到 /hello。先有成功經驗，之後加資料庫或驗證才不會迷路。","views":130},{"file":"why-vscode.md","title":"為什麼大家都用 VS Code？新手該怎麼設定才不會迷路","slug":"why-vscode","date":"2026-02-05","category":"工具推薦","category_slug":"dev-tools","section":"tools","tags":["VS Code","工具","新手"],"excerpt":"VS Code 的強項是：輕量、外掛多、跨語言。新手不用一次裝滿外掛，先做到「能寫、能跑、能 debug」就夠。","views":120},{"file":"postman-api-tool.md","title":"Postman 新手指南：3 步驟測試你的 API（不用寫前端）","slug":"postman-api-tool","date":"2026-02-04","category":"工具推薦","category_slug":"dev-tools","section":"tools","tags":["Postman","API","工具"],"excerpt":"Postman 讓你不用寫前端就能測 API：輸入網址、選方法、帶參數按送出。新手先學 GET/POST、Header、Body 就夠用。","views":110},{"file":"spring-boot-not-start.md","title":"Spring Boot 啟動失敗怎麼辦？先用這 5 個檢查點定位問題","slug":"spring-boot-not-start","date":"2026-02-02","category":"錯誤排除","category_slug":"troubleshooting","section":"fix","tags":["Spring Boot","錯誤排除","Java"],"excerpt":"Spring Boot 起不來通常不是單一原因：最常見的是 port 被占用、依賴版本衝突、設定檔寫錯、或環境變數缺失。用 5 個檢查點能快速縮小範圍。","views":95},{"file":"markdown-5min-guide.md","title":"Markdown 5 分鐘上手：為什麼工程師都用它寫筆記","slug":"markdown-5min-guide","date":"2026-02-06","category":"新手必看","category_slug":"newbie","section":"start","tags":["Markdown","新手"],"excerpt":"Markdown 是一種「用純文字寫排版」的方法：不用滑鼠點選，就能快速寫出標題、列表、程式碼區塊，最適合寫技術筆記。","views":90},{"file":"intellij-module-not-specified.md","title":"IntelliJ: Module not specified（白話原因 + 3 步驟修好）","slug":"intellij-module-not-specified","date":"2026-02-03","category":"錯誤排除","category_slug":"troubleshooting","section":"fix","tags":["IntelliJ","錯誤排除","Java"],"excerpt":"看到 Module not specified 通常不是你程式寫錯，而是 IDE 沒有把專案「當成一個可執行的模組」載入。用重新匯入與設定 Run Configuration 多半能解。","views":80},{"file":"004-portfolio-starter.md","title":"工程師作品集怎麼做？用 1 個專案 + 3 個頁面就夠（新手版）","slug":"portfolio-starter","date":"2026-01-29","category":"成長與變現","category_slug":"growth","section":"growth","tags":["作品集","職涯","新手"],"excerpt":"作品集不需要十個專案。新手只要做出「一個能跑的專案」，再用 3 個頁面把價值講清楚：問題、做法、成果。","views":70},{"file":"002-intellij-import-maven.md","title":"IntelliJ 匯入 Maven 專案：新手最容易漏掉的 4 個設定","slug":"intellij-import-maven","date":"2026-01-31","category":"Spring / Java","category_slug":"spring-java","section":"backend","tags":["IntelliJ","Maven","Java"],"excerpt":"Maven 專案匯入失敗通常是：JDK 沒選、Maven 沒設定、未啟用 Auto-import、或 proxy/公司網路問題。照這 4 步做，成功率最高。","views":60}]</script>
+<script type="application/json" id="menuJson">[{"id":"start","title":"新手入門","path":"/start/","template":"landing-start.html","desc":"從 0 到 1：觀念、工具、第一個流程。","icon":"🌱"},{"id":"fix","title":"錯誤排除","path":"/fix/","template":"landing-fix.html","desc":"把錯誤訊息翻成白話，給你可複製的解法。","icon":"🧯"},{"id":"tools","title":"開發工具","path":"/tools/","template":"landing-tools.html","desc":"VS Code、Postman…挑對工具少走很多彎路。","icon":"🧰"},{"id":"backend","title":"後端實作","path":"/backend/","template":"landing-backend.html","desc":"Spring Boot / Java：能跑起來、能部署、能解釋。","icon":"🛠️"},{"id":"growth","title":"成長變現","path":"/growth/","template":"landing-growth.html","desc":"把技術寫成資產：作品集、SEO、接案與職涯。","icon":"📈"}]</script>
+<script type="application/json" id="catsJson">[{"slug":"newbie","name":"新手必看","count":2,"section":"start"},{"slug":"dev-tools","name":"工具推薦","count":2,"section":"tools"},{"slug":"troubleshooting","name":"錯誤排除","count":2,"section":"fix"},{"slug":"spring-java","name":"Spring / Java","count":2,"section":"backend"},{"slug":"growth","name":"成長與變現","count":2,"section":"growth"}]</script>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <div class="footer-title">把踩坑寫成文章，把經驗變成資產。</div>
+        <div class="footer-sub">文章採「白話 + 可複製步驟」風格，方便你快速解決問題。</div>
+      </div>
+      <div class="footer-right">
+        <a class="footer-link" href="/rss.xml">RSS</a>
+        <a class="footer-link" href="/sitemap.xml">Sitemap</a>
+        <a class="footer-link" href="/about/">關於</a>
+      </div>
+    </div>
+    <div class="footer-bottom">© Aurora Orbit · Built with a tiny SSG</div>
+  </footer>
+
+  <script src="/assets/js/app.js" defer></script>
+</body>
+</html>

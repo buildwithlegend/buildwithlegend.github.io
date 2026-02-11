@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!doctype html>
 <html lang="zh-Hant">
 <head>
@@ -22,10 +23,31 @@
     <div class="actions">
       <span class="kbd">/ 搜尋</span>
       <button class="iconbtn" type="button" onclick="toggleTheme()" aria-label="Toggle theme"><span id="themeIcon">🌙</span></button>
+=======
+
+<section class="hero hero-home">
+  <div class="hero-content">
+    <div class="eyebrow">溫暖技術雜誌</div>
+    <h1>把「看不懂的錯誤」翻成白話<br/>把「學過就忘」變成可回來查的筆記</h1>
+    <p class="lead">
+      這裡的文章都用同一套格式：<b>問題是什麼 → 為什麼會發生 → 3~5 步驟解法 → 重點整理</b>。
+      你不用背，遇到再回來找就好。
+    </p>
+
+    <div class="hero-actions">
+      <a class="btn primary" href="/start/">先從新手入門開始</a>
+      <a class="btn ghost" href="/fix/">我現在就遇到錯誤</a>
+    </div>
+
+    <div class="hero-badges">
+      <span class="badge">🌱 新手友善</span>
+      <span class="badge">🧩 可複製步驟</span>
+      <span class="badge">🧠 概念講人話</span>
+>>>>>>> cf7d887afd57a6ca0afd9bfaf7f496383a1ce104
     </div>
   </div>
-</header>
 
+<<<<<<< HEAD
 <main class="container">
   <section class="hero">
     <div class="panel hero-main">
@@ -112,10 +134,73 @@
   <div class="container footer-inner">
     <span class="mini">© 2026 {{SITE_NAME}} · 自動化專業版</span>
     <span class="mini">RSS: /rss.xml · Sitemap: /sitemap.xml</span>
+=======
+  <div class="hero-side">
+    <div class="glass-card">
+      <div class="glass-title">快速找文章</div>
+      <div class="search">
+        <input id="searchInput" type="search" placeholder="輸入關鍵字：Git / Spring Boot / Maven / Postman…" />
+      </div>
+      <div class="mini-hint">支援標題、摘要、分類、標籤。</div>
+      <div class="mini-divider"></div>
+      <div class="mini-title">熱門主題</div>
+      <div class="chips">
+        <button class="chip" data-chip="Git">#Git</button>
+        <button class="chip" data-chip="Spring Boot">#Spring Boot</button>
+        <button class="chip" data-chip="IntelliJ">#IntelliJ</button>
+        <button class="chip" data-chip="Postman">#Postman</button>
+      </div>
+    </div>
+>>>>>>> cf7d887afd57a6ca0afd9bfaf7f496383a1ce104
   </div>
-</footer>
+</section>
 
+<<<<<<< HEAD
 <script src="./assets/js/app.js"></script>
 {{THEME}}
 </body>
 </html>
+=======
+<section class="section">
+  <div class="section-head">
+    <h2>學習路線（選單）</h2>
+    <p>每個路線至少 2 篇文章起跳，先照路線走，進步會更快。</p>
+  </div>
+  <div class="route-grid" id="menuCards"></div>
+</section>
+
+<section class="section split">
+  <div>
+    <div class="section-head compact">
+      <h2>精選文章</h2>
+      <p>依瀏覽量/熱門度優先顯示（沒有設定 views 就顯示最新）。</p>
+    </div>
+    <div class="post-grid" id="postGrid"></div>
+    <div class="empty" id="emptyState" hidden>
+      <div class="empty-title">找不到符合的文章</div>
+      <div class="empty-sub">試試看換個關鍵字，或點上面的主題按鈕。</div>
+    </div>
+  </div>
+
+  <aside class="rail">
+    <div class="rail-card">
+      <div class="rail-title">分類總覽</div>
+      <div class="rail-sub">每篇文章都會連回對應分類頁，方便你「沿著主題」繼續讀。</div>
+      <div class="cat-list" id="catList"></div>
+    </div>
+
+    <div class="rail-card tip">
+      <div class="rail-title">閱讀小技巧</div>
+      <ul class="bullets">
+        <li>先看「重點整理」，知道這篇能幫你什麼。</li>
+        <li>再看「原因」，下次遇到才不會重複卡住。</li>
+        <li>最後照步驟做，做完就收工。</li>
+      </ul>
+    </div>
+  </aside>
+</section>
+
+<script type="application/json" id="postsJson">{{POSTS_JSON}}</script>
+<script type="application/json" id="menuJson">{{MENU_JSON}}</script>
+<script type="application/json" id="catsJson">{{CATS_JSON}}</script>
+>>>>>>> cf7d887afd57a6ca0afd9bfaf7f496383a1ce104

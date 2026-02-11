@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>關於｜Aurora Orbit</title>
+  <meta name="description" content="這個網站的寫作方式與你可以怎麼用它。" />
+  <link rel="canonical" href="https://buildwithlegend.github.io/about/" />
+  <meta name="theme-color" content="#F6B48B" />
+
+  <meta property="og:title" content="關於｜Aurora Orbit" />
+  <meta property="og:description" content="這個網站的寫作方式與你可以怎麼用它。" />
+  <meta property="og:type" content="website" />
+
+  <link rel="stylesheet" href="/assets/css/style.css" />
+</head>
+
+<body class="page-about">
+  <a class="skip" href="#main">跳到主要內容</a>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="/">
+        <span class="brand-mark" aria-hidden="true">☀️</span>
+        <span class="brand-text">
+          <span class="brand-name">Aurora Orbit</span>
+          <span class="brand-tagline">把踩坑寫成文章，讓 Google 幫你帶人進站。</span>
+        </span>
+      </a>
+
+      <nav class="nav desktop" aria-label="主選單">
+        <a class="nav-link" href="/start/"><span class="nav-emoji">🌱</span>新手入門</a><a class="nav-link" href="/fix/"><span class="nav-emoji">🧯</span>錯誤排除</a><a class="nav-link" href="/tools/"><span class="nav-emoji">🧰</span>開發工具</a><a class="nav-link" href="/backend/"><span class="nav-emoji">🛠️</span>後端實作</a><a class="nav-link" href="/growth/"><span class="nav-emoji">📈</span>成長變現</a>
+        <a class="nav-link subtle" href="/categories/">分類</a>
+        <a class="nav-link subtle" href="/tags/">標籤</a>
+        <a class="nav-link subtle" href="/about/">關於</a>
+      </nav>
+
+      <button class="nav-toggle" aria-label="開啟選單" aria-expanded="false" data-nav-toggle>
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <nav class="nav mobile" aria-label="主選單（手機）" data-nav-panel>
+      <div class="mobile-inner">
+        <a class="nav-link" href="/start/"><span class="nav-emoji">🌱</span>新手入門</a><a class="nav-link" href="/fix/"><span class="nav-emoji">🧯</span>錯誤排除</a><a class="nav-link" href="/tools/"><span class="nav-emoji">🧰</span>開發工具</a><a class="nav-link" href="/backend/"><span class="nav-emoji">🛠️</span>後端實作</a><a class="nav-link" href="/growth/"><span class="nav-emoji">📈</span>成長變現</a>
+        <a class="nav-link subtle" href="/categories/">分類</a>
+        <a class="nav-link subtle" href="/tags/">標籤</a>
+        <a class="nav-link subtle" href="/about/">關於</a>
+      </div>
+    </nav>
+  </header>
+
+  <div class="bg-decor" aria-hidden="true">
+    <div class="blob b1"></div>
+    <div class="blob b2"></div>
+    <div class="blob b3"></div>
+  </div>
+
+  <main id="main" class="main">
+    
+<section class="hero hero-about">
+  <div class="hero-content">
+    <div class="eyebrow">👋 關於這個網站</div>
+    <h1>寫給正在學的人</h1>
+    <p class="lead">
+      我把自己遇到的坑整理成「可複製的步驟」，希望你在卡住的時候，可以 10 分鐘內找到方向。
+      這不是教科書，而是「做過的人」留下的路標。
+    </p>
+
+    <div class="about-cards">
+      <div class="about-card">
+        <div class="k">文章格式</div>
+        <div class="v">問題 → 原因 → 步驟 → 重點整理</div>
+      </div>
+      <div class="about-card">
+        <div class="k">風格</div>
+        <div class="v">白話、例子多、可直接照做</div>
+      </div>
+      <div class="about-card">
+        <div class="k">目的</div>
+        <div class="v">讓你少走彎路，把時間花在真正有價值的地方</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-side">
+    <div class="glass-card">
+      <div class="glass-title">你可以怎麼用？</div>
+      <ol class="panic">
+        <li>先選一條路線（選單）</li>
+        <li>遇到錯誤就看錯誤排除</li>
+        <li>想深入就從分類一路讀下去</li>
+      </ol>
+      <a class="btn primary wide" href="/">回首頁</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <h2>路線導覽</h2>
+    <p>每條路線至少 2 篇文章起跳，讓你不是「看完就沒了」。</p>
+  </div>
+  <div class="route-grid" id="menuCards"></div>
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <h2>分類快速入口</h2>
+    <p>想集中補某個主題，從分類開始最快。</p>
+  </div>
+  <div class="cat-cards" id="catCards"></div>
+</section>
+
+<script type="application/json" id="menuJson">[{"id":"start","title":"新手入門","path":"/start/","template":"landing-start.html","desc":"從 0 到 1：觀念、工具、第一個流程。","icon":"🌱"},{"id":"fix","title":"錯誤排除","path":"/fix/","template":"landing-fix.html","desc":"把錯誤訊息翻成白話，給你可複製的解法。","icon":"🧯"},{"id":"tools","title":"開發工具","path":"/tools/","template":"landing-tools.html","desc":"VS Code、Postman…挑對工具少走很多彎路。","icon":"🧰"},{"id":"backend","title":"後端實作","path":"/backend/","template":"landing-backend.html","desc":"Spring Boot / Java：能跑起來、能部署、能解釋。","icon":"🛠️"},{"id":"growth","title":"成長變現","path":"/growth/","template":"landing-growth.html","desc":"把技術寫成資產：作品集、SEO、接案與職涯。","icon":"📈"}]</script>
+<script type="application/json" id="catsJson">[{"slug":"newbie","name":"新手必看","count":2,"section":"start"},{"slug":"dev-tools","name":"工具推薦","count":2,"section":"tools"},{"slug":"troubleshooting","name":"錯誤排除","count":2,"section":"fix"},{"slug":"spring-java","name":"Spring / Java","count":2,"section":"backend"},{"slug":"growth","name":"成長與變現","count":2,"section":"growth"}]</script>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <div class="footer-title">把踩坑寫成文章，把經驗變成資產。</div>
+        <div class="footer-sub">文章採「白話 + 可複製步驟」風格，方便你快速解決問題。</div>
+      </div>
+      <div class="footer-right">
+        <a class="footer-link" href="/rss.xml">RSS</a>
+        <a class="footer-link" href="/sitemap.xml">Sitemap</a>
+        <a class="footer-link" href="/about/">關於</a>
+      </div>
+    </div>
+    <div class="footer-bottom">© Aurora Orbit · Built with a tiny SSG</div>
+  </footer>
+
+  <script src="/assets/js/app.js" defer></script>
+</body>
+</html>

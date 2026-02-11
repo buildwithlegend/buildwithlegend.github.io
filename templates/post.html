@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!doctype html>
 <html lang="zh-Hant">
 <head>
@@ -46,3 +47,44 @@
 {{THEME}}
 </body>
 </html>
+=======
+
+<article class="post">
+  <header class="post-head">
+    <h1 class="post-title">{{TITLE}}</h1>
+    <div class="post-meta">
+      <span class="meta-item">📅 {{DATE}}</span>
+      <span class="meta-item">
+        🧭 路線：<a href="{{SECTION_PATH}}">{{SECTION_TITLE}}</a>
+      </span>
+      <span class="meta-item">
+        🗂️ 分類：<a href="/category/{{CATEGORY_SLUG}}/">{{CATEGORY}}</a>
+      </span>
+      <span class="meta-item tags">{{TAGS_HTML}}</span>
+    </div>
+  </header>
+
+  <div class="post-body">
+    <aside class="post-aside">
+      {{TOC}}
+      <div class="aside-card">
+        <div class="aside-title">下一步怎麼走？</div>
+        <div class="aside-sub">建議你從分類繼續讀，主題會更集中。</div>
+        <a class="btn ghost wide" href="/category/{{CATEGORY_SLUG}}/">繼續讀同分類</a>
+        <a class="btn ghost wide" href="{{SECTION_PATH}}">回到路線列表</a>
+      </div>
+    </aside>
+
+    <div class="post-content prose">
+      {{BODY}}
+      <div class="callout">
+        <div class="callout-title">重點提醒</div>
+        <div class="callout-body">
+          如果你照著做還是卡住，通常是「環境差異」或「依賴版本」造成。
+          先把錯誤訊息（前後 20 行）貼到搜尋或對照本網站的錯誤排除文章，會快很多。
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+>>>>>>> cf7d887afd57a6ca0afd9bfaf7f496383a1ce104

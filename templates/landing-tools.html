@@ -1,0 +1,58 @@
+
+<section class="hero hero-tools">
+  <div class="hero-content">
+    <div class="eyebrow">{{ICON}} 路線 03</div>
+    <h1>{{TITLE}}</h1>
+    <p class="lead">{{DESC}}</p>
+
+    <div class="tool-strip">
+      <div class="tool-pill">🧩 快捷鍵</div>
+      <div class="tool-pill">🧪 測試 API</div>
+      <div class="tool-pill">🗂️ 專案管理</div>
+      <div class="tool-pill">⚡ 提升效率</div>
+    </div>
+  </div>
+
+  <div class="hero-side">
+    <div class="compare-card">
+      <div class="compare-title">選工具的原則</div>
+      <div class="compare">
+        <div class="col">
+          <div class="h">適合新手</div>
+          <ul>
+            <li>少設定就能用</li>
+            <li>錯誤提示清楚</li>
+            <li>有教學資源</li>
+          </ul>
+        </div>
+        <div class="col">
+          <div class="h">適合團隊</div>
+          <ul>
+            <li>可分享設定</li>
+            <li>可重現流程</li>
+            <li>可追蹤變更</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <h2>工具文章</h2>
+    <p>每篇都會講「為什麼要用」「什麼情境用」「怎麼快速上手」。</p>
+  </div>
+  <div class="tool-grid" id="toolGrid"></div>
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <h2>相關分類</h2>
+    <p>把工具文章分成不同主題，方便你集中強化。</p>
+  </div>
+  <div class="cat-cards" id="catCards"></div>
+</section>
+
+<script type="application/json" id="postsJson">{{POSTS_JSON}}</script>
+<script type="application/json" id="catsJson">{{CATS_JSON}}</script>
