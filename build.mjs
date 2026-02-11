@@ -207,10 +207,14 @@ function ensureCleanDist() {
 }
 
 function requireTwoPostsPerMenu(posts) {
+  // 以前這裡會強制每個路線至少 2 篇，否則 build 直接失敗。
+  // 為了讓網站更穩定（尤其是你剛開始寫文章時），改成只提示警告、不擋部署。
   for (const m of MENU) {
     const n = posts.filter(p => p.section === m.id).length;
-    if (n < 2) {
-      throw new Error(`Menu "${m.id}" must have at least 2 posts. Current: ${n}`);
+    if (n < 1) {
+      console.warn(`[warn] Section \"${m.id}\" has no posts yet.`);
+    } else if (n < 2) {
+      console.warn(`[warn] Section \"${m.id}\" has only ${n} post(s).`);
     }
   }
 }

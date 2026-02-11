@@ -1,13 +1,4 @@
 ---
-<<<<<<< HEAD
-title: Markdown 教學：5 分鐘學會寫技術文章
-date: 2026-02-07
-category: 新手必看
-tags: [Markdown]
-views: 80
-section: start
-slug: markdown-5min-guide
-=======
 title: Markdown 5 分鐘上手：為什麼工程師都用它寫筆記
 date: '2026-02-06'
 slug: markdown-5min-guide
@@ -19,7 +10,6 @@ tags:
 - 新手
 views: 90
 excerpt: Markdown 是一種「用純文字寫排版」的方法：不用滑鼠點選，就能快速寫出標題、列表、程式碼區塊，最適合寫技術筆記。
->>>>>>> cf7d887afd57a6ca0afd9bfaf7f496383a1ce104
 ---
 
 ## 1) Markdown 是什麼？
@@ -119,10 +109,6 @@ console.log("hello")
 ```
 ```
 
-<<<<<<< HEAD
-Fast, clean, and readable.
-
-=======
 ---
 
 ## 重點整理
@@ -130,4 +116,3 @@ Fast, clean, and readable.
 - Markdown = 用純文字寫排版
 - 工程師最常用的是：標題、列表、連結、程式碼區塊
 - 筆記不是要漂亮，是要「下次回來看得懂」
->>>>>>> cf7d887afd57a6ca0afd9bfaf7f496383a1ce104

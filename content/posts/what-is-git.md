@@ -1,13 +1,5 @@
 ---
 title: Git 是什麼？為什麼工程師一定要會
-<<<<<<< HEAD
-date: 2026-02-07
-category: 新手必看
-tags: [Git, 新手]
-views: 150
-section: start
-slug: what-is-git
-=======
 date: '2026-02-07'
 slug: what-is-git
 section: start
@@ -18,7 +10,6 @@ tags:
 - 新手
 views: 150
 excerpt: Git 就像「程式的存檔系統」：你可以回到任何一個版本，知道誰改了什麼，也能和團隊安全地一起改同一份專案。
->>>>>>> cf7d887afd57a6ca0afd9bfaf7f496383a1ce104
 ---
 
 ## 1) 先用一句話記住 Git
@@ -93,12 +84,6 @@ git log
 
 ---
 
-<<<<<<< HEAD
-- Go back in time  
-- Track changes  
-- Prevent disasters  
-
-=======
 ## 5) 最小實作：你可以照著做一次（3 分鐘）
 
 1. 在一個資料夾放一個 `README.md`
@@ -120,4 +105,3 @@ git log
 - 新手先熟：`init / status / add / commit / log`
 - `add` 是準備，`commit` 才是正式存檔
 - 每篇文章的頁首都會有「分類連結」，你可以沿著主題繼續讀
->>>>>>> cf7d887afd57a6ca0afd9bfaf7f496383a1ce104

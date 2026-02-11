@@ -1,43 +1,9 @@
-<<<<<<< HEAD
-<!doctype html>
-<html lang="zh-Hant">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>{{TITLE}}｜{{SITE_NAME}}</title>
-  <meta name="description" content="{{TITLE}}文章列表" />
-  <link rel="canonical" href="{{CANONICAL}}" />
-  <link rel="stylesheet" href="/assets/css/style.css" />
-</head>
-<body>
-<header class="topbar">
-  <div class="container topbar-inner">
-    <a class="brand" href="/"><span class="logo" aria-hidden="true"></span><span>{{SITE_NAME}}</span></a>
-    <nav class="nav">
-      <a href="/">首頁</a>
-      <a href="/fix/">錯誤解決</a>
-      <a href="/start/">新手必看</a>
-      <a href="/tools/">工具推薦</a>
-      <a href="/tags/">標籤分類</a>
-    </nav>
-    <div class="actions">
-      <button class="iconbtn" type="button" onclick="toggleTheme()"><span id="themeIcon">🌙</span></button>
-    </div>
-  </div>
-</header>
-=======
->>>>>>> cf7d887afd57a6ca0afd9bfaf7f496383a1ce104
 
 <section class="hero hero-taxlist">
   <div class="hero-content">
     <div class="eyebrow">📚 清單</div>
     <h1>{{TITLE}}</h1>
-<<<<<<< HEAD
-    <div class="grid" id="grid"></div>
-    <p><a class="btn" href="../../">← 回首頁</a></p>
-=======
     <p class="lead">下面是這個主題底下的文章。每篇都會連回對應分類與路線。</p>
->>>>>>> cf7d887afd57a6ca0afd9bfaf7f496383a1ce104
   </div>
   <div class="hero-side">
     <a class="btn ghost wide" href="/categories/">去看分類</a>
@@ -45,35 +11,8 @@
   </div>
 </section>
 
-<<<<<<< HEAD
-<footer class="footer"><div class="container footer-inner">
-  <span class="mini">© 2026 {{SITE_NAME}}</span><span class="mini">Auto generated</span>
-</div></footer>
-
-<script>
-  const posts = {{POSTS_JSON}};
-  const grid = document.getElementById("grid");
-  grid.innerHTML = posts.map(p => `
-    <article class="card">
-      <div class="card-body">
-        <div class="meta">${p.date} · ${p.category}</div>
-        <h2><a href="/post/${p.slug}/">${p.title}</a></h2>
-        <p class="excerpt">${p.excerpt}</p>
-      </div>
-      <div class="card-footer">
-        <div class="tagrow">${p.tags.map(t=>`<span class="tag">#${t}</span>`).join("")}</div>
-        <a class="read" href="/post/${p.slug}/">閱讀 →</a>
-      </div>
-    </article>
-  `).join("");
-</script>
-{{THEME}}
-</body>
-</html>
-=======
 <section class="section">
   <div class="post-list" id="postList"></div>
 </section>
 
 <script type="application/json" id="postsJson">{{POSTS_JSON}}</script>
->>>>>>> cf7d887afd57a6ca0afd9bfaf7f496383a1ce104

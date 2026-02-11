@@ -1,12 +1,4 @@
 ---
-<<<<<<< HEAD
-title: "Spring Boot 新手第一次跑不起來？我用 15 分鐘帶你從紅字到成功啟動"
-date: "2026-02-03"
-category: "Spring Boot"
-tags: ["Maven","IntelliJ","新手救援"]
-excerpt: "把 org.springframework.boot does not exist、404 Whitelabel 等新手最常見的坑，整理成可複製的解法。"
-slug: 001-spring-boot-first-run
-=======
 title: Spring Boot 第一次跑起來：從建立專案到看到 Hello API
 date: '2026-02-01'
 slug: spring-boot-first-run
@@ -19,7 +11,6 @@ tags:
 - 入門
 views: 130
 excerpt: 你只要做到三件事：建立專案、寫一個 Controller、打到 /hello。先有成功經驗，之後加資料庫或驗證才不會迷路。
->>>>>>> cf7d887afd57a6ca0afd9bfaf7f496383a1ce104
 ---
 
 ## 0) 目標（先說清楚）
@@ -79,13 +70,6 @@ public class HelloController {
 
 瀏覽器輸入：
 
-<<<<<<< HEAD
-1. IntelliJ：File → Open（選有 `pom.xml` 的資料夾）  
-2. 右鍵 `pom.xml` → Add as Maven Project  
-3. Maven 視窗 → Reload All Maven Projects  
-4. 重新 Run `xxxApplication`
-
-=======
 ```
 http://localhost:8080/hello
 ```
@@ -110,4 +94,3 @@ http://localhost:8080/hello
 - 先做出 `GET /hello` 的最小成功
 - 起不來先查：JDK / port / 依賴 / 設定檔
 - 成功後立刻 commit，建立安全回復點
->>>>>>> cf7d887afd57a6ca0afd9bfaf7f496383a1ce104

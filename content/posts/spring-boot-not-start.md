@@ -1,13 +1,4 @@
 ---
-<<<<<<< HEAD
-title: Spring Boot 跑不起來？3 分鐘快速排查
-date: 2026-02-07
-category: 錯誤解決
-tags: [Spring Boot, Java, 錯誤排查]
-views: 120
-section: fix
-slug: spring-boot-not-start
-=======
 title: Spring Boot 啟動失敗怎麼辦？先用這 5 個檢查點定位問題
 date: '2026-02-02'
 slug: spring-boot-not-start
@@ -20,7 +11,6 @@ tags:
 - Java
 views: 95
 excerpt: Spring Boot 起不來通常不是單一原因：最常見的是 port 被占用、依賴版本衝突、設定檔寫錯、或環境變數缺失。用 5 個檢查點能快速縮小範圍。
->>>>>>> cf7d887afd57a6ca0afd9bfaf7f496383a1ce104
 ---
 
 ## 1) 先別慌：Spring Boot 起不來通常有「套路」
@@ -53,11 +43,6 @@ excerpt: Spring Boot 起不來通常不是單一原因：最常見的是 port �
 ### (2) 設定檔寫錯（縮排、key 拼錯）
 `application.yml` 最容易踩坑是「縮排」。
 
-<<<<<<< HEAD
-**3️⃣ Port already in use**  
-Kill the process using port 8080.
-
-=======
 建議做法：  
 - 先把最近改的設定註解掉
 - 一段一段加回去
@@ -118,4 +103,3 @@ Kill the process using port 8080.
 - 真正的錯誤通常在最後 20~40 行
 - 最常見：port、設定檔、依賴衝突、JDK、profile
 - 先做最小可跑，再加功能回去
->>>>>>> cf7d887afd57a6ca0afd9bfaf7f496383a1ce104

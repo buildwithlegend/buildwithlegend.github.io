@@ -1,13 +1,4 @@
 ---
-<<<<<<< HEAD
-title: 為什麼我推薦 VS Code？工程師必裝神器
-date: 2026-02-07
-category: 工具推薦
-tags: [VS Code]
-views: 200
-section: tools
-slug: why-vscode
-=======
 title: 為什麼大家都用 VS Code？新手該怎麼設定才不會迷路
 date: '2026-02-05'
 slug: why-vscode
@@ -20,7 +11,6 @@ tags:
 - 新手
 views: 120
 excerpt: VS Code 的強項是：輕量、外掛多、跨語言。新手不用一次裝滿外掛，先做到「能寫、能跑、能 debug」就夠。
->>>>>>> cf7d887afd57a6ca0afd9bfaf7f496383a1ce104
 ---
 
 ## 1) VS Code 強在哪？一句話
@@ -44,11 +34,6 @@ VS Code 是「輕量但可擴充」的編輯器。
 
 ---
 
-<<<<<<< HEAD
-Download:  
-https://code.visualstudio.com/
-
-=======
 ## 3) 新手建議的最小外掛組合（3 個）
 
 ### (1) 中文語系（可選）
@@ -93,4 +78,3 @@ https://code.visualstudio.com/
 - VS Code = 輕量 + 外掛擴充
 - 新手別裝一堆外掛：先 3 個就夠
 - 先做到：能寫 / 能跑 / 能看到錯誤
->>>>>>> cf7d887afd57a6ca0afd9bfaf7f496383a1ce104

@@ -1,13 +1,4 @@
 ---
-<<<<<<< HEAD
-title: API 測試神器：Postman 新手指南
-date: 2026-02-07
-category: 工具推薦
-tags: [Postman, API]
-views: 110
-section: tools
-slug: postman-api-tool
-=======
 title: Postman 新手指南：3 步驟測試你的 API（不用寫前端）
 date: '2026-02-04'
 slug: postman-api-tool
@@ -20,7 +11,6 @@ tags:
 - 工具
 views: 110
 excerpt: Postman 讓你不用寫前端就能測 API：輸入網址、選方法、帶參數按送出。新手先學 GET/POST、Header、Body 就夠用。
->>>>>>> cf7d887afd57a6ca0afd9bfaf7f496383a1ce104
 ---
 
 ## 1) Postman 是什麼？為什麼需要它？
@@ -44,11 +34,6 @@ Postman 就是用來解決這件事的：
 - GET：拿資料
 - POST：送資料（通常是新增）
 
-<<<<<<< HEAD
-Download:  
-https://www.postman.com/
-
-=======
 ### (2) URL（網址）
 例如：
 ```
@@ -116,4 +101,3 @@ http://localhost:8080/api/users
 - Postman = 不用前端也能測 API
 - 新手先學：GET/POST + Header + Body
 - 狀態碼是你第一個線索：401/404/500 各代表不同方向
->>>>>>> cf7d887afd57a6ca0afd9bfaf7f496383a1ce104

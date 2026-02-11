@@ -660,3 +660,28 @@ a:hover{ text-decoration: underline; }
   color: var(--muted);
   font-size: 13px;
 }
+
+/* ===== Google Translate (site-wide) ===== */
+.translate-wrap{ display:flex; align-items:center; }
+/* Google injects its own markup; we style the dropdown to match */
+#google_translate_element .goog-te-gadget{ font-family: inherit !important; color: var(--muted) !important; }
+#google_translate_element .goog-te-gadget span{ display:none !important; } /* hide "Powered by" text fragments */
+#google_translate_element select.goog-te-combo{
+  margin:0 !important;
+  padding: 10px 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(234,216,207,.85);
+  background: rgba(255,255,255,.6);
+  color: var(--text);
+  box-shadow: var(--shadow2);
+}
+#google_translate_element select.goog-te-combo:focus{ outline: 2px solid rgba(241,154,107,.35); outline-offset: 2px; }
+
+/* Hide the top banner Google adds */
+.goog-te-banner-frame.skiptranslate{ display:none !important; }
+body{ top:0 !important; }
+
+@media (max-width: 920px){
+  .header-inner{ flex-wrap: wrap; justify-content: flex-start; }
+  .translate-wrap{ margin-left: auto; }
+}

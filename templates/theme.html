@@ -1,27 +1,5 @@
-<<<<<<< HEAD
-<script>
-  (function initTheme(){
-    const saved=localStorage.getItem("theme");
-    if(saved) document.documentElement.setAttribute("data-theme", saved);
-    else {
-      const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
-      document.documentElement.setAttribute("data-theme", prefersLight ? "light" : "dark");
-    }
-    const el=document.getElementById("themeIcon");
-    if(el) el.textContent = (document.documentElement.getAttribute("data-theme")==="dark") ? "🌙" : "☀️";
-  })();
-  function toggleTheme(){
-    const cur=document.documentElement.getAttribute("data-theme")||"dark";
-    const next=cur==="dark"?"light":"dark";
-    document.documentElement.setAttribute("data-theme", next);
-    localStorage.setItem("theme", next);
-    const el=document.getElementById("themeIcon");
-    if(el) el.textContent = next==="dark"?"🌙":"☀️";
-  }
-</script>
-=======
 <!doctype html>
-<html lang="zh-Hant">
+<html lang="zh-Hant" class="notranslate">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -35,6 +13,9 @@
   <meta property="og:type" content="website" />
 
   <link rel="stylesheet" href="/assets/css/style.css" />
+
+  <!-- Google Translate: prevent browser auto-translate UI (we provide our own selector) -->
+  <meta name="google" content="notranslate" />
 </head>
 
 <body class="{{BODY_CLASS}}">
@@ -56,6 +37,11 @@
         <a class="nav-link subtle" href="/tags/">標籤</a>
         <a class="nav-link subtle" href="/about/">關於</a>
       </nav>
+
+      <!-- Translate selector (top-right) -->
+      <div class="translate-wrap" aria-label="Translate">
+        <div id="google_translate_element"></div>
+      </div>
 
       <button class="nav-toggle" aria-label="開啟選單" aria-expanded="false" data-nav-toggle>
         <span></span><span></span><span></span>
@@ -98,6 +84,20 @@
   </footer>
 
   <script src="/assets/js/app.js" defer></script>
+
+  <!-- Google Translate widget (languages: English, Japanese, Chinese, Spanish, Korean) -->
+  <script>
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement(
+        {
+          pageLanguage: 'zh-TW',
+          includedLanguages: 'en,ja,zh-TW,es,ko',
+          autoDisplay: false
+        },
+        'google_translate_element'
+      );
+    }
+  </script>
+  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
->>>>>>> cf7d887afd57a6ca0afd9bfaf7f496383a1ce104

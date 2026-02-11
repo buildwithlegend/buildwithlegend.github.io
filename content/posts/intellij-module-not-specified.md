@@ -1,13 +1,4 @@
 ---
-<<<<<<< HEAD
-title: module not specified？IntelliJ 常見錯誤一次解決
-date: 2026-02-07
-category: 錯誤解決
-tags: [IntelliJ, Maven]
-views: 95
-section: fix
-slug: intellij-module-not-specified
-=======
 title: 'IntelliJ: Module not specified（白話原因 + 3 步驟修好）'
 date: '2026-02-03'
 slug: intellij-module-not-specified
@@ -21,7 +12,6 @@ tags:
 views: 80
 excerpt: 看到 Module not specified 通常不是你程式寫錯，而是 IDE 沒有把專案「當成一個可執行的模組」載入。用重新匯入與設定 Run
   Configuration 多半能解。
->>>>>>> cf7d887afd57a6ca0afd9bfaf7f496383a1ce104
 ---
 
 ## 1) 這個錯誤在說什麼（白話）
@@ -45,11 +35,6 @@ excerpt: 看到 Module not specified 通常不是你程式寫錯，而是 IDE �
 
 ---
 
-<<<<<<< HEAD
-**Fix:**  
-Open the `pom.xml` instead of the folder.
-
-=======
 ## 3) 3 步驟解法（照做就好）
 
 ### Step 1：確認你有用 Maven/Gradle 匯入
@@ -96,4 +81,3 @@ Open the `pom.xml` instead of the folder.
 - 這個錯誤多半是 IDE 設定，不是程式碼
 - 先重新用 Maven/Gradle 匯入，再重建 Run Configuration
 - 真的卡住才用 Invalidate Caches
->>>>>>> cf7d887afd57a6ca0afd9bfaf7f496383a1ce104

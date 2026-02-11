@@ -1,12 +1,4 @@
 ---
-<<<<<<< HEAD
-title: "IntelliJ 匯入 Maven 專案：最少步驟，避免 module not specified"
-date: "2026-02-02"
-category: "IntelliJ"
-tags: ["Maven","設定","排雷"]
-excerpt: "新手最容易卡的不是程式，是 IDE 的匯入方式。這篇用最短路線讓你成功。"
-slug: 002-intellij-import-maven
-=======
 title: IntelliJ 匯入 Maven 專案：新手最容易漏掉的 4 個設定
 date: '2026-01-31'
 slug: intellij-import-maven
@@ -19,7 +11,6 @@ tags:
 - Java
 views: 60
 excerpt: Maven 專案匯入失敗通常是：JDK 沒選、Maven 沒設定、未啟用 Auto-import、或 proxy/公司網路問題。照這 4 步做，成功率最高。
->>>>>>> cf7d887afd57a6ca0afd9bfaf7f496383a1ce104
 ---
 
 ## 1) 先講白話：匯入 Maven 不是「開資料夾」而已
@@ -30,12 +21,6 @@ excerpt: Maven 專案匯入失敗通常是：JDK 沒選、Maven 沒設定、未�
 - `src/main/java` 不被識別
 - Run 的時候一直錯
 
-<<<<<<< HEAD
-1. File → Open（選有 `pom.xml` 那層）
-2. 沒自動識別：右鍵 `pom.xml` → Add as Maven Project
-3. Maven 工具窗 → Reload All Maven Projects
-
-=======
 原因是：  
 你沒有把它當成 Maven 專案匯入。
 
@@ -99,4 +84,3 @@ excerpt: Maven 專案匯入失敗通常是：JDK 沒選、Maven 沒設定、未�
 - 匯入 Maven ≠ 開資料夾
 - 最穩方式：用 `pom.xml` 匯入
 - 4 個關鍵：Project SDK、Maven JDK、Auto-import、Proxy
->>>>>>> cf7d887afd57a6ca0afd9bfaf7f496383a1ce104
