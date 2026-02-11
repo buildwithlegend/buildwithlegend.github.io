@@ -2,7 +2,8 @@ name: Deploy Pages
 
 on:
   push:
-    branches: ["main"]
+    branches:
+      - main
 
 permissions:
   contents: read
@@ -10,34 +11,24 @@ permissions:
   id-token: write
 
 concurrency:
-  group: "pages"
+  group: pages
   cancel-in-progress: true
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: "20"
-<<<<<<< HEAD
-=======
-      
->>>>>>> cf7d887afd57a6ca0afd9bfaf7f496383a1ce104
 
       - name: Install
         run: |
           npm config set registry https://registry.npmjs.org/
-<<<<<<< HEAD
-          npm config set prefer-online true
-          npm config set fetch-retries 10
-          npm config set fetch-retry-mintimeout 20000
-          npm config set fetch-retry-maxtimeout 120000
-          npm ci --no-audit --fund=false
-=======
           npm config set prefer-offline true
           npm config set maxsockets 1
           npm config set fetch-retries 10
@@ -45,11 +36,8 @@ jobs:
           npm config set fetch-retry-mintimeout 20000
           npm config set fetch-retry-maxtimeout 120000
           npm ci --no-audit --fund=false --verbose
-
-          # ✅ 安裝後立刻檢查，避免 node_modules 不完整卻繼續 build
           node -e "require('gray-matter'); console.log('gray-matter OK')"
           node -e "require('marked'); console.log('marked OK')"
->>>>>>> cf7d887afd57a6ca0afd9bfaf7f496383a1ce104
 
       - name: Build
         run: npm run build
@@ -66,6 +54,6 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Deploy to GitHub Pages
+      - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v4
