@@ -1,3 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://buildwithlegend.github.io/sitemap.xml
