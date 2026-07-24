@@ -3,7 +3,6 @@ from fastapi.middleware.cors import CORSMiddleware
 import fitz  # PyMuPDF
 import math
 
-
 app = FastAPI(title="PDF Glass Dimension Checker API")
 
 # 允許跨域請求（讓你的前端網站可以順利呼叫此 API）
