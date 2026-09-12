@@ -1,161 +1,148 @@
-from fastapi import FastAPI, UploadFile, File, HTTPException
-from fastapi.middleware.cors import CORSMiddleware
-import fitz  # PyMuPDF
-import math
+import streamlit as st
+import pandas as pd
+from ortools.sat.python import cp_model
+import io
 
-
-app = FastAPI(title="PDF Glass Dimension Checker API")
-
-# 允許跨域請求（讓你的前端網站可以順利呼叫此 API）
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],  # 部署時可改為你前端網站的網址
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
+# 1. 頁面基本設定
+st.set_page_config(
+    page_title="自動排班系統",
+    page_icon="📅",
+    layout="wide"
 )
 
-def is_target_blue(color_tuple):
-    """
-    判斷 RGB 顏色是否接近藍色 (Color 150 或常見工程藍)
-    PyMuPDF 回傳的 RGB 數值範圍為 0.0 ~ 1.0
-    """
-    if not color_tuple:
-        return False
-    r, g, b = color_tuple[:3]
-    
-    # 判斷是否為藍色主導 (R, G 較低，B 較高) 或是標準 RGB(0, 0, 1)
-    # 可根據你的 PDF 實際顏色數值稍微微調
-    return b > 0.5 and r < 0.4 and g < 0.6
+st.title("📅 企業自動排班系統 (6日營業 / 早中晚班)")
+st.markdown("基於運算最佳化模型，自動分配員工班次並確保工時公平性與充足休息時間。")
 
-def extract_rectangles_from_drawings(page, mid_x):
-    """提取向量線條構成的矩形，並依 X 座標分左右區"""
-    left_rects = []
-    right_rects = []
-    
-    drawings = page.get_drawings()
-    for item in drawings:
-        color = item.get("color")
-        fill = item.get("fill")
-        
-        if is_target_blue(color) or is_target_blue(fill):
-            rect = item["rect"]  # [x0, y0, x1, y1]
-            w = round(abs(rect.width), 2)
-            h = round(abs(rect.height), 2)
-            
-            # 過濾太小的微小線段/點 (例如小於 10 pt)
-            if w > 10 and h > 10:
-                obj_data = {
-                    "w": w,
-                    "h": h,
-                    "bbox": [rect.x0, rect.y0, rect.x1, rect.y1]
-                }
-                if rect.x0 < mid_x:
-                    left_rects.append(obj_data)
-                else:
-                    right_rects.append(obj_data)
-                    
-    return left_rects, right_rects
+# 2. 側邊欄設定
+st.sidebar.header("⚙️ 排班條件設定")
 
-def extract_dimensions_from_text(page, mid_x):
-    """提取藍色標註文字（數字）"""
-    left_dims = []
-    blocks = page.get_text("dict")["blocks"]
-    
-    for b in blocks:
-        if "lines" in b:
-            for line in b["lines"]:
-                for span in line["spans"]:
-                    # 解析文字顏色
-                    color_int = span["color"]
-                    r = ((color_int >> 16) & 255) / 255.0
-                    g = ((color_int >> 8) & 255) / 255.0
-                    b_val = (color_int & 255) / 255.0
-                    
-                    if is_target_blue((r, g, b_val)):
-                        text_str = span["text"].strip()
-                        # 嘗試轉為數字 (標註尺寸)
-                        try:
-                            val = float(text_str)
-                            if val > 10: # 過濾掉太小的數字
-                                if span["bbox"][0] < mid_x:
-                                    left_dims.append(val)
-                        except ValueError:
-                            pass
-    return left_dims
+# 員工代號設定
+default_employees = ["A", "B", "C", "D", "E", "F"]
+emp_input = st.sidebar.text_input("員工代號/姓名 (請用英文逗號分開)", ",".join(default_employees))
+employees = [e.strip() for e in emp_input.split(",") if e.strip()]
 
-@app.post("/api/verify-pdf")
-async def verify_pdf(file: UploadFile = File(...)):
-    if not file.filename.endswith(".pdf"):
-        raise HTTPException(status_code=400, detail="請上傳 PDF 檔案")
+# 班次需求設定
+st.sidebar.subheader("👥 每日各班次所需人數")
+morning_req = st.sidebar.number_input("早班人數", min_value=1, value=1, step=1)
+noon_req = st.sidebar.number_input("中班人數", min_value=1, value=1, step=1)
+night_req = st.sidebar.number_input("晚班人數", min_value=1, value=1, step=1)
 
-    # 1. 讀取 PDF 檔案內容
-    contents = await file.read()
-    doc = fitz.open(stream=contents, filetype="pdf")
-    
-    if len(doc) == 0:
-        raise HTTPException(status_code=400, detail="PDF 檔案為空")
-        
-    page = doc[0]  # 預設檢查第一頁
-    page_width = page.rect.width
-    mid_x = page_width / 2.0  # 以頁面寬度中央劃分左右區
-    
-    # 2. 解析左右區的幾何矩形與文字標註
-    left_rects, right_rects = extract_rectangles_from_drawings(page, mid_x)
-    left_dims = extract_dimensions_from_text(page, mid_x)
-    
-    # 3. 整合左圖的「幾何尺寸」與「文字標註」(標註優先修正幾何)
-    for l_obj in left_rects:
-        for d_val in left_dims:
-            if abs(l_obj["w"] - d_val) < 50.0:
-                l_obj["w"] = d_val
-            if abs(l_obj["h"] - d_val) < 50.0:
-                l_obj["h"] = d_val
+shifts = ["早班", "中班", "晚班"]
+days = ["週一", "週二", "週三", "週四", "週五", "週六"]
+shift_req = {"早班": morning_req, "中班": noon_req, "晚班": night_req}
 
-    # 4. 排序（依 Y 座標由上至下、X 座標由左至右）
-    left_rects.sort(key=lambda item: (-item["bbox"][1], item["bbox"][0]))
-    right_rects.sort(key=lambda item: (-item["bbox"][1], item["bbox"][0]))
-
-    # 5. 精準比對左右兩區尺寸
-    discrepancies = []
+# 3. 排班求解器核心邏輯
+def generate_schedule(employees, days, shifts, shift_req):
+    model = cp_model.CpModel()
     
-    for i, r_obj in enumerate(right_rects):
-        r_w, r_h = r_obj["w"], r_obj["h"]
-        
-        # 尋找對應的左圖物件
-        if i < len(left_rects):
-            l_obj = left_rects[i]
-        else:
-            # 若數量不匹配，尋找尺寸最接近者
-            l_obj = min(
-                left_rects, 
-                key=lambda item: abs(item["w"] - r_w) + abs(item["h"] - r_h),
-                default=None
+    # 建立決策變數
+    shifts_vars = {}
+    for e in employees:
+        for d_idx, d in enumerate(days):
+            for s in shifts:
+                shifts_vars[(e, d_idx, s)] = model.NewBoolVar(f'shift_{e}_{d_idx}_{s}')
+                
+    # 限制條件 1: 每日班次人數需求必須完全滿足
+    for d_idx in range(len(days)):
+        for s in shifts:
+            model.Add(
+                sum(shifts_vars[(e, d_idx, s)] for e in employees) == shift_req[s]
             )
             
-        if l_obj:
-            l_w, l_h = l_obj["w"], l_obj["h"]
+    # 限制條件 2: 每人每天最多只能上一個班
+    for e in employees:
+        for d_idx in range(len(days)):
+            model.Add(
+                sum(shifts_vars[(e, d_idx, s)] for s in shifts) <= 1
+            )
             
-            # 容差 0.5 mm / pt 判定
-            if abs(r_w - l_w) > 0.5 or abs(r_h - l_h) > 0.5:
-                discrepancies.append({
-                    "error_index": len(discrepancies) + 1,
-                    "target_bbox": r_obj["bbox"], # 右區錯誤物件的 PDF 座標 [x0, y0, x1, y1]
-                    "right_size": {"w": r_w, "h": r_h},
-                    "expected_size": {"w": l_w, "h": l_h},
-                    "message": f"右圖尺寸 ({r_w} x {r_h}) 與左圖標註 ({l_w} x {l_h}) 不相符！"
+    # 限制條件 3: 避免「前一天晚班，次日早班」（保護員工休息時間）
+    for e in employees:
+        for d_idx in range(len(days) - 1):
+            model.AddBoolOr([
+                shifts_vars[(e, d_idx, "晚班")].Not(),
+                shifts_vars[(e, d_idx + 1, "早班")].Not()
+            ])
+
+    # 限制條件 4: 工時平均化（最高與最低總班數相差最多 1 班）
+    total_slots = len(days) * sum(shift_req.values())
+    min_shifts_per_emp = total_slots // len(employees)
+    max_shifts_per_emp = (total_slots + len(employees) - 1) // len(employees)
+    
+    for e in employees:
+        emp_total = sum(shifts_vars[(e, d_idx, s)] for d_idx in range(len(days)) for s in shifts)
+        model.Add(emp_total >= min_shifts_per_emp)
+        model.Add(emp_total <= max_shifts_per_emp)
+
+    # 執行計算
+    solver = cp_model.CpSolver()
+    solver.parameters.max_time_in_seconds = 5.0
+    status = solver.Solve(model)
+
+    if status == cp_model.OPTIMAL or status == cp_model.FEASIBLE:
+        schedule_data = {e: {d: "輪休" for d in days} for e in employees}
+        for e in employees:
+            for d_idx, d in enumerate(days):
+                for s in shifts:
+                    if solver.Value(shifts_vars[(e, d_idx, s)]) == 1:
+                        schedule_data[e][d] = s
+        
+        # 加入週日固定休息
+        for e in employees:
+            schedule_data[e]["週日"] = "固定休"
+            
+        df = pd.DataFrame.from_dict(schedule_data, orient='index')
+        return df
+    else:
+        return None
+
+# 4. 前端介面觸發與結果輸出
+if st.button("🚀 開始自動排班", type="primary"):
+    total_needed_per_day = sum(shift_req.values())
+    if len(employees) < total_needed_per_day:
+        st.error(f"❌ 員工人數不足！每日共需要 {total_needed_per_day} 人次，但目前只有 {len(employees)} 位員工。")
+    else:
+        with st.spinner("智慧演算班表中..."):
+            df_result = generate_schedule(employees, days, shifts, shift_req)
+            
+        if df_result is not None:
+            st.success("✅ 自動排班成功！")
+            
+            # 展示班表
+            st.subheader("📋 本週班表總覽")
+            st.dataframe(df_result, use_container_width=True)
+            
+            # 統計資料
+            st.subheader("📊 員工班次分配統計")
+            stats = []
+            for emp in employees:
+                row = df_result.loc[emp]
+                m_cnt = (row == "早班").sum()
+                n_cnt = (row == "中班").sum()
+                e_cnt = (row == "晚班").sum()
+                off_cnt = (row == "輪休").sum()
+                stats.append({
+                    "員工": emp,
+                    "早班天數": m_cnt,
+                    "中班天數": n_cnt,
+                    "晚班天數": e_cnt,
+                    "輪休天數": off_cnt,
+                    "總工作天數": m_cnt + n_cnt + e_cnt
                 })
-
-    # 6. 回傳比對結果 JSON
-    return {
-        "success": True,
-        "page_dimensions": {"width": page.rect.width, "height": page.rect.height},
-        "left_count": len(left_rects),
-        "right_count": len(right_rects),
-        "error_count": len(discrepancies),
-        "discrepancies": discrepancies
-    }
-
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+            st.dataframe(pd.DataFrame(stats), use_container_width=True)
+            
+            # 產出 Excel 下載
+            output = io.BytesIO()
+            with pd.ExcelWriter(output, engine='openpyxl') as writer:
+                df_result.to_excel(writer, sheet_name='週班表')
+                pd.DataFrame(stats).to_excel(writer, sheet_name='班次統計', index=False)
+            excel_data = output.getvalue()
+            
+            st.download_button(
+                label="📥 下載 Excel 班表檔案",
+                data=excel_data,
+                file_name="weekly_schedule.xlsx",
+                mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+            )
+        else:
+            st.error("⚠️ 無法找到符合限制條件的排班組合，請嘗試調整班次人數需求或增加員工。")
