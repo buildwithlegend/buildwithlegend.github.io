@@ -1,148 +1,221 @@
-import streamlit as st
-import pandas as pd
-from ortools.sat.python import cp_model
-import io
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自動排班系統</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .off {
+            background-color: #ffe6e6;
+            color: #d9534f;
+            font-weight: bold;
+        }
+        .summary {
+            margin-top: 20px;
+            background: #e9ecef;
+            padding: 15px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
 
-# 1. 頁面基本設定
-st.set_page_config(
-    page_title="自動排班系統",
-    page_icon="📅",
-    layout="wide"
-)
-
-st.title("📅 企業自動排班系統 (6日營業 / 早中晚班)")
-st.markdown("基於運算最佳化模型，自動分配員工班次並確保工時公平性與充足休息時間。")
-
-# 2. 側邊欄設定
-st.sidebar.header("⚙️ 排班條件設定")
-
-# 員工代號設定
-default_employees = ["A", "B", "C", "D", "E", "F"]
-emp_input = st.sidebar.text_input("員工代號/姓名 (請用英文逗號分開)", ",".join(default_employees))
-employees = [e.strip() for e in emp_input.split(",") if e.strip()]
-
-# 班次需求設定
-st.sidebar.subheader("👥 每日各班次所需人數")
-morning_req = st.sidebar.number_input("早班人數", min_value=1, value=1, step=1)
-noon_req = st.sidebar.number_input("中班人數", min_value=1, value=1, step=1)
-night_req = st.sidebar.number_input("晚班人數", min_value=1, value=1, step=1)
-
-shifts = ["早班", "中班", "晚班"]
-days = ["週一", "週二", "週三", "週四", "週五", "週六"]
-shift_req = {"早班": morning_req, "中班": noon_req, "晚班": night_req}
-
-# 3. 排班求解器核心邏輯
-def generate_schedule(employees, days, shifts, shift_req):
-    model = cp_model.CpModel()
+<div class="container">
+    <h1>自動排班產生器 (6人 / 6天)</h1>
     
-    # 建立決策變數
-    shifts_vars = {}
-    for e in employees:
-        for d_idx, d in enumerate(days):
-            for s in shifts:
-                shifts_vars[(e, d_idx, s)] = model.NewBoolVar(f'shift_{e}_{d_idx}_{s}')
-                
-    # 限制條件 1: 每日班次人數需求必須完全滿足
-    for d_idx in range(len(days)):
-        for s in shifts:
-            model.Add(
-                sum(shifts_vars[(e, d_idx, s)] for e in employees) == shift_req[s]
-            )
-            
-    # 限制條件 2: 每人每天最多只能上一個班
-    for e in employees:
-        for d_idx in range(len(days)):
-            model.Add(
-                sum(shifts_vars[(e, d_idx, s)] for s in shifts) <= 1
-            )
-            
-    # 限制條件 3: 避免「前一天晚班，次日早班」（保護員工休息時間）
-    for e in employees:
-        for d_idx in range(len(days) - 1):
-            model.AddBoolOr([
-                shifts_vars[(e, d_idx, "晚班")].Not(),
-                shifts_vars[(e, d_idx + 1, "早班")].Not()
-            ])
+    <div class="form-group">
+        <label>員工姓名（用逗號或空格分隔 6 位成員）：</label>
+        <input type="text" id="employeeInput" value="員工A, 員工B, 員工C, 員工D, 員工E, 員工F">
+    </div>
 
-    # 限制條件 4: 工時平均化（最高與最低總班數相差最多 1 班）
-    total_slots = len(days) * sum(shift_req.values())
-    min_shifts_per_emp = total_slots // len(employees)
-    max_shifts_per_emp = (total_slots + len(employees) - 1) // len(employees)
+    <button onclick="generateSchedule()">產生隨機班表</button>
+
+    <div id="result"></div>
+</div>
+
+<script>
+function generateSchedule() {
+    // 讀取員工名單
+    const inputVal = document.getElementById('employeeInput').value;
+    let employees = inputVal.split(/[,，\s]+/).filter(e => e.trim() !== '');
+
+    if (employees.length !== 6) {
+        alert("請輸入剛好 6 位員工姓名！");
+        return;
+    }
+
+    const days = ['週一', '週二', '週三', '週四', '週五', '週六'];
     
-    for e in employees:
-        emp_total = sum(shifts_vars[(e, d_idx, s)] for d_idx in range(len(days)) for s in shifts)
-        model.Add(emp_total >= min_shifts_per_emp)
-        model.Add(emp_total <= max_shifts_per_emp)
+    // 為了保證公平性：6天中每天休2人，總共12個人次休假。
+    // 6個人每人剛好隨機分配休假 2 天。
+    let offDays = {};
+    employees.forEach(emp => offDays[emp] = []);
 
-    # 執行計算
-    solver = cp_model.CpSolver()
-    solver.parameters.max_time_in_seconds = 5.0
-    status = solver.Solve(model)
-
-    if status == cp_model.OPTIMAL or status == cp_model.FEASIBLE:
-        schedule_data = {e: {d: "輪休" for d in days} for e in employees}
-        for e in employees:
-            for d_idx, d in enumerate(days):
-                for s in shifts:
-                    if solver.Value(shifts_vars[(e, d_idx, s)]) == 1:
-                        schedule_data[e][d] = s
+    // 建立排班池：週一到週六各需要2人休假 -> [0,0, 1,1, 2,2, 3,3, 4,4, 5,5]
+    let pool = [0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5];
+    
+    // 嘗試洗牌並分配休假（確保每人選到的 2 天不重複）
+    let success = false;
+    let maxAttempts = 100;
+    
+    while (!success && maxAttempts > 0) {
+        maxAttempts--;
+        pool.sort(() => Math.random() - 0.5); // 洗牌
         
-        # 加入週日固定休息
-        for e in employees:
-            schedule_data[e]["週日"] = "固定休"
-            
-        df = pd.DataFrame.from_dict(schedule_data, orient='index')
-        return df
-    else:
-        return None
+        let valid = true;
+        let tempOffDays = {};
+        employees.forEach(emp => tempOffDays[emp] = []);
 
-# 4. 前端介面觸發與結果輸出
-if st.button("🚀 開始自動排班", type="primary"):
-    total_needed_per_day = sum(shift_req.values())
-    if len(employees) < total_needed_per_day:
-        st.error(f"❌ 員工人數不足！每日共需要 {total_needed_per_day} 人次，但目前只有 {len(employees)} 位員工。")
-    else:
-        with st.spinner("智慧演算班表中..."):
-            df_result = generate_schedule(employees, days, shifts, shift_req)
-            
-        if df_result is not None:
-            st.success("✅ 自動排班成功！")
-            
-            # 展示班表
-            st.subheader("📋 本週班表總覽")
-            st.dataframe(df_result, use_container_width=True)
-            
-            # 統計資料
-            st.subheader("📊 員工班次分配統計")
-            stats = []
-            for emp in employees:
-                row = df_result.loc[emp]
-                m_cnt = (row == "早班").sum()
-                n_cnt = (row == "中班").sum()
-                e_cnt = (row == "晚班").sum()
-                off_cnt = (row == "輪休").sum()
-                stats.append({
-                    "員工": emp,
-                    "早班天數": m_cnt,
-                    "中班天數": n_cnt,
-                    "晚班天數": e_cnt,
-                    "輪休天數": off_cnt,
-                    "總工作天數": m_cnt + n_cnt + e_cnt
-                })
-            st.dataframe(pd.DataFrame(stats), use_container_width=True)
-            
-            # 產出 Excel 下載
-            output = io.BytesIO()
-            with pd.ExcelWriter(output, engine='openpyxl') as writer:
-                df_result.to_excel(writer, sheet_name='週班表')
-                pd.DataFrame(stats).to_excel(writer, sheet_name='班次統計', index=False)
-            excel_data = output.getvalue()
-            
-            st.download_button(
-                label="📥 下載 Excel 班表檔案",
-                data=excel_data,
-                file_name="weekly_schedule.xlsx",
-                mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-            )
-        else:
-            st.error("⚠️ 無法找到符合限制條件的排班組合，請嘗試調整班次人數需求或增加員工。")
+        for (let i = 0; i < employees.length; i++) {
+            let day1 = pool[i * 2];
+            let day2 = pool[i * 2 + 1];
+
+            if (day1 === day2) { // 不能在同一天休兩次
+                valid = false;
+                break;
+            }
+            tempOffDays[employees[i]] = [day1, day2];
+        }
+
+        if (valid) {
+            offDays = tempOffDays;
+            success = true;
+        }
+    }
+
+    // 建立每天的班表
+    let schedule = []; // 每一天的班表詳細資訊
+
+    for (let dayIndex = 0; dayIndex < 6; dayIndex++) {
+        let workingToday = [];
+        let offToday = [];
+
+        employees.forEach(emp => {
+            if (offDays[emp].includes(dayIndex)) {
+                offToday.push(emp);
+            } else {
+                workingToday.push(emp);
+            }
+        });
+
+        // 打亂今天上班的 4 個人，隨機分配班別
+        workingToday.sort(() => Math.random() - 0.5);
+
+        // 班別分配規則：早班 1 人、中班 1 人、晚班 2 人 (可自由調整)
+        schedule.push({
+            day: days[dayIndex],
+            morning: workingToday[0],
+            noon: workingToday[1],
+            night: [workingToday[2], workingToday[3]],
+            off: offToday
+        });
+    }
+
+    // 渲染表格
+    renderTable(days, employees, schedule, offDays);
+}
+
+function renderTable(days, employees, schedule, offDays) {
+    let html = `<h2>本週班表 (週日公休)</h2>`;
+    
+    // 1. 每日班別檢視表
+    html += `<h3>【按日期檢視】</h3>`;
+    html += `<table>
+        <tr>
+            <th>日期</th>
+            <th>早班 (1人)</th>
+            <th>中班 (1人)</th>
+            <th>晚班 (2人)</th>
+            <th>排休 (2人)</th>
+        </tr>`;
+
+    schedule.forEach(s => {
+        html += `<tr>
+            <td><strong>${s.day}</strong></td>
+            <td>${s.morning}</td>
+            <td>${s.noon}</td>
+            <td>${s.night.join(', ')}</td>
+            <td class="off">${s.off.join(', ')}</td>
+        </tr>`;
+    });
+    
+    html += `<tr style="background-color: #f8d7da; font-weight: bold;">
+        <td>週日</td>
+        <td colspan="4">全員公休 / 店休</td>
+    </tr>`;
+    html += `</table>`;
+
+    // 2. 個人班表統計
+    html += `<div class="summary">`;
+    html += `<h3>【個人休假統計】</h3><ul>`;
+    employees.forEach(emp => {
+        let empOffDays = offDays[emp].map(d => days[d]).join('、');
+        html += `<li><strong>${emp}</strong>：本週排休日期為 ${empOffDays}</li>`;
+    });
+    html += `</ul></div>`;
+
+    document.getElementById('result').innerHTML = html;
+}
+
+// 頁面載入時自動執行一次
+window.onload = generateSchedule;
+</script>
+
+</body>
+</html>
